@@ -1,5 +1,13 @@
 package com.retexspa.xr.ms.iam.main.query.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
+
 import com.retexspa.xr.ms.iam.main.core.entities.ApplicazioniQueryDTO;
 import com.retexspa.xr.ms.iam.main.core.filterRequest.ApplicazioniFilter;
 import com.retexspa.xr.ms.iam.main.core.responses.applicazioni.ApplicazioniResponse;
@@ -9,13 +17,6 @@ import com.retexspa.xr.ms.iam.main.query.repositories.ApplicazioniRepository;
 import com.retexspa.xr.ms.main.core.queries.BaseSort;
 import com.retexspa.xr.ms.main.core.queries.GenericSearchRequest;
 import com.retexspa.xr.ms.main.core.responses.Pagination;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,11 +63,15 @@ public class ApplicazioniQueryServiceImpl implements ApplicazioniQueryService {
         }
 
         if (filter.getCodice() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("codice"), filter.getCodice()));
+            specifications.add(
+                    (r, q, c) -> c.like(
+                            c.upper(r.get("codice")), "%" + filter.getCodice().toUpperCase() + "%"));
         }
 
         if (filter.getNome() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("nome"), filter.getNome()));
+            specifications.add(
+                    (r, q, c) -> c.like(
+                            c.upper(r.get("nome")), "%" + filter.getNome().toUpperCase() + "%"));
         }
 
         if (filter.getDescrizione() != null) {
@@ -74,8 +79,13 @@ public class ApplicazioniQueryServiceImpl implements ApplicazioniQueryService {
                     (r, q, c) -> c.like(
                             c.upper(r.get("descrizione")), "%" + filter.getDescrizione().toUpperCase() + "%"));
         }
+
         if (filter.getSocietaId() != null) {
             specifications.add((r, q, c) -> c.equal(r.get("societa").get("id"), filter.getSocietaId()));
+        }
+
+        if (filter.getIconicApplicazioniId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("iconicApplicazioni").get("id"), filter.getIconicApplicazioniId()));
         }
 
        /*  if (filter.getImmagine() != null) {

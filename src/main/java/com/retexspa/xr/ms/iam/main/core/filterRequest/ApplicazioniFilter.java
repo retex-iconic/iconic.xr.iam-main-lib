@@ -10,6 +10,7 @@ public class ApplicazioniFilter {
     private String nome;
     private String descrizione;
     private String societaId;
+    private String iconicApplicazioniId;
     //private byte[] immagine;
     private String flgRuoloUnico;
     private Long version;
@@ -23,6 +24,7 @@ public class ApplicazioniFilter {
             @JsonProperty("nome") String nome,
             @JsonProperty("descrizione") String descrizione,
             @JsonProperty("societaId") String societaId,
+            @JsonProperty("iconicApplicazioniId") String iconicApplicazioniId,
            // @JsonProperty("immagine") byte[] immagine,
             @JsonProperty("flgRuoloUnico") String flgRuoloUnico,
             @JsonProperty("version") Long version) {
@@ -31,6 +33,7 @@ public class ApplicazioniFilter {
         this.nome = nome;
         this.descrizione = descrizione;
         this.societaId = societaId;
+        this.iconicApplicazioniId = iconicApplicazioniId;
         //this.immagine = immagine;
         this.flgRuoloUnico = flgRuoloUnico;
         this.version = version;
@@ -45,6 +48,7 @@ public class ApplicazioniFilter {
             filter.setNome((String) map.get("nome"));
             filter.setDescrizione((String) map.get("descrizione"));
             filter.setSocietaId((String) map.get("societaId"));
+            filter.setIconicApplicazioniId((String) map.get("iconicApplicazioniId"));
             //filter.setImmagine((byte[]) map.get("immagine"));
             filter.setFlgRuoloUnico((String) map.get("flgRuoloUnico"));
             Object version = map.get("version");
@@ -61,6 +65,14 @@ public class ApplicazioniFilter {
 
     public String getId() {
         return this.id;
+    }
+
+    public String getIconicApplicazioniId() {
+        return iconicApplicazioniId;
+    }
+
+    public void setIconicApplicazioniId(String iconicApplicazioniId) {
+        this.iconicApplicazioniId = iconicApplicazioniId;
     }
 
     public void setId(String id) {

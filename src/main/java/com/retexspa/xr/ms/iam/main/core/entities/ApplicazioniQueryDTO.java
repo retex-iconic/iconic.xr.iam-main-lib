@@ -14,6 +14,7 @@ public class ApplicazioniQueryDTO {
     private String codice;
     private String descrizione;
     private String societaId;
+    private String iconicApplicazioniId;
     private byte[] immagine;
     private String flgRuoloUnico;
     private Long version;
@@ -74,5 +75,11 @@ public class ApplicazioniQueryDTO {
 
     public void setVersion(Long version) {
         this.version = version;
+    }
+    public String getIconicApplicazioniId() {
+        return iconicApplicazioniId;
+    }
+    public void setIconicApplicazioniId(String iconicApplicazioniId) {
+        this.iconicApplicazioniId = iconicApplicazioniId;
     }
 }
