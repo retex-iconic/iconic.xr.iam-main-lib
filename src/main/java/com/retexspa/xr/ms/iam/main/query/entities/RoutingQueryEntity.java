@@ -1,7 +1,8 @@
 package com.retexspa.xr.ms.iam.main.query.entities;
 
-import com.retexspa.xr.ms.iam.main.core.dto.routing.RoutingBaseDTO;
 import org.springframework.lang.NonNull;
+
+import com.retexspa.xr.ms.iam.main.core.dto.routing.RoutingBaseDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -30,8 +31,8 @@ public class RoutingQueryEntity {
     private Long version;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "applicazione_id", referencedColumnName = "id")
-    private ApplicazioniQueryEntity applicazione;
+    @JoinColumn(name = "iconic_applicazione_id", referencedColumnName = "id")
+    private IconicApplicazioniQueryEntity iconicApplicazioni;
     @ManyToOne(fetch = FetchType.LAZY)
     private RoutingQueryEntity nodo;
     @Column(name="subtitolo")
@@ -103,12 +104,12 @@ public class RoutingQueryEntity {
         this.version = version;
     }
 
-    public ApplicazioniQueryEntity getApplicazione() {
-        return applicazione;
+    public IconicApplicazioniQueryEntity getIconicApplicazioni() {
+        return iconicApplicazioni;
     }
 
-    public void setApplicazione(ApplicazioniQueryEntity applicazione) {
-        this.applicazione = applicazione;
+    public void setIconicApplicazioni(IconicApplicazioniQueryEntity iconicApplicazione) {
+        this.iconicApplicazioni = iconicApplicazione;
     }
 
     public RoutingQueryEntity getNodo() {

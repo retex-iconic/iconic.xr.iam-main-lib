@@ -1,5 +1,13 @@
 package com.retexspa.xr.ms.iam.main.query.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
+
 import com.retexspa.xr.ms.iam.main.core.entities.RoutingQueryDTO;
 import com.retexspa.xr.ms.iam.main.core.responses.routing.RoutingResponse;
 import com.retexspa.xr.ms.iam.main.core.searchRequest.RoutingSearchRequest;
@@ -8,13 +16,6 @@ import com.retexspa.xr.ms.iam.main.query.mappers.RoutingQueryMapper;
 import com.retexspa.xr.ms.iam.main.query.repositories.RoutingRepository;
 import com.retexspa.xr.ms.main.core.queries.BaseSort;
 import com.retexspa.xr.ms.main.core.responses.Pagination;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,10 @@ public class RoutingQueryServiceImpl implements RoutingQueryService {
 
         if (query.getId() != null) {
             specifications.add((r, q, c) -> c.equal(r.get("id"), query.getId()));
+        }
+
+        if (query.getIconicApplicazioniId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("iconicApplicazioni").get("id"), query.getIconicApplicazioniId()));
         }
 
         if (query.getRoutingCharId() != null) {

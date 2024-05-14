@@ -25,10 +25,10 @@ public class RoutingBaseDTO {
     private String urlLink;
     private String icone;
 
-    @NotNull(message = "applicazioneId is mandatory")
-    @NotEmpty(message = "applicazioneId is mandatory")
-    @NotBlank(message = "applicazioneId is mandatory")
-    private String applicazioneId;
+    @NotNull(message = "iconicApplicazioniId is mandatory")
+    @NotEmpty(message = "iconicApplicazioniId is mandatory")
+    @NotBlank(message = "iconicApplicazioniId is mandatory")
+    private String iconicApplicazioniId;
     private String subtitolo;
     @EnumValidator(enumClazz = Enums.CheckSN.class , message = "FlgGdpr not valid")
     private String flgGdpr;
@@ -58,12 +58,12 @@ public class RoutingBaseDTO {
         this.urlLink = urlLink;
     }
 
-    public String getApplicazioneId() {
-        return applicazioneId;
+    public String getIconicApplicazioniId() {
+        return iconicApplicazioniId;
     }
 
-    public void setApplicazioneId(String applicazioneId) {
-        this.applicazioneId = applicazioneId;
+    public void setIconicApplicazioniId(String iconicApplicazioniId) {
+        this.iconicApplicazioniId = iconicApplicazioniId;
     }
 
     public String getSubtitolo() {

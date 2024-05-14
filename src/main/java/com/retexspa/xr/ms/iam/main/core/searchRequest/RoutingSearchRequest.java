@@ -14,7 +14,7 @@ public class RoutingSearchRequest extends BaseSortPagination {
     private String urlLink;
     private String icone;
     private String  subtitolo;
-    private String applicazioneId;
+    private String iconicApplicazioniId;
     private String flgGdpr;
     private String nodoId;
     private Long version;
@@ -28,7 +28,7 @@ public class RoutingSearchRequest extends BaseSortPagination {
             @JsonProperty("titolo") String titolo,
             @JsonProperty("urlLink") String urlLink,
             @JsonProperty("icone") String icone,
-            @JsonProperty("applicazioneId") String applicazioneId,
+            @JsonProperty("iconicApplicazioniId") String iconicApplicazioniId,
             @JsonProperty("flgGdpr") String flgGdpr,
             @JsonProperty("nodoId") String nodoId,
             @JsonProperty("version") Long version
@@ -39,7 +39,7 @@ public class RoutingSearchRequest extends BaseSortPagination {
         this.titolo = titolo;
         this.urlLink = urlLink;
         this.icone = icone;
-        this.applicazioneId = applicazioneId;
+        this.iconicApplicazioniId = iconicApplicazioniId;
         this.flgGdpr = flgGdpr;
         this.nodoId = nodoId;
         this.version = version;
@@ -93,12 +93,12 @@ public class RoutingSearchRequest extends BaseSortPagination {
         this.subtitolo = subtitolo;
     }
 
-    public String getApplicazioneId() {
-        return applicazioneId;
+    public String getIconicApplicazioniId() {
+        return iconicApplicazioniId;
     }
 
-    public void setApplicazioneId(String applicazioneId) {
-        this.applicazioneId = applicazioneId;
+    public void setIconicApplicazioniId(String iconicApplicazioniId) {
+        this.iconicApplicazioniId = iconicApplicazioniId;
     }
 
     public String getFlgGdpr() {

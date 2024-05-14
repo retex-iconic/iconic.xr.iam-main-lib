@@ -16,7 +16,7 @@ public class RoutingQueryDTO {
     private String urlLink;
     private String icone;
     private String  subtitolo;
-    private String applicazioneId;
+    private String iconicApplicazioniId;
     private String flgGdpr;
     private String nodoId;
     private Long version;
@@ -69,12 +69,12 @@ public class RoutingQueryDTO {
         this.subtitolo = subtitolo;
     }
 
-    public String getApplicazioneId() {
-        return applicazioneId;
+    public String getIconicApplicazioniId() {
+        return iconicApplicazioniId;
     }
 
-    public void setApplicazioneId(String applicazioneId) {
-        this.applicazioneId = applicazioneId;
+    public void setIconicApplicazioniId(String applicazioneId) {
+        this.iconicApplicazioniId = applicazioneId;
     }
 
     public String getFlgGdpr() {
