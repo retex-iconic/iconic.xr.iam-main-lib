@@ -8,15 +8,11 @@ import org.mapstruct.ReportingPolicy;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
-public class ApplicazioniQueryDTO {
+public class IconicApplicazioniQueryDTO {
     private String id;
     private String nome;
     private String codice;
     private String descrizione;
-    private String societaId;
-    private String iconicApplicazioniId;
-    private byte[] immagine;
-    private String flgRuoloUnico;
     private Long version;
 
 
@@ -45,41 +41,11 @@ public class ApplicazioniQueryDTO {
         this.descrizione = descrizione;
     }
 
-    public String getSocietaId() {
-        return societaId;
-    }
-
-    public void setSocietaId(String societaId) {
-        this.societaId = societaId;
-    }
-
-    public byte[] getImmagine() {
-        return immagine;
-    }
-
-    public void setImmagine(byte[] immagine) {
-        this.immagine = immagine;
-    }
-
-    public String getFlgRuoloUnico() {
-        return flgRuoloUnico;
-    }
-
-    public void setFlgRuoloUnico(String flgRuoloUnico) {
-        this.flgRuoloUnico = flgRuoloUnico;
-    }
-
     public Long getVersion() {
         return version;
     }
 
     public void setVersion(Long version) {
         this.version = version;
-    }
-    public String getIconicApplicazioniId() {
-        return iconicApplicazioniId;
-    }
-    public void setIconicApplicazioniId(String iconicApplicazioniId) {
-        this.iconicApplicazioniId = iconicApplicazioniId;
     }
 }

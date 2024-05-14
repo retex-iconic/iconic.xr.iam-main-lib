@@ -1,7 +1,8 @@
 package com.retexspa.xr.ms.iam.main.query.entities;
 
-import com.retexspa.xr.ms.iam.main.core.dto.applicazioni.ApplicazioniBaseDTO;
 import org.springframework.lang.NonNull;
+
+import com.retexspa.xr.ms.iam.main.core.dto.applicazioni.ApplicazioniBaseDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -28,6 +29,11 @@ public class ApplicazioniQueryEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "societa_id", referencedColumnName = "id")
     private SocietaQueryEntity societa;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "iconic_applicazioni_id", referencedColumnName = "id")
+    private IconicApplicazioniQueryEntity iconicApplicazioni;
+
     @Column(name="immagine")
     @Lob
     private byte[] immagine;
@@ -109,5 +115,13 @@ public class ApplicazioniQueryEntity {
 
     public void setFlgRuoloUnico(String flgRuoloUnico) {
         this.flgRuoloUnico = flgRuoloUnico;
+    }
+
+    public IconicApplicazioniQueryEntity getIconicApplicazioni() {
+        return iconicApplicazioni;
+    }
+
+    public void setIconicApplicazioni(IconicApplicazioniQueryEntity iconicApplicazioni) {
+        this.iconicApplicazioni = iconicApplicazioni;
     }
 }

@@ -8,12 +8,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.retexspa.xr.ms.iam.main.core.entities.ApplicazioniQueryDTO;
-import com.retexspa.xr.ms.iam.main.core.filterRequest.ApplicazioniFilter;
-import com.retexspa.xr.ms.iam.main.core.responses.applicazioni.ApplicazioniResponse;
-import com.retexspa.xr.ms.iam.main.query.entities.ApplicazioniQueryEntity;
-import com.retexspa.xr.ms.iam.main.query.mappers.ApplicazioniQueryMapper;
-import com.retexspa.xr.ms.iam.main.query.repositories.ApplicazioniRepository;
+import com.retexspa.xr.ms.iam.main.core.entities.IconicApplicazioniQueryDTO;
+import com.retexspa.xr.ms.iam.main.core.filterRequest.IconicApplicazioniFilter;
+import com.retexspa.xr.ms.iam.main.core.responses.iconicApplicazioni.IconicApplicazioniResponse;
+import com.retexspa.xr.ms.iam.main.query.entities.IconicApplicazioniQueryEntity;
+import com.retexspa.xr.ms.iam.main.query.mappers.IconicApplicazioniQueryMapper;
+import com.retexspa.xr.ms.iam.main.query.repositories.IconicApplicazioniRepository;
 import com.retexspa.xr.ms.main.core.queries.BaseSort;
 import com.retexspa.xr.ms.main.core.queries.GenericSearchRequest;
 import com.retexspa.xr.ms.main.core.responses.Pagination;
@@ -23,16 +23,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ApplicazioniQueryServiceImpl implements ApplicazioniQueryService {
+public class IconicApplicazioniQueryServiceImpl implements IconicApplicazioniQueryService {
 
     @Autowired
-    private ApplicazioniRepository applicazioniRepository;
+    private IconicApplicazioniRepository iconicApplicazioniRepository;
 
     @Autowired
-    private ApplicazioniQueryMapper applicazioniQueryMapper;
+    private IconicApplicazioniQueryMapper iconicApplicazioniQueryMapper;
 
     @Override
-    public Page<ApplicazioniQueryEntity> searchQueryApplicazioni(GenericSearchRequest<ApplicazioniFilter> query) {
+    public Page<IconicApplicazioniQueryEntity> searchQueryIconicApplicazioni(GenericSearchRequest<IconicApplicazioniFilter> query) {
         List<Sort.Order> sorts = new ArrayList<>();
 
         if (query.getSort() != null && query.getSort().size() != 0) {
@@ -54,9 +54,9 @@ public class ApplicazioniQueryServiceImpl implements ApplicazioniQueryService {
 
         Pageable pageable = PageRequest.of(query.getPage(), query.getLimit(), Sort.by(sorts));
 
-        List<Specification<ApplicazioniQueryEntity>> specifications = new ArrayList<>();
+        List<Specification<IconicApplicazioniQueryEntity>> specifications = new ArrayList<>();
 
-        ApplicazioniFilter filter = ApplicazioniFilter.createFilterFromMap(query.getFilter());
+        IconicApplicazioniFilter filter = IconicApplicazioniFilter.createFilterFromMap(query.getFilter());
 
         if (filter.getId() != null) {
             specifications.add((r, q, c) -> c.equal(r.get("id"), filter.getId()));
@@ -79,49 +79,31 @@ public class ApplicazioniQueryServiceImpl implements ApplicazioniQueryService {
                     (r, q, c) -> c.like(
                             c.upper(r.get("descrizione")), "%" + filter.getDescrizione().toUpperCase() + "%"));
         }
-
-        if (filter.getSocietaId() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("societa").get("id"), filter.getSocietaId()));
-        }
-
-        if (filter.getIconicApplicazioniId() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("iconicApplicazioni").get("id"), filter.getIconicApplicazioniId()));
-        }
-
-       /*  if (filter.getImmagine() != null) {
-            specifications.add((r, q, c) -> c.equal(c.length(r.get("immagine")), filter.getImmagine()));
-        } */
-
-        if (filter.getFlgRuoloUnico() != null) {
-            specifications.add(
-                    (r, q, c) -> c.like(
-                            c.upper(r.get("flgRuoloUnico")), "%" + filter.getFlgRuoloUnico().toUpperCase() + "%"));
-        }
-
+    
         if (filter.getVersion() != null) {
             specifications.add((r, q, c) -> c.equal(r.get("version"), filter.getVersion()));
         }
-        Specification<ApplicazioniQueryEntity> specification = specifications.stream().reduce(Specification::and)
+        Specification<IconicApplicazioniQueryEntity> specification = specifications.stream().reduce(Specification::and)
                 .orElse(null);
 
-        Page<ApplicazioniQueryEntity> page = this.applicazioniRepository.findAll(specification, pageable);
+        Page<IconicApplicazioniQueryEntity> page = this.iconicApplicazioniRepository.findAll(specification, pageable);
         return page;
     }
 
     @Override
-    public ApplicazioniResponse searchApplicazioni(GenericSearchRequest<ApplicazioniFilter> query) {
+    public IconicApplicazioniResponse searchIconicApplicazioni(GenericSearchRequest<IconicApplicazioniFilter> query) {
 
-        ApplicazioniResponse applicazioniResponse = new ApplicazioniResponse();
-        Page<ApplicazioniQueryEntity> page = searchQueryApplicazioni(query);
-        List<ApplicazioniQueryDTO> list = page.getContent().stream()
+        IconicApplicazioniResponse iconicApplicazioniResponse = new IconicApplicazioniResponse();
+        Page<IconicApplicazioniQueryEntity> page = searchQueryIconicApplicazioni(query);
+        List<IconicApplicazioniQueryDTO> list = page.getContent().stream()
                 // .map(entity -> modelMapper.map(entity, ApplicazioniQueryDTO.class))
-                .map(entity -> applicazioniQueryMapper.toDTO(entity))
+                .map(entity -> iconicApplicazioniQueryMapper.toDTO(entity))
                 .collect(Collectors.toList());
-        applicazioniResponse.setRecords(list);
+        iconicApplicazioniResponse.setRecords(list);
 
-        applicazioniResponse.setPagination(Pagination.buildPagination(page));
+        iconicApplicazioniResponse.setPagination(Pagination.buildPagination(page));
 
-        return applicazioniResponse;
+        return iconicApplicazioniResponse;
     }
 
 }

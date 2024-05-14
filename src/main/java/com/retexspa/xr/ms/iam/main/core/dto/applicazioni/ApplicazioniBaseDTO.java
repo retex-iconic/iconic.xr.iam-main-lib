@@ -32,6 +32,7 @@ public class ApplicazioniBaseDTO {
     @EnumValidator(enumClazz = Enums.CheckSN.class , message = "FlgRuoloUnico not valid")
     @NotNull(message = "flgRuoloUnico is mandatory")
     private String flgRuoloUnico;
+    private String iconicApplicazioniId;
 
     public String getCodice() {
         return codice;
@@ -83,5 +84,13 @@ public class ApplicazioniBaseDTO {
     @JsonIgnore
     public String getAggregateId() {
         return UUID.randomUUID().toString();
+    }
+
+    public String getIconicApplicazioniId() {
+        return iconicApplicazioniId;
+    }
+
+    public void setIconicApplicazioniId(String iconicApplicazioniId) {
+        this.iconicApplicazioniId = iconicApplicazioniId;
     }
 }

@@ -18,7 +18,6 @@ public class ApplicazioniIndexDTO {
   private LinkedList<String> notificheIds;
   private LinkedList<String> anagraficaAttributiRuoliIds;
   private LinkedList<String> anagraficaAttributiRuoliSharedIds;
-  private LinkedList<String> routingIds;
 
   public ApplicazioniIndexDTO() {
   }
@@ -97,14 +96,6 @@ public class ApplicazioniIndexDTO {
 
   }
 
-  public LinkedList<String> getRoutingIds() {
-    return routingIds;
-  }
-
-  public void setRoutingIds(LinkedList<String> routingIds) {
-    this.routingIds = routingIds;
-  }
-
   public static String getDetailNameTipiContestoApplicazione() {
     return "tipiContestoApplicazioneIds";
   }
@@ -123,10 +114,6 @@ public class ApplicazioniIndexDTO {
 
   public static String getDetailNameAnagraficaAttributiRuoliShared() {
     return "anagraficaAttributiRuoliSharedIds";
-  }
-
-  public static String getDetailNameRouting() {
-    return "routingIds";
   }
 
 }
