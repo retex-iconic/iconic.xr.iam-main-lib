@@ -26,7 +26,7 @@ public class UtentiSocietaQueryDTO {
 
     private String matricola;
 
-    private String codiceBadge;
+    private String badgeId;
 
     private String statoBadge;
 
@@ -98,12 +98,12 @@ public class UtentiSocietaQueryDTO {
         this.matricola = matricola;
     }
 
-    public String getCodiceBadge() {
-        return codiceBadge;
+    public String getBadgeId() {
+        return badgeId;
     }
 
-    public void setCodiceBadge(String codiceBadge) {
-        this.codiceBadge = codiceBadge;
+    public void setBadgeId(String badgeId) {
+        this.badgeId = badgeId;
     }
 
     public String getStatoBadge() {

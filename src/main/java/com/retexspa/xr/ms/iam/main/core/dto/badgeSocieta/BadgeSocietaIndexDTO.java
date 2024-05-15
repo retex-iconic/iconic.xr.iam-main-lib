@@ -13,6 +13,7 @@ public class BadgeSocietaIndexDTO {
 
     private String badgeSocietaId;
     private String societaId;
+    private LinkedList<String> utentiSocietaIds;
     private LinkedList<String> sostituzioniBadgeIds;
 
     public static String getIdFromBadgeSocieta(String badgeSocietaId) {
@@ -54,6 +55,18 @@ public class BadgeSocietaIndexDTO {
 
     public static String getDetailNameSostituzioneBadge() {
         return "sostituzioneBadgeIds";
+    }
+
+    public static String getDetailNameUtentiSocieta() {
+        return "utentiSocietaIds";
+    }
+
+    public LinkedList<String> getUtentiSocietaIds() {
+        return utentiSocietaIds;
+    }
+
+    public void setUtentiSocietaIds(LinkedList<String> utentiSocietaIds) {
+        this.utentiSocietaIds = utentiSocietaIds;
     }
 
 }

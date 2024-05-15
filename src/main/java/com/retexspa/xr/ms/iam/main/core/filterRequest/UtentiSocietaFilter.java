@@ -14,7 +14,7 @@ public class UtentiSocietaFilter {
     private LocalDateTime dataInizioValidita;
     private LocalDateTime dataFineValidita;
     private String matricola;
-    private String codiceBadge;
+    private String badgeId;
     private String statoBadge;
     private String codiceFiscale;
     private String indirrizoEmail;
@@ -34,7 +34,7 @@ public class UtentiSocietaFilter {
             @JsonProperty("dataInizioValidita") LocalDateTime dataInizioValidita,
             @JsonProperty("dataFineValidita") LocalDateTime dataFineValidita,
             @JsonProperty("matricola") String matricola,
-            @JsonProperty("codiceBadge") String codiceBadge,
+            @JsonProperty("badgeId") String badgeId,
             @JsonProperty("statoBadge") String statoBadge,
             @JsonProperty("codiceFiscale") String codiceFiscale,
             @JsonProperty("indirrizoEmail") String indirrizoEmail,
@@ -54,7 +54,7 @@ public class UtentiSocietaFilter {
         this.indirrizoEmail = indirrizoEmail;
         this.upn = upn;
         this.pwd = pwd;
-        this.codiceBadge = codiceBadge;
+        this.badgeId = badgeId;
         this.societaId = societaId;
         this.version = version;
     }
@@ -88,7 +88,7 @@ public class UtentiSocietaFilter {
             }
             filter.setCognome((String) map.get("cognome"));
             filter.setMatricola((String) map.get("matricola"));
-            filter.setCodiceBadge((String) map.get("codiceBadge"));
+            filter.setBadgeId((String) map.get("badgeId"));
             filter.setStatoBadge((String) map.get("statoBadge"));
             filter.setCodiceFiscale((String) map.get("codiceFiscale"));
             filter.setIndirrizoEmail((String) map.get("indirrizoEmail"));
@@ -164,12 +164,12 @@ public class UtentiSocietaFilter {
         this.matricola = matricola;
     }
 
-    public String getCodiceBadge() {
-        return codiceBadge;
+    public String getBadgeId() {
+        return badgeId;
     }
 
-    public void setCodiceBadge(String codiceBadge) {
-        this.codiceBadge = codiceBadge;
+    public void setBadgeId(String badgeId) {
+        this.badgeId = badgeId;
     }
 
     public String getStatoBadge() {

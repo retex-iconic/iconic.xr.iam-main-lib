@@ -18,7 +18,7 @@ public interface UtentiSocietaQueryMapper {
     @Mapping(target = "dataInizioValidita", source = "dataInizioValidita")
     @Mapping(target = "dataFineValidita", source = "dataFineValidita")
     @Mapping(target = "matricola", source = "matricola")
-    @Mapping(target = "codiceBadge", source = "codiceBadge")
+    @Mapping(target = "badgeId", source = "badge.id")
     @Mapping(target = "statoBadge", source = "statoBadge")
     @Mapping(target = "codiceFiscale", source = "codiceFiscale")
     @Mapping(target = "indirrizoEmail", source = "indirrizoEmail")

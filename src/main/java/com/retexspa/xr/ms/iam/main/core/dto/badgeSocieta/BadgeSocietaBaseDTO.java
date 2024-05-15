@@ -84,4 +84,12 @@ public class BadgeSocietaBaseDTO {
     public String getAggregateId() {
         return UUID.randomUUID().toString();
     }
+
+    public static String getAggregate(){
+        return "BadgeSocietaAggregate";
+    }
+
+    public static String getAggregateName(){
+        return "BadgeSocieta";
+    }
 }

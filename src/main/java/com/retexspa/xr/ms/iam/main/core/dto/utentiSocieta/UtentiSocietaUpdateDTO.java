@@ -20,8 +20,6 @@ public class UtentiSocietaUpdateDTO {
 
     private LocalDateTime dataFineValidita;
 
-    private String codiceBadge;
-
     @EnumValidator(enumClazz = Enums.StatoBadge.class, message = "Stato Badge not valid")
     private String statoBadge;
 
@@ -61,14 +59,6 @@ public class UtentiSocietaUpdateDTO {
 
     public void setDataFineValidita(LocalDateTime dataFineValidita) {
         this.dataFineValidita = dataFineValidita;
-    }
-
-    public String getCodiceBadge() {
-        return codiceBadge;
-    }
-
-    public void setCodiceBadge(String codiceBadge) {
-        this.codiceBadge = codiceBadge;
     }
 
     public String getStatoBadge() {
