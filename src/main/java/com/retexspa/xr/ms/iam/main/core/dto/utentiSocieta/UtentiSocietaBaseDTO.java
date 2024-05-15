@@ -32,7 +32,7 @@ public class UtentiSocietaBaseDTO {
     @NotNull(message = "matricola is mandatory")
     private String matricola;
 
-    private String codiceBadge;
+    private String badgeId;
 
     @EnumValidator(enumClazz = Enums.StatoBadge.class, message = "Stato Badge not valid")
     private String statoBadge;
@@ -96,12 +96,12 @@ public class UtentiSocietaBaseDTO {
         this.matricola = matricola;
     }
 
-    public String getCodiceBadge() {
-        return codiceBadge;
+    public String getBadgeId() {
+        return badgeId;
     }
 
-    public void setCodiceBadge(String codiceBadge) {
-        this.codiceBadge = codiceBadge;
+    public void setBadgeId(String badgeId) {
+        this.badgeId = badgeId;
     }
 
     public String getStatoBadge() {

@@ -100,11 +100,9 @@ public class UtentiSocietaQueryServiceImpl implements UtentiSocietaQueryService 
                     (r, q, c) -> c.like(
                             c.upper(r.get("codiceFiscale")), "%" + filter.getCodiceFiscale().toUpperCase() + "%"));
         }
-
-        if (filter.getCodiceBadge() != null) {
-            specifications.add(
-                    (r, q, c) -> c.like(
-                            c.upper(r.get("codiceBadge")), "%" + filter.getCodiceBadge().toUpperCase() + "%"));
+        
+        if (filter.getBadgeId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("badge").get("id"), filter.getBadgeId()));
         }
 
         if (filter.getStatoBadge() != null) {

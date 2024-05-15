@@ -58,8 +58,8 @@ public class UtentiSocietaIndexUkDTO extends AggregateIndexUkBaseDTO {
         return uk;
     }
 
-    public static String getBadgeUk(String codiceBadge, String societaId) {
-        String uk = codiceBadge +
+    public static String getBadgeUk(String badgeId, String societaId) {
+        String uk = badgeId +
                 UtentiSocietaIndexUkDTO.getUkSeparator() +
                 societaId;
         return uk;

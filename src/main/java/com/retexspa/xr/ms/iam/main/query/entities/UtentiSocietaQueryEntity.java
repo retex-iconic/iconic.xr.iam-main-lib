@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
     @Index(name = "index_utenti_societa_nome", columnList = "nome"),
     @Index(name = "index_utenti_societa_cognome", columnList = "cognome"),
     @Index(name = "index_utenti_societa_codice_fiscale", columnList = "codice_fiscale"),
-    @Index(name = "index_utenti_societa_codice_badge", columnList = "codice_badge"),
+    @Index(name = "index_utenti_societa_badge_id", columnList = "badge_id"),
     @Index(name = "index_utenti_societa_societa", columnList = "societa_id")
 })
 public class UtentiSocietaQueryEntity {
@@ -41,8 +41,9 @@ public class UtentiSocietaQueryEntity {
     @Column(name = "matricola")
     private String matricola;
 
-    @Column(name = "codice_badge")
-    private String codiceBadge;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "badge_id", referencedColumnName = "id")
+    private BadgeSocietaQueryEntity badge;
 
     @EnumValidator(enumClazz = Enums.StatoBadge.class)
     @Column(name = "stato_badge")
@@ -78,7 +79,6 @@ public class UtentiSocietaQueryEntity {
         this.dataInizioValidita = dto.getDataInizioValidita();
         this.dataFineValidita = dto.getDataFineValidita();
         this.matricola = dto.getMatricola();
-        this.codiceBadge = dto.getCodiceBadge();
         this.statoBadge = dto.getStatoBadge();
         this.codiceFiscale = dto.getCodiceFiscale();
         this.indirrizoEmail = dto.getIndirrizoEmail();
@@ -144,12 +144,12 @@ public class UtentiSocietaQueryEntity {
         this.matricola = matricola;
     }
 
-    public String getCodiceBadge() {
-        return codiceBadge;
+    public BadgeSocietaQueryEntity getBadge() {
+        return badge;
     }
 
-    public void setCodiceBadge(String codiceBadge) {
-        this.codiceBadge = codiceBadge;
+    public void setBadge(BadgeSocietaQueryEntity badge) {
+        this.badge = badge;
     }
 
     public String getStatoBadge() {
