@@ -17,6 +17,8 @@ public class GestioneUtentiFilter {
     private String contestoId;
     private String ruoloId;
 
+    private String utentiSocietaId;
+
     public GestioneUtentiFilter() {
     }
 
@@ -29,7 +31,8 @@ public class GestioneUtentiFilter {
             @JsonProperty("codiceBadge") String codiceBadge,
             @JsonProperty("ruoloId") String ruoloId,
             @JsonProperty("contestoId") String contestoId,
-            @JsonProperty("ruoliId") List<String> ruoliId) {
+            @JsonProperty("ruoliId") List<String> ruoliId,
+            @JsonProperty("utentiSocietaId") String utentiSocietaId) {
         this.applicazioneId = applicazioneId;
         this.societaId = societaId;
         this.matricola = matricola;
@@ -39,6 +42,7 @@ public class GestioneUtentiFilter {
         this.ruoliId = ruoliId;
         this.ruoloId = ruoloId;
         this.contestoId = contestoId;
+        this.utentiSocietaId = utentiSocietaId;
     }
 
     public static GestioneUtentiFilter createFilterFromMap(Object obj) {
@@ -53,6 +57,7 @@ public class GestioneUtentiFilter {
         filter.setRuoliId((List<String>) map.get("ruoliId"));
         filter.setContestoId((String) map.get("contestoId"));
         filter.setRuoloId((String) map.get("ruoloId"));
+        filter.setUtentiSocietaId((String) map.get("utentiSocietaId"));
         return filter;
     }
 
@@ -126,6 +131,14 @@ public class GestioneUtentiFilter {
 
     public void setRuoloId(String ruoloId) {
         this.ruoloId = ruoloId;
+    }
+
+    public String getUtentiSocietaId() {
+        return utentiSocietaId;
+    }
+
+    public void setUtentiSocietaId(String utentiSocietaId) {
+        this.utentiSocietaId = utentiSocietaId;
     }
 
 }
