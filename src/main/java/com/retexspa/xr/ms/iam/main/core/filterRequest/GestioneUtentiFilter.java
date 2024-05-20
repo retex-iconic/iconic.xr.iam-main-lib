@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GestioneUtentiFilter {
 
+    private String idAccount;
     private String societaId;
     private String applicazioneId;
     private String matricola;
@@ -23,6 +24,7 @@ public class GestioneUtentiFilter {
     }
 
     public GestioneUtentiFilter(
+            @JsonProperty("idAccount") String idAccount,
             @JsonProperty("societaId") String societaId,
             @JsonProperty("applicazioneId") String applicazioneId,
             @JsonProperty("matricola") String matricola,
@@ -33,6 +35,7 @@ public class GestioneUtentiFilter {
             @JsonProperty("contestoId") String contestoId,
             @JsonProperty("ruoliId") List<String> ruoliId,
             @JsonProperty("utentiSocietaId") String utentiSocietaId) {
+        this.idAccount = idAccount;
         this.applicazioneId = applicazioneId;
         this.societaId = societaId;
         this.matricola = matricola;
@@ -48,6 +51,7 @@ public class GestioneUtentiFilter {
     public static GestioneUtentiFilter createFilterFromMap(Object obj) {
         LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) obj;
         GestioneUtentiFilter filter = new GestioneUtentiFilter();
+        filter.setIdAccount((String) map.get("idAccount"));
         filter.setSocietaId((String) map.get("societaId"));
         filter.setApplicazioneId((String) map.get("applicazioneId"));
         filter.setMatricola((String) map.get("matricola"));
@@ -63,6 +67,14 @@ public class GestioneUtentiFilter {
 
     public String getSocietaId() {
         return societaId;
+    }
+
+    public String getIdAccount() {
+        return idAccount;
+    }
+
+    public void setIdAccount(String idAccount) {
+        this.idAccount = idAccount;
     }
 
     public void setSocietaId(String societaId) {
