@@ -16,9 +16,6 @@ import java.util.UUID;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class BadgeSocietaBaseDTO {
 
-    @NotNull(message = "codiceBadge is mandatory")
-    @NotEmpty(message = "codiceBadge is mandatory")
-    @NotBlank(message = "codiceBadge is mandatory")
     private String codiceBadge;
 
     @NotNull(message = "pwd is mandatory")
@@ -31,10 +28,9 @@ public class BadgeSocietaBaseDTO {
     @NotBlank(message = "societa is mandatory")
     private String societaId;
 
-
     private String gerarchiaId;
 
-    @NotNull(message = "societaId is mandatory")
+    @NotNull(message = "tipoBadge is mandatory")
     @NotEmpty(message = "tipoBadge is mandatory")
     @NotBlank(message = "tipoBadge is mandatory")
     @EnumValidator(enumClazz = Enums.TipoBadge.class)
