@@ -38,11 +38,11 @@ public class UtentiSocietaQueryServiceImpl implements UtentiSocietaQueryService 
             for (BaseSort baseSort : query.getSort()) {
 
                 Sort.Order sort = new Sort.Order(
-                        (baseSort.getOrderType() != null ?
-                                (baseSort.getOrderType().equalsIgnoreCase("ASC") ? Sort.Direction.ASC : Sort.Direction.DESC) :
-                                Sort.Direction.ASC),
-                        (baseSort.getOrderBy() != null ? baseSort.getOrderBy() : "idAccount")
-                );
+                        (baseSort.getOrderType() != null
+                                ? (baseSort.getOrderType().equalsIgnoreCase("ASC") ? Sort.Direction.ASC
+                                        : Sort.Direction.DESC)
+                                : Sort.Direction.ASC),
+                        (baseSort.getOrderBy() != null ? baseSort.getOrderBy() : "idAccount"));
 
                 sorts.add(sort);
             }
@@ -51,7 +51,10 @@ public class UtentiSocietaQueryServiceImpl implements UtentiSocietaQueryService 
             sorts.add(new Sort.Order(Sort.Direction.ASC, "idAccount"));
         }
 
-        Pageable pageable = PageRequest.of(query.getPage(), query.getLimit(), Sort.by(sorts));
+        Pageable pageable = PageRequest.of(
+                (query.getPage() == null ? 0 : query.getPage()),
+                (query.getLimit() == null ? Integer.MAX_VALUE : query.getLimit()),
+                Sort.by(sorts));
 
         List<Specification<UtentiSocietaQueryEntity>> specifications = new ArrayList<>();
 
@@ -100,7 +103,7 @@ public class UtentiSocietaQueryServiceImpl implements UtentiSocietaQueryService 
                     (r, q, c) -> c.like(
                             c.upper(r.get("codiceFiscale")), "%" + filter.getCodiceFiscale().toUpperCase() + "%"));
         }
-        
+
         if (filter.getBadgeId() != null) {
             specifications.add((r, q, c) -> c.equal(r.get("badge").get("id"), filter.getBadgeId()));
         }
@@ -134,7 +137,8 @@ public class UtentiSocietaQueryServiceImpl implements UtentiSocietaQueryService 
                     (r, q, c) -> c.equal(r.get("version"), filter.getVersion()));
         }
 
-        Specification<UtentiSocietaQueryEntity> specification = specifications.stream().reduce(Specification::and).orElse(null);
+        Specification<UtentiSocietaQueryEntity> specification = specifications.stream().reduce(Specification::and)
+                .orElse(null);
 
         Page<UtentiSocietaQueryEntity> page = this.utentiSocietaRepository.findAll(specification, pageable);
         return page;

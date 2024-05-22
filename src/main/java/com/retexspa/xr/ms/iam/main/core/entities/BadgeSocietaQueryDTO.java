@@ -8,10 +8,6 @@ import com.retexspa.xr.ms.main.core.helpers.EnumValidator;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -21,7 +17,6 @@ public class BadgeSocietaQueryDTO {
     private String codiceBadge;
     private String pwd;
     private String societaId;
-    private String gerarchiaId;
     @EnumValidator(enumClazz = Enums.TipoBadge.class)
     private String tipoBadge;
     private Long version;
@@ -55,14 +50,6 @@ public class BadgeSocietaQueryDTO {
 
     public void setSocietaId(String societaId) {
         this.societaId = societaId;
-    }
-
-    public String getGerarchiaId() {
-        return gerarchiaId;
-    }
-
-    public void setGerarchiaId(String gerarchiaId) {
-        this.gerarchiaId = gerarchiaId;
     }
 
     public String getTipoBadge() {

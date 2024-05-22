@@ -28,8 +28,6 @@ public class BadgeSocietaBaseDTO {
     @NotBlank(message = "societa is mandatory")
     private String societaId;
 
-    private String gerarchiaId;
-
     @NotNull(message = "tipoBadge is mandatory")
     @NotEmpty(message = "tipoBadge is mandatory")
     @NotBlank(message = "tipoBadge is mandatory")
@@ -58,14 +56,6 @@ public class BadgeSocietaBaseDTO {
 
     public void setSocietaId(String societaId) {
         this.societaId = societaId;
-    }
-
-    public String getGerarchiaId() {
-        return gerarchiaId;
-    }
-
-    public void setGerarchiaId(String gerarchiaId) {
-        this.gerarchiaId = gerarchiaId;
     }
 
     public String getTipoBadge() {

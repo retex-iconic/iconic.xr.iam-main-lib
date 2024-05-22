@@ -31,10 +31,6 @@ public class BadgeSocietaQueryEntity {
     @JoinColumn(name = "societa_id", referencedColumnName = "id")
     private SocietaQueryEntity societa;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "gerarchia_id", referencedColumnName = "id")
-    private GerarchiaQueryEntity gerarchia;
-
     @Column(name="version")
     private Long version;
 
@@ -88,14 +84,6 @@ public class BadgeSocietaQueryEntity {
 
     public void setSocieta(SocietaQueryEntity societa) {
         this.societa = societa;
-    }
-
-    public GerarchiaQueryEntity getGerarchia() {
-        return gerarchia;
-    }
-
-    public void setGerarchia(GerarchiaQueryEntity gerarchia) {
-        this.gerarchia = gerarchia;
     }
 
     public Long getVersion() {

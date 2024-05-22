@@ -16,7 +16,6 @@ public interface BadgeSocietaQueryMapper {
     @Mapping(target = "codiceBadge", source = "codiceBadge")
     @Mapping(target = "pwd", source = "pwd")
     @Mapping(target = "tipoBadge", source = "tipoBadge")
-    @Mapping(target = "gerarchiaId", source = "gerarchia.id")
     @Mapping(target = "societaId", source = "societa.id")
     @Mapping(target = "version", source = "version")
     BadgeSocietaQueryDTO toDTO(BadgeSocietaQueryEntity badgeSocietaQueryEntity);
