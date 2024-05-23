@@ -69,9 +69,6 @@ public class BadgeSocietaQueryServiceImpl implements BadgeSocietaQueryService {
         if (filter.getSocietaId() != null) {
                     specifications.add((r, q, c) -> c.equal(r.get("societa").get("id"), filter.getSocietaId()));
         }
-        if (filter.getGerarchiaId() != null) {
-                    specifications.add((r, q, c) -> c.equal(r.get("gerarchia").get("id"), filter.getGerarchiaId()));
-        }
         if (filter.getTipoBadge() != null) {
             specifications.add((r, q, c) ->
                     c.like(c.upper(r.get("tipoBadge")), "%" + filter.getTipoBadge().toUpperCase() + "%"));

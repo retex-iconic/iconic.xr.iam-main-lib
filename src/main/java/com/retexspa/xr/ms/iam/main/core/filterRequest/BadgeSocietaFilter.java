@@ -10,7 +10,6 @@ public class BadgeSocietaFilter {
     private String codiceBadge;
     private String pwd;
     private String societaId;
-    private String gerarchiaId;
     private String tipoBadge;
     private Long version;
 
@@ -21,14 +20,12 @@ public class BadgeSocietaFilter {
             @JsonProperty("codiceBadge") String codiceBadge,
             @JsonProperty("pwd") String pwd,
             @JsonProperty("societaId") String societaId,
-            @JsonProperty("gerarchiaId") String gerarchiaId,
             @JsonProperty("tipoBadge") String tipoBadge,
             @JsonProperty("version") Long version) {
         this.id = id;
         this.codiceBadge = codiceBadge;
         this.pwd = pwd;
         this.societaId = societaId;
-        this.gerarchiaId = gerarchiaId;
         this.tipoBadge = tipoBadge;
         this.version = version;
     }
@@ -42,7 +39,6 @@ public class BadgeSocietaFilter {
             filter.setPwd((String) map.get("pwd"));
             filter.setTipoBadge((String) map.get("tipoBadge"));
             filter.setSocietaId((String) map.get("societaId"));
-            filter.setGerarchiaId((String) map.get("gerarchiaId"));
             Object version = map.get("version");
             if (version != null) {
                 if (version instanceof Integer) {
@@ -85,14 +81,6 @@ public class BadgeSocietaFilter {
 
     public void setSocietaId(String societaId) {
         this.societaId = societaId;
-    }
-
-    public String getGerarchiaId() {
-        return gerarchiaId;
-    }
-
-    public void setGerarchiaId(String gerarchiaId) {
-        this.gerarchiaId = gerarchiaId;
     }
 
     public String getTipoBadge() {
