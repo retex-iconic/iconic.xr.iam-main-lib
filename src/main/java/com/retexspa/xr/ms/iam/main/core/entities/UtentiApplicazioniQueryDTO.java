@@ -26,6 +26,7 @@ public class UtentiApplicazioniQueryDTO {
     private LocalDateTime dataFineValidita;
     @EnumValidator(enumClazz = Enums.CheckSN.class)
     private String flgAcquisizioneAuto;
+    private Long version;
 
     public String getId() {
         return id;
@@ -81,5 +82,13 @@ public class UtentiApplicazioniQueryDTO {
 
     public void setFlgAcquisizioneAuto(String flgAcquisizioneAuto) {
         this.flgAcquisizioneAuto = flgAcquisizioneAuto;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 }
