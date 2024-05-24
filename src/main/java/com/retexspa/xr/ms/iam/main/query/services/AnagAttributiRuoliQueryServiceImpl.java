@@ -61,7 +61,7 @@ public class AnagAttributiRuoliQueryServiceImpl implements AnagAttributiRuoliQue
 
         if (filter.getApplicazioneId() != null) {
             specifications.add((r, q, c) ->
-                    c.like(c.upper(r.get("applicazioni").get("id")), "%" + filter.getApplicazioneId().toUpperCase() + "%"));
+                    c.like(c.upper(r.get("applicazione").get("id")), "%" + filter.getApplicazioneId().toUpperCase() + "%"));
         }
         if (filter.getShareApplicazioneId() != null) {
             specifications.add((r, q, c) ->
