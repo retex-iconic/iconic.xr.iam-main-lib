@@ -20,6 +20,7 @@ public interface UtentiApplicazioniQueryMapper {
     @Mapping(target = "ruoloId", source = "ruolo.id")
     @Mapping(target = "contestoId", source = "contesto.id")
     @Mapping(target = "utenteId", source = "utente.id")
+    @Mapping(target = "version", source = "version")
     UtentiApplicazioniQueryDTO toDTO(UtentiApplicazioniQueryEntity badgeSocietaQueryEntity);
 
    }
