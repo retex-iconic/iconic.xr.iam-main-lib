@@ -141,5 +141,17 @@ public class MenuBaseDTO {
     public void setQueryParams(String queryParams) {
         this.queryParams = queryParams;
     }
+
+    public static String getAggregateName() {
+        return "MenuAggregate";
+    }
+
+    public static String getName() {
+        return "Menu";
+    }
+
+    public static String getNameNodo() {
+        return "MenuNodo";
+    }
     
 }

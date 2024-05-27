@@ -157,4 +157,12 @@ public class UtentiSocietaBaseDTO {
         return UUID.randomUUID().toString();
     }
 
+    public static String getAggregateName() {
+        return "UtentiSocietaAggregate";
+    }
+
+    public static String getName() {
+        return "UtentiSocieta";
+    }
+
 }

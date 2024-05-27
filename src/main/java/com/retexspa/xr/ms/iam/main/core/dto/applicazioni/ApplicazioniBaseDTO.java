@@ -93,4 +93,12 @@ public class ApplicazioniBaseDTO {
     public void setIconicApplicazioniId(String iconicApplicazioniId) {
         this.iconicApplicazioniId = iconicApplicazioniId;
     }
+
+    public static String getAggregateName() {
+        return "ApplicazioniAggregate";
+    }
+
+    public static String getName() {
+        return "Applicazioni";
+    }
 }

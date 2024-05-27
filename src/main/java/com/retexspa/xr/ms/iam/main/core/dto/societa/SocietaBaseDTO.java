@@ -66,4 +66,11 @@ public class SocietaBaseDTO {
       return UUID.randomUUID().toString();
     }
 
+    public static String getAggregateName() {
+        return "SocietaAggregate";
+    }
+
+    public static String getName() {
+        return "Societa";
+    }
 }

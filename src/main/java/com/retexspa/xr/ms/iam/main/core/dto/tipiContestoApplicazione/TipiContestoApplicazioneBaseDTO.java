@@ -51,4 +51,12 @@ public class TipiContestoApplicazioneBaseDTO {
     public void setTipiContestoId(String tipiContestoId) {
         this.tipiContestoId = tipiContestoId;
     }
+
+    public static String getAggregateName() {
+        return "TipiContestoApplicazioneAggregate";
+    }
+
+    public static String getName() {
+        return "TipiContestoApplicazione";
+    }
 }

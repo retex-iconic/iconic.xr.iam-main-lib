@@ -100,5 +100,13 @@ public class RuoliRoutingSectionsBaseDTO {
     public String getAggregateId() {
         return UUID.randomUUID().toString();
     }
+
+    public static String getAggregateName() {
+        return "RuoliRoutingSectionsAggregate";
+    }
+
+    public static String getName() {
+        return "RuoliRoutingSections";
+    }
 }
 

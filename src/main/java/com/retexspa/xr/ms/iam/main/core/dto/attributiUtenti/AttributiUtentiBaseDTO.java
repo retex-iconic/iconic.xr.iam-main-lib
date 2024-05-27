@@ -70,4 +70,12 @@ public class AttributiUtentiBaseDTO {
     public String getAggregateId() {
         return UUID.randomUUID().toString();
     }
+
+    public static String getAggregateName() {
+        return "AttributiUtentiAggregate";
+    }
+
+    public static String getName() {
+        return "AttributiUtenti";
+    }
 }

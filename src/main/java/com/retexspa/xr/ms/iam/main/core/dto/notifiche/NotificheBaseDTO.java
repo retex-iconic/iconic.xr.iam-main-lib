@@ -92,8 +92,17 @@ public class NotificheBaseDTO {
     public void setRoutingId(String routingId) {
         this.routingId = routingId;
     }
+
     @JsonIgnore
     public String getAggregateId() {
         return UUID.randomUUID().toString();
+    }
+
+    public static String getAggregateName() {
+        return "NotificheAggregate";
+    }
+
+    public static String getName() {
+        return "Notifiche";
     }
 }

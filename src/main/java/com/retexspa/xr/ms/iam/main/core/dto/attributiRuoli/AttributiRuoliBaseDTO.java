@@ -54,4 +54,12 @@ public class AttributiRuoliBaseDTO {
     public void setValore(String valore) {
         this.valore = valore;
     }
+
+    public static String getAggregateName() {
+        return "AttributiRuoliAggregate";
+    }
+
+    public static String getName() {
+        return "AttributiRuoli";
+    }
 }

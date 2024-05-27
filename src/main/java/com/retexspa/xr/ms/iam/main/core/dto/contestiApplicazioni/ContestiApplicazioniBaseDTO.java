@@ -77,4 +77,12 @@ public class ContestiApplicazioniBaseDTO {
     public String getAggregateId() {
         return UUID.randomUUID().toString();
     }
+
+    public static String getAggregateName() {
+        return "ContestiApplicazioniAggregate";
+    }
+
+    public static String getName() {
+        return "ContestiApplicazioni";
+    }
 }

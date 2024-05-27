@@ -52,4 +52,12 @@ public class RoutingSectionsBaseDTO {
     public String getAggregateId() {
         return UUID.randomUUID().toString();
     }
+
+    public static String getAggregateName() {
+        return "RoutingSectionsAggregate";
+    }
+
+    public static String getName() {
+        return "RoutingSections";
+    }
 }
