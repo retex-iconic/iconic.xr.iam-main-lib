@@ -66,6 +66,10 @@ public class RuoliApplicazioneQueryServiceImpl implements RuoliApplicazioneQuery
             specifications.add((r, q, c) -> c.equal(r.get("applicazioni").get("id"), filter.getApplicazioniId()));
         }
 
+        if (filter.getSocietaId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("applicazioni").get("societa").get("id"), filter.getSocietaId()));
+        }
+
         if (filter.getCodice() != null) {
             specifications.add(
                     (r, q, c) -> c.like(
