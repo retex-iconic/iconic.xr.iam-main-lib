@@ -26,6 +26,7 @@ public class RoutingSearchRequest extends BaseSortPagination {
             @JsonProperty("id") String id,
             @JsonProperty("routingCharId") String routingCharId,
             @JsonProperty("titolo") String titolo,
+            @JsonProperty("subtitolo") String subtitolo,
             @JsonProperty("urlLink") String urlLink,
             @JsonProperty("icone") String icone,
             @JsonProperty("iconicApplicazioniId") String iconicApplicazioniId,
@@ -37,6 +38,7 @@ public class RoutingSearchRequest extends BaseSortPagination {
         this.id = id;
         this.routingCharId = routingCharId;
         this.titolo = titolo;
+        this.subtitolo = subtitolo;
         this.urlLink = urlLink;
         this.icone = icone;
         this.iconicApplicazioniId = iconicApplicazioniId;
