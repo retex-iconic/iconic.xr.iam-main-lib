@@ -57,6 +57,9 @@ public class RoutingSectionsQueryServiceImpl implements RoutingSectionsQueryServ
         if (query.getId() != null) {
             specifications.add((r, q, c) -> c.equal(r.get("id"), query.getId()));
         }
+        if (query.getRoutingId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("routing").get("id"), query.getRoutingId()));
+        }
 
         if (query.getCodice() != null) {
             specifications.add((r, q, c) -> c.equal(r.get("codice"), query.getCodice()));
