@@ -146,4 +146,12 @@ public class AnagAttributiUtentiBaseDTO {
     public String getAggregateId() {
         return UUID.randomUUID().toString();
     }
+
+    public static String getAggregateName() {
+        return "AnagAttributiUtentiAggregate";
+    }
+
+    public static String getName() {
+        return "AnagAttributiUtenti";
+    }
 }

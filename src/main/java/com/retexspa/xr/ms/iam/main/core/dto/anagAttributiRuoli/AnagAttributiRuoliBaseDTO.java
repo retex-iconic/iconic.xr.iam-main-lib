@@ -136,4 +136,12 @@ public class AnagAttributiRuoliBaseDTO {
     public void setCheckFunction(String checkFunction) {
         this.checkFunction = checkFunction;
     }
+
+    public static String getAggregateName() {
+        return "AnagAttributiRuoliAggregate";
+    }
+
+    public static String getName() {
+        return "AnagAttributiRuoli";
+    }
 }

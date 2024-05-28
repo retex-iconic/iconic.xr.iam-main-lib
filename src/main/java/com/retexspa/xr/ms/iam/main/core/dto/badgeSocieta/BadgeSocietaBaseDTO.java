@@ -71,11 +71,11 @@ public class BadgeSocietaBaseDTO {
         return UUID.randomUUID().toString();
     }
 
-    public static String getAggregate(){
-        return "BadgeSocietaAggregate";
+    public static String getName(){
+        return "BadgeSocieta";
     }
 
     public static String getAggregateName(){
-        return "BadgeSocieta";
+        return "BadgeSocietaAggregate";
     }
 }

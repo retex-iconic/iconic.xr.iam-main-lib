@@ -90,4 +90,12 @@ public class RuoliApplicazioneBaseDTO {
     public String getAggregateId() {
         return UUID.randomUUID().toString();
     }
+
+    public static String getAggregateName() {
+        return "RuoliApplicazioneAggregate";
+    }
+
+    public static String getName() {
+        return "RuoliApplicazione";
+    }
 }

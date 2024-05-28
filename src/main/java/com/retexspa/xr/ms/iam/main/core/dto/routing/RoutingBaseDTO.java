@@ -103,4 +103,16 @@ public class RoutingBaseDTO {
         return UUID.randomUUID().toString();
     }
 
+    public static String getAggregateName() {
+        return "RoutingAggregate";
+    }
+
+    public static String getName() {
+        return "Routing";
+    }
+
+    public static String getNameNodo() {
+        return "RoutingNodo";
+    }
+
 }

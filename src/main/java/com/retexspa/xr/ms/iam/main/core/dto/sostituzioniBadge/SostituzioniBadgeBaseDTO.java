@@ -107,4 +107,12 @@ public class SostituzioniBadgeBaseDTO {
     public void setStato(String stato) {
         this.stato = stato;
     }
+
+    public static String getAggregateName() {
+        return "SostituzioniBadgeAggregate";
+    }
+
+    public static String getName() {
+        return "SostituzioniBadge";
+    }
 }

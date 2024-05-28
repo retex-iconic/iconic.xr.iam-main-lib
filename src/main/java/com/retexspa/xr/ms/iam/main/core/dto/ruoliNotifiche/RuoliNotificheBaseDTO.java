@@ -41,4 +41,12 @@ public class RuoliNotificheBaseDTO {
     public String getAggregateId() {
         return UUID.randomUUID().toString();
     }
+
+    public static String getAggregateName() {
+        return "RuoliNotificheAggregate";
+    }
+
+    public static String getName() {
+        return "RuoliNotifiche";
+    }
 }

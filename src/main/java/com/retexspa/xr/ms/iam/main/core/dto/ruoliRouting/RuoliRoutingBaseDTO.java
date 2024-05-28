@@ -100,4 +100,12 @@ public class RuoliRoutingBaseDTO {
     public String getAggregateId() {
         return UUID.randomUUID().toString();
     }
+
+    public static String getAggregateName() {
+        return "RuoliRoutingAggregate";
+    }
+
+    public static String getName() {
+        return "RuoliRouting";
+    }
 }

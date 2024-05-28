@@ -92,4 +92,12 @@ public class UtentiApplicazioniBaseDTO {
     public String getAggregateId() {
         return UUID.randomUUID().toString();
     }
+
+    public static String getAggregateName() {
+        return "UtentiApplicazioniAggregate";
+    }
+
+    public static String getName() {
+        return "UtentiApplicazioni";
+    }
 }
