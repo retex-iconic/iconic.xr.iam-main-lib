@@ -9,7 +9,7 @@ public class NotificheIndexUkDTO extends AggregateIndexUkBaseDTO {
     }
 
     public static String getUk(NotificheBaseDTO notifiche) {
-        String uk =  notifiche.getApplicazioneId() + RoutingIndexUkDTO.getUkSeparator() + notifiche.getCodice();
+        String uk =  notifiche.getIconicApplicazioniId() + RoutingIndexUkDTO.getUkSeparator() + notifiche.getCodice();
         return uk;
     }
 

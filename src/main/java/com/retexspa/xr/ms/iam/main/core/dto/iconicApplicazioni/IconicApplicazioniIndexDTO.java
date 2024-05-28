@@ -14,6 +14,7 @@ public class IconicApplicazioniIndexDTO {
   private String iconicApplicazioniId;
   private LinkedList<String> applicazioniIds;
   private LinkedList<String> routingIds;
+  private LinkedList<String> notificheIds;
 
   public IconicApplicazioniIndexDTO() {
   }
@@ -41,6 +42,13 @@ public class IconicApplicazioniIndexDTO {
   public void setApplicazioniIds(LinkedList<String> tipiContestoApplicazioneIds) {
     this.applicazioniIds = tipiContestoApplicazioneIds;
   }
+  public LinkedList<String> getNotificheIds() {
+    return notificheIds;
+  }
+
+  public void setNotificheIds(LinkedList<String> notificheIds) {
+    this.notificheIds = notificheIds;
+  }
 
   public LinkedList<String> getRoutingIds() {
     return routingIds;
@@ -56,6 +64,9 @@ public class IconicApplicazioniIndexDTO {
 
   public static String getDetailNameRouting() {
     return "routingIds";
+  }
+  public static String getDetailNameNotifiche() {
+    return "notificheIds";
   }
 
 }

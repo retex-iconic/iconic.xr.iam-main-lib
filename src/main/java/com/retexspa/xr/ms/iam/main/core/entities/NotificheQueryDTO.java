@@ -11,7 +11,7 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public class NotificheQueryDTO {
     private String id;
-    private String applicazioneId;
+    private String iconicApplicazioniId;
     private String codice;
     private String titolo;
     private String dettaglio;
@@ -28,12 +28,12 @@ public class NotificheQueryDTO {
         this.id = id;
     }
 
-    public String getApplicazioneId() {
-        return applicazioneId;
+    public String getIconicApplicazioniId() {
+        return iconicApplicazioniId;
     }
 
-    public void setApplicazioneId(String applicazioneId) {
-        this.applicazioneId = applicazioneId;
+    public void setIconicApplicazioniId(String iconicApplicazioniId) {
+        this.iconicApplicazioniId = iconicApplicazioniId;
     }
 
     public String getCodice() {

@@ -17,7 +17,7 @@ public interface NotificheQueryMapper {
     @Mapping(target = "icone", source = "icone")
     @Mapping(target = "flgAttiva", source = "flgAttiva")
     @Mapping(target = "routingId", source = "routing.id")
-    @Mapping(target = "applicazioneId", source = "applicazione.id")
+    @Mapping(target = "iconicApplicazioniId", source = "iconicApplicazioni.id")
     @Mapping(target = "version", source = "version")
     NotificheQueryDTO toDTO(NotificheQueryEntity notificheQueryEntity);
 }

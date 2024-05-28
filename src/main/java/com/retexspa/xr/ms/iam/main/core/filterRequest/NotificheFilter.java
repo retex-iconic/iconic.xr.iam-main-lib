@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 
 public class NotificheFilter {
     private String id;
-    private String applicazioneId;
+    private String iconicApplicazioniId;
     private String codice;
     private String titolo;
     private String dettaglio;
@@ -18,7 +18,7 @@ public class NotificheFilter {
     }
     public  NotificheFilter(
             @JsonProperty("id") String id,
-            @JsonProperty("applicazioneId") String applicazioneId,
+            @JsonProperty("iconicApplicazioniId") String iconicApplicazioniId,
             @JsonProperty("codice") String codice,
             @JsonProperty("titolo") String titolo,
             @JsonProperty("dettaglio") String dettaglio,
@@ -27,7 +27,7 @@ public class NotificheFilter {
             @JsonProperty("routingId") String routingId,
             @JsonProperty("version") Long version) {
         this.id = id;
-        this.applicazioneId = applicazioneId;
+        this.iconicApplicazioniId = iconicApplicazioniId;
         this.codice = codice;
         this.titolo = titolo;
         this.dettaglio = dettaglio;
@@ -41,7 +41,7 @@ public class NotificheFilter {
         NotificheFilter filter = new NotificheFilter();
         if(map != null){
             filter.setId((String) map.get("id"));
-            filter.setApplicazioneId((String) map.get("applicazioneId"));
+            filter.setIconicApplicazioniId((String) map.get("iconicApplicazioniId"));
             filter.setCodice((String) map.get("codice"));
             filter.setTitolo((String) map.get("titolo"));
             filter.setDettaglio((String) map.get("dettaglio"));
@@ -68,12 +68,12 @@ public class NotificheFilter {
         this.id = id;
     }
 
-    public String getApplicazioneId() {
-        return applicazioneId;
+    public String getIconicApplicazioniId() {
+        return iconicApplicazioniId;
     }
 
-    public void setApplicazioneId(String applicazioneId) {
-        this.applicazioneId = applicazioneId;
+    public void setIconicApplicazioniId(String iconicApplicazioniId) {
+        this.iconicApplicazioniId = iconicApplicazioniId;
     }
 
     public String getCodice() {

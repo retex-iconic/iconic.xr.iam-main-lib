@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.List;
 
 public interface NotificheRepository extends JpaRepository<NotificheQueryEntity, String>, JpaSpecificationExecutor<NotificheQueryEntity> {
-    NotificheQueryEntity findByRoutingIdAndApplicazioneId(String routingId, String aapplicazioneId);
-    List<NotificheQueryEntity> findAllByRoutingIdAndApplicazioneId(String routingId, String aapplicazioneId);
+    NotificheQueryEntity findByRoutingIdAndIconicApplicazioniId(String routingId, String iconicApplicazioniId);
+    List<NotificheQueryEntity> findAllByRoutingIdAndIconicApplicazioniId(String routingId, String iconicApplicazioniId);
 }

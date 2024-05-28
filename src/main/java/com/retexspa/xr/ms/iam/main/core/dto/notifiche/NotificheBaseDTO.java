@@ -15,10 +15,10 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class NotificheBaseDTO {
-    @NotNull(message = "applicazioneId is mandatory")
-    @NotEmpty(message = "applicazioneId is mandatory")
-    @NotBlank(message = "applicazioneId is mandatory")
-    private String applicazioneId;
+    @NotNull(message = "iconicApplicazioniId is mandatory")
+    @NotEmpty(message = "iconicApplicazioniId is mandatory")
+    @NotBlank(message = "iconicApplicazioniId is mandatory")
+    private String iconicApplicazioniId;
 
     @NotNull(message = "codice is mandatory")
     @NotEmpty(message = "codice is mandatory")
@@ -37,12 +37,12 @@ public class NotificheBaseDTO {
     @NotBlank(message = "routingId is mandatory")
     private String routingId;
 
-    public String getApplicazioneId() {
-        return applicazioneId;
+    public String getIconicApplicazioniId() {
+        return iconicApplicazioniId;
     }
 
-    public void setApplicazioneId(String applicazioneId) {
-        this.applicazioneId = applicazioneId;
+    public void setIconicApplicazioniId(String iconicApplicazioniId) {
+        this.iconicApplicazioniId = iconicApplicazioniId;
     }
 
     public String getCodice() {
