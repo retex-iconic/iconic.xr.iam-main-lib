@@ -4,24 +4,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.LinkedHashMap;
 
-public class ContestiApplicazioneFilter {
+public class ContestiApplicazioniFilter {
 
     private String id;
     private String codice;
     private String nome;
     private String descrizione;
     private String tipoContestoApplicazioneId;
+    private String applicazioneId;
     private String flgAcquisizioneAuto;
     private Long version;
 
-    public ContestiApplicazioneFilter() {}
+    public ContestiApplicazioniFilter() {}
 
-    public ContestiApplicazioneFilter(
+    public ContestiApplicazioniFilter(
             @JsonProperty("id") String id,
             @JsonProperty("codice") String codice,
             @JsonProperty("nome") String nome,
             @JsonProperty("descrizione") String descrizione,
             @JsonProperty("tipoContestoApplicazioneId") String tipoContestoApplicazioneId,
+            @JsonProperty("applicazioneId") String applicazioneId,
             @JsonProperty("flgAcquisizioneAuto") String flgAcquisizioneAuto,
             @JsonProperty("version") Long version
     ) {
@@ -30,13 +32,14 @@ public class ContestiApplicazioneFilter {
         this.nome = nome;
         this.descrizione = descrizione;
         this.tipoContestoApplicazioneId = tipoContestoApplicazioneId;
+        this.applicazioneId = applicazioneId;
         this.flgAcquisizioneAuto = flgAcquisizioneAuto;
         this.version = version;
     }
 
-    public static ContestiApplicazioneFilter createFilterFromMap(Object obj) {
+    public static ContestiApplicazioniFilter createFilterFromMap(Object obj) {
         LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) obj;
-        ContestiApplicazioneFilter filter = new ContestiApplicazioneFilter();
+        ContestiApplicazioniFilter filter = new ContestiApplicazioniFilter();
         if (map != null) {
             filter.setId((String) map.get("id"));
             filter.setCodice((String) map.get("codice"));
@@ -44,6 +47,7 @@ public class ContestiApplicazioneFilter {
             filter.setNome((String) map.get("nome"));
             filter.setFlgAcquisizioneAuto((String) map.get("flgAcquisizioneAuto"));
             filter.setTipoContestoApplicazioneId((String) map.get("tipoContestoApplicazioneId"));
+            filter.setApplicazioneId((String) map.get("applicazioneId"));
             Object version = map.get("version");
             if (version != null) {
                 if (version instanceof Integer) {
@@ -54,6 +58,14 @@ public class ContestiApplicazioneFilter {
             }
         }
         return filter;
+    }
+
+    public String getApplicazioneId() {
+        return applicazioneId;
+    }
+
+    public void setApplicazioneId(String applicazioneId) {
+        this.applicazioneId = applicazioneId;
     }
 
     public String getId() {
