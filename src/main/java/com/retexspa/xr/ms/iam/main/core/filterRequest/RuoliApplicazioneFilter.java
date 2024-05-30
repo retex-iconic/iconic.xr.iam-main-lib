@@ -13,6 +13,7 @@ public class RuoliApplicazioneFilter {
     private Integer livelloIam;
     private Long version;
     private String applicazioniId;
+    private String societaId;
 
     public RuoliApplicazioneFilter() {
     }
@@ -25,6 +26,7 @@ public class RuoliApplicazioneFilter {
             @JsonProperty("flgAttivo") String flgAttivo,
             @JsonProperty("livelloIam") Integer livelloIam,
             @JsonProperty("applicazioniId") String applicazioniId,
+            @JsonProperty("societaId") String societaId,
             @JsonProperty("version") Long version) {
         this.id = id;
         this.codice = codice;
@@ -33,13 +35,14 @@ public class RuoliApplicazioneFilter {
         this.flgAttivo = flgAttivo;
         this.livelloIam = livelloIam;
         this.applicazioniId = applicazioniId;
+        this.societaId = societaId;
         this.version = version;
     }
 
     public static RuoliApplicazioneFilter createFilterFromMap(Object obj) {
         LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) obj;
         RuoliApplicazioneFilter filter = new RuoliApplicazioneFilter();
-        if(map != null){
+        if (map != null) {
             filter.setId((String) map.get("id"));
             filter.setCodice((String) map.get("codice"));
             filter.setNome((String) map.get("nome"));
@@ -47,12 +50,13 @@ public class RuoliApplicazioneFilter {
             filter.setFlgAttivo((String) map.get("flgAttivo"));
             filter.setLivelloIam((Integer) map.get("livelloIam"));
             filter.setApplicazioniId((String) map.get("applicazioniId"));
+            filter.setSocietaId((String) map.get("societaId"));
 
             Object version = map.get("version");
-            if(version != null){
-                if(version instanceof Integer){
+            if (version != null) {
+                if (version instanceof Integer) {
                     filter.setVersion(Long.valueOf((Integer) version));
-                } else if (version instanceof Long){
+                } else if (version instanceof Long) {
                     filter.setVersion((Long) version);
                 }
             }
@@ -124,4 +128,11 @@ public class RuoliApplicazioneFilter {
         this.applicazioniId = applicazioniId;
     }
 
+    public String getSocietaId() {
+        return societaId;
+    }
+
+    public void setSocietaId(String societaId) {
+        this.societaId = societaId;
+    }
 }

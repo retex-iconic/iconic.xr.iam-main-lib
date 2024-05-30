@@ -27,6 +27,7 @@ public class RuoliApplicazioneQueryEntity {
     private String descrizione;
 
     @EnumValidator(enumClazz = Enums.CheckSN.class)
+    @Column(name="flg_attivo")
     private String flgAttivo;
 
     @Column(name="livello_iam")
