@@ -15,7 +15,6 @@ public class ApplicazioniIndexDTO {
   private String societaId;
   private LinkedList<String> tipiContestoApplicazioneIds;
   private LinkedList<String> ruoliApplicazioneIds;
-  private LinkedList<String> notificheIds;
   private LinkedList<String> anagraficaAttributiRuoliIds;
   private LinkedList<String> anagraficaAttributiRuoliSharedIds;
 
@@ -87,25 +86,12 @@ public class ApplicazioniIndexDTO {
     this.societaId = societaId;
   }
 
-  public LinkedList<String> getNotificheIds() {
-    return notificheIds;
-  }
-
-  public void setNotificheIds(LinkedList<String> notificheIds) {
-    this.notificheIds = notificheIds;
-
-  }
-
   public static String getDetailNameTipiContestoApplicazione() {
     return "tipiContestoApplicazioneIds";
   }
 
   public static String getDetailNameRuoliApplicazione() {
     return "ruoliApplicazioneIds";
-  }
-
-  public static String getDetailNameNotifiche() {
-    return "notificheIds";
   }
 
   public static String getDetailNameAnagraficaAttributiRuoli() {

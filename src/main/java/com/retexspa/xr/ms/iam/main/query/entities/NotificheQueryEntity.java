@@ -25,8 +25,8 @@ public class NotificheQueryEntity {
     @JoinColumn(name = "routing_id", referencedColumnName = "id")
     private RoutingQueryEntity routing;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "applicazione_id", referencedColumnName = "id")
-    private ApplicazioniQueryEntity applicazione;
+    @JoinColumn(name = "iconic_applicazioni_id", referencedColumnName = "id")
+    private IconicApplicazioniQueryEntity iconicApplicazioni;
     @Column(name="version")
     private Long version;
     public NotificheQueryEntity() {
@@ -97,12 +97,12 @@ public class NotificheQueryEntity {
         this.routing = routing;
     }
 
-    public ApplicazioniQueryEntity getApplicazione() {
-        return applicazione;
+    public IconicApplicazioniQueryEntity getIconicApplicazioni() {
+        return iconicApplicazioni;
     }
 
-    public void setApplicazione(ApplicazioniQueryEntity applicazione) {
-        this.applicazione = applicazione;
+    public void setIconicApplicazioni(IconicApplicazioniQueryEntity iconicApplicazioni) {
+        this.iconicApplicazioni = iconicApplicazioni;
     }
 
     public Long getVersion() {

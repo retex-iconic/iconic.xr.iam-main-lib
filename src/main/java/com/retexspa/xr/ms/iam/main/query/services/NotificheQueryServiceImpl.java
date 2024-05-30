@@ -58,7 +58,7 @@ public class NotificheQueryServiceImpl  implements NotificheQueryService {
                     case "routingId":
                         break;
 
-                    case "applicazioneId":
+                    case "iconicApplicazioniId":
                         break;
 
                     case "version":
@@ -118,8 +118,8 @@ public class NotificheQueryServiceImpl  implements NotificheQueryService {
         if (filter.getRoutingId() != null) {
             specifications.add((r, q, c) -> c.equal(r.get("routing").get("id"), filter.getRoutingId()));
         }
-        if (filter.getApplicazioneId() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("applicazione").get("id"), filter.getApplicazioneId()));
+        if (filter.getIconicApplicazioniId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("iconicApplicazioni").get("id"), filter.getIconicApplicazioniId()));
         }
 
         if (filter.getVersion() != null) {
