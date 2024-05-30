@@ -51,17 +51,20 @@ public class GestioneUtentiFilter {
     public static GestioneUtentiFilter createFilterFromMap(Object obj) {
         LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) obj;
         GestioneUtentiFilter filter = new GestioneUtentiFilter();
-        filter.setIdAccount((String) map.get("idAccount"));
-        filter.setSocietaId((String) map.get("societaId"));
-        filter.setApplicazioneId((String) map.get("applicazioneId"));
-        filter.setMatricola((String) map.get("matricola"));
-        filter.setNominativo((String) map.get("nominativo"));
-        filter.setCodiceFiscale((String) map.get("codiceFiscale"));
-        filter.setCodiceBadge((String) map.get("codiceBadge"));
-        filter.setRuoliId((List<String>) map.get("ruoliId"));
-        filter.setContestoId((String) map.get("contestoId"));
-        filter.setRuoloId((String) map.get("ruoloId"));
-        filter.setUtentiSocietaId((String) map.get("utentiSocietaId"));
+        if (map != null) {
+
+            filter.setIdAccount((String) map.get("idAccount"));
+            filter.setSocietaId((String) map.get("societaId"));
+            filter.setApplicazioneId((String) map.get("applicazioneId"));
+            filter.setMatricola((String) map.get("matricola"));
+            filter.setNominativo((String) map.get("nominativo"));
+            filter.setCodiceFiscale((String) map.get("codiceFiscale"));
+            filter.setCodiceBadge((String) map.get("codiceBadge"));
+            filter.setRuoliId((List<String>) map.get("ruoliId"));
+            filter.setContestoId((String) map.get("contestoId"));
+            filter.setRuoloId((String) map.get("ruoloId"));
+            filter.setUtentiSocietaId((String) map.get("utentiSocietaId"));
+        }
         return filter;
     }
 
