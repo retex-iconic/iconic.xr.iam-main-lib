@@ -1,15 +1,16 @@
 package com.retexspa.xr.ms.iam.main.core.dto.sostituzioniBadge;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
-import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
@@ -36,12 +37,20 @@ public class SostituzioniBadgeBaseDTO {
     @NotBlank(message = "Causale is mandatory")
     private String causale;
 
-    //calcolato
+    // calcolato
     private String stato;
 
     @JsonIgnore
     public String getAggregateId() {
         return UUID.randomUUID().toString();
+    }
+
+    public static String getAggregateName() {
+        return "SostituzioniBadgeAggregate";
+    }
+
+    public static String getName() {
+        return "SostituzioniBadge";
     }
 
     public String getUtentiId() {
@@ -108,11 +117,6 @@ public class SostituzioniBadgeBaseDTO {
         this.stato = stato;
     }
 
-    public static String getAggregateName() {
-        return "SostituzioniBadgeAggregate";
-    }
+    
 
-    public static String getName() {
-        return "SostituzioniBadge";
-    }
 }

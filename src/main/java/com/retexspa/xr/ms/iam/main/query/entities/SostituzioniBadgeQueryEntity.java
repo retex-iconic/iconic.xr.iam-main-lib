@@ -1,16 +1,23 @@
 package com.retexspa.xr.ms.iam.main.query.entities;
 
-import com.retexspa.xr.ms.iam.main.core.dto.sostituzioniBadge.SostituzioniBadgeBaseDTO;
-import org.springframework.lang.NonNull;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "sostituzioniBadge")
-public class SostituzioniBadgeQueryEntity {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
+import org.springframework.lang.NonNull;
+
+import com.retexspa.xr.ms.iam.main.core.dto.sostituzioniBadge.SostituzioniBadgeBaseDTO;
+@Entity
+@Table(name = "sostituzioni_badge")
+public class SostituzioniBadgeQueryEntity {
+    
     @Id
     @NonNull
     private String id;
@@ -45,6 +52,7 @@ public class SostituzioniBadgeQueryEntity {
     public SostituzioniBadgeQueryEntity() {
     }
 
+    
     public SostituzioniBadgeQueryEntity(@NotNull String id, SostituzioniBadgeBaseDTO dto, Long version) {
         this.id = id;
         this.dataAssegnazione = dto.getDataAssegnazione();
@@ -56,84 +64,106 @@ public class SostituzioniBadgeQueryEntity {
         this.version = version;
     }
 
-    @NonNull
+
     public String getId() {
         return id;
     }
 
-    public void setId(@NonNull String id) {
+
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Long getVersion() {
-        return version;
-    }
-
-    public void setVersion(Long version) {
-        this.version = version;
-    }
 
     public String getCausale() {
         return causale;
     }
 
+
     public void setCausale(String causale) {
         this.causale = causale;
     }
+
 
     public LocalDateTime getDataRiconsegna() {
         return dataRiconsegna;
     }
 
+
     public void setDataRiconsegna(LocalDateTime dataRiconsegna) {
         this.dataRiconsegna = dataRiconsegna;
     }
+
 
     public LocalDateTime getDataBlocco() {
         return dataBlocco;
     }
 
+
     public void setDataBlocco(LocalDateTime dataBlocco) {
         this.dataBlocco = dataBlocco;
     }
+
 
     public LocalDateTime getDataSblocco() {
         return dataSblocco;
     }
 
+
     public void setDataSblocco(LocalDateTime dataSblocco) {
         this.dataSblocco = dataSblocco;
     }
+
 
     public LocalDateTime getDataAssegnazione() {
         return dataAssegnazione;
     }
 
+
     public void setDataAssegnazione(LocalDateTime dataAssegnazione) {
         this.dataAssegnazione = dataAssegnazione;
     }
+
 
     public BadgeSocietaQueryEntity getBadge() {
         return badge;
     }
 
+
     public void setBadge(BadgeSocietaQueryEntity badge) {
         this.badge = badge;
     }
+
 
     public UtentiSocietaQueryEntity getUtenti() {
         return utenti;
     }
 
+
     public void setUtenti(UtentiSocietaQueryEntity utenti) {
         this.utenti = utenti;
     }
+
+
+    public Long getVersion() {
+        return version;
+    }
+
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
 
     public String getStato() {
         return stato;
     }
 
+
     public void setStato(String stato) {
         this.stato = stato;
     }
+
+    
+
 }
