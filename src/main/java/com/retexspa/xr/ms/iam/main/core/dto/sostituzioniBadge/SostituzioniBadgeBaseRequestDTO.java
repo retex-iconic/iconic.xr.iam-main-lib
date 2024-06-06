@@ -1,24 +1,29 @@
 package com.retexspa.xr.ms.iam.main.core.dto.sostituzioniBadge;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
-import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class SostituzioniBadgeBaseRequestDTO {
 
     @NotNull(message = "Utenti Societa is mandatory")
+    @NotEmpty(message = "Utenti Societa is mandatory")
+    @NotBlank(message = "Utenti Societa is mandatory")
     private String utentiId;
 
     @NotNull(message = "Badge is mandatory")
+    @NotEmpty(message = "Badge is mandatory")
+    @NotBlank(message = "Badge is mandatory")
     private String badgeId;
 
     @NotNull(message = "Data assegnazione is mandatory")
@@ -92,4 +97,6 @@ public class SostituzioniBadgeBaseRequestDTO {
     public void setCausale(String causale) {
         this.causale = causale;
     }
+    
+
 }
