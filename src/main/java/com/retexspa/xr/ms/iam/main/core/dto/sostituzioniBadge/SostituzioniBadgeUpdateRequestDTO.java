@@ -11,13 +11,13 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class SostituzioniBadgeUpdateRequestDTO {
 
-    @JsonProperty("dataAssegnazione")
+    @JsonProperty("data_assegnazione")
     private LocalDateTime dataAssegnazione;
-    @JsonProperty("dataBlocco")
+    @JsonProperty("data_blocco")
     private LocalDateTime dataBlocco;
-    @JsonProperty("dataSblocco")
+    @JsonProperty("data_sblocco")
     private LocalDateTime dataSblocco;
-    @JsonProperty("dataRiconsegna")
+    @JsonProperty("data_riconsegna")
     private LocalDateTime dataRiconsegna;
     @JsonProperty("causale")
     private String causale;
