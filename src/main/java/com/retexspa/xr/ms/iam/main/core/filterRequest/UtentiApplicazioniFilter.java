@@ -12,8 +12,10 @@ public class UtentiApplicazioniFilter {
 
     private String id;
     private String utenteId;
+    private String idAccount;
     private String contestoId;
     private String ruoloId;
+    private String applicazioneId;
     private LocalDateTime dataInizioValidita;
     private LocalDateTime dataFineValidita;
     @EnumValidator(enumClazz = Enums.CheckSN.class)
@@ -26,16 +28,20 @@ public class UtentiApplicazioniFilter {
     public UtentiApplicazioniFilter(
             @JsonProperty("id") String id,
             @JsonProperty("utenteId") String utenteId,
+            @JsonProperty("idAccount") String idAccount,
             @JsonProperty("contestoId") String contestoId,
             @JsonProperty("ruoloId") String ruoloId,
+            @JsonProperty("applicazioneId") String applicazioneId, 
             @JsonProperty("dataInizioValidita") LocalDateTime dataInizioValidita,
             @JsonProperty("dataFineValidita") LocalDateTime dataFineValidita,
             @JsonProperty("flgAcquisizioneAuto") String flgAcquisizioneAuto,
             @JsonProperty("version") Long version) {
         this.id = id;
         this.utenteId = utenteId;
+        this.idAccount = idAccount;
         this.contestoId = contestoId;
         this.ruoloId = ruoloId;
+        this.applicazioneId = applicazioneId;
         this.dataInizioValidita = dataInizioValidita;
         this.dataFineValidita = dataFineValidita;
         this.flgAcquisizioneAuto = flgAcquisizioneAuto;
@@ -104,8 +110,10 @@ public class UtentiApplicazioniFilter {
         if (map != null) {
             filter.setId((String) map.get("id"));
             filter.setUtenteId((String) map.get("utenteId"));
+            filter.setIdAccount((String) map.get("idAccount"));
             filter.setContestoId((String) map.get("contestoId"));
             filter.setRuoloId((String) map.get("ruoloId"));
+            filter.setApplicazioneId((String) map.get("applicazioneId"));
             DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
             Object dataInizioValidita = map.get("dataInizioValidita");
             if (dataInizioValidita != null) {
@@ -142,6 +150,22 @@ public class UtentiApplicazioniFilter {
 
     public void setVersion(Long version) {
         this.version = version;
+    }
+
+    public String getIdAccount() {
+        return idAccount;
+    }
+
+    public void setIdAccount(String idAccount) {
+        this.idAccount = idAccount;
+    }
+
+    public String getApplicazioneId() {
+        return applicazioneId;
+    }
+
+    public void setApplicazioneId(String applicazioneId) {
+        this.applicazioneId = applicazioneId;
     }
 
 }

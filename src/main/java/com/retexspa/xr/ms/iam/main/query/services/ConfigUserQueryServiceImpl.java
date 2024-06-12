@@ -14,7 +14,7 @@ import javax.persistence.criteria.Root;
 
 import com.retexspa.xr.ms.iam.main.core.dto.configUser.RoutingDTO;
 import com.retexspa.xr.ms.iam.main.core.dto.configUser.RoutingSectionsDTO;
-import com.retexspa.xr.ms.iam.main.core.dto.notifiche.NotificheDTO;
+import com.retexspa.xr.ms.iam.main.core.dto.configUser.NotificheDTO;
 import com.retexspa.xr.ms.iam.main.core.searchRequest.ConfigUserSearchRequest;
 import com.retexspa.xr.ms.main.core.helpers.NativeQueryHelper;
 import org.springframework.stereotype.Service;

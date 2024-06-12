@@ -22,6 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 @Service
 public class ApplicazioniQueryServiceImpl implements ApplicazioniQueryService {
 
@@ -30,6 +36,9 @@ public class ApplicazioniQueryServiceImpl implements ApplicazioniQueryService {
 
     @Autowired
     private ApplicazioniQueryMapper applicazioniQueryMapper;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public Page<ApplicazioniQueryEntity> searchQueryApplicazioni(GenericSearchRequest<ApplicazioniFilter> query) {
@@ -106,6 +115,17 @@ public class ApplicazioniQueryServiceImpl implements ApplicazioniQueryService {
 
         Page<ApplicazioniQueryEntity> page = this.applicazioniRepository.findAll(specification, pageable);
         return page;
+    }
+
+    @Override
+    public List<ApplicazioniQueryEntity> findAllIconicApplicazioni(){
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<ApplicazioniQueryEntity> query = cb.createQuery(ApplicazioniQueryEntity.class);
+        Root<ApplicazioniQueryEntity> applicazioni = query.from(ApplicazioniQueryEntity.class);
+
+        query.select(applicazioni).where(cb.isNotNull(applicazioni.get("iconicApplicazioni")));
+
+        return entityManager.createQuery(query).getResultList();        
     }
 
     @Override
