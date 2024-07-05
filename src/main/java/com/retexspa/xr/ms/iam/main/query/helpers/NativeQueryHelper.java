@@ -93,7 +93,7 @@ public class NativeQueryHelper extends com.retexspa.xr.ms.main.core.helpers.Nati
         "    COALESCE(r.flg_attiva, 'S') <> 'N' " +
         "    AND ra.id = :roleId " +
         ") " +
-        "SELECT " +
+        "SELECT distinct" +
         "  CHR(123) || '\"title\":\"' || TREE.titolo || '\"' || CASE " +
         "    WHEN (ro.url_link IS NOT NULL) THEN " +
         "      ', \"link\":\"' || ro.url_link || '\"' " +
@@ -131,14 +131,15 @@ public class NativeQueryHelper extends com.retexspa.xr.ms.main.core.helpers.Nati
         "  ro.URL_LINK, " +
         "  tree.icone, " +
         "  QUERY_PARAMS, " +
-        "  home_pagina " +
+        "  home_pagina, " +
+        "  CASE WHEN (PID_MENU = 0) THEN 0 ELSE 1 end pid_order " +
         "FROM " +
         "  TREE " +
         "  INNER JOIN public.ruoli_routing r ON r.routing_id = TREE.routing_id " +
         "  INNER JOIN public.routing ro ON r.routing_id = ro.id AND ro.url_link = TREE.url_link " +
         "ORDER BY " +
         "  ROOT_SORT, " +
-        "  CASE WHEN (PID_MENU = 0) THEN 0 ELSE 1 END, " +
+        "  pid_order, " +
         "  ORDINAMENTO";
 
   }
