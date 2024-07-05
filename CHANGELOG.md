@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.0.1...v1.1.0) (2024-07-05)
+
+
+### Features
+
+* #IXL-87 ruoliIncassi native query ([f92809b](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/f92809b31bf89fa2843681da21517af92cea1d73))
+* menu query ([e6749ec](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/e6749ecbe19e5d70a978cf87c0bad84577f418aa))
+* update pom ([c3d26c5](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/c3d26c56ee500956e7e8d318487b071781515844))
+
+
+### Bug Fixes
+
+* pom ([f945938](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/f94593830bc4074c2296104337f1f45666935aa6))
+
 ## [1.0.1](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.0.0...v1.0.1) (2024-06-17)
 
 
