@@ -10,10 +10,10 @@
 		<java.version>17</java.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<xr-springboot-bom.version>0.12.5</xr-springboot-bom.version>
-		<xr-shared-main-lib.version>1.1.0</xr-shared-main-lib.version>
-		<!-- <dozer.version>5.5.1</dozer.version>
-        <jackson-datatype-jsr310.version>2.12.5</jackson-datatype-jsr310.version> -->
+		<xr-springboot-bom.version>0.12.3</xr-springboot-bom.version>
+		<xr-shared-main-lib.version>1.1.1-SNAPSHOT</xr-shared-main-lib.version>
+		<!-- <dozer.version>5.5.1</dozer.version> -->
+        <jackson-datatype-jsr310.version>2.12.5</jackson-datatype-jsr310.version>
 	</properties>
 	<developers>
 		<developer>
@@ -93,7 +93,7 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
-			<!-- <version>${jackson-datatype-jsr310.version}</version> -->
+			<version>${jackson-datatype-jsr310.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.dozer</groupId>
@@ -119,6 +119,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
+			<version>21.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mapstruct</groupId>

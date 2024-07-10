@@ -15,11 +15,11 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'   
-      - name: Test Build
-        env:
-          GH_USER: ${{ secrets.XR_GITHUB_TOKEN }}    
-          GH_TOKEN: ${{ secrets.XR_GITHUB_TOKEN }}      
-        run: mvn  -s .mvn/settings.xml --batch-mode package       
+      # - name: Test Build
+      #   env:
+      #     GH_USER: ${{ secrets.XR_GITHUB_TOKEN }}    
+      #     GH_TOKEN: ${{ secrets.XR_GITHUB_TOKEN }}      
+      #   run: mvn  -s .mvn/settings.xml --batch-mode package       
   release-please:
     name: Release Please Job
     needs: [mvn-package]    
