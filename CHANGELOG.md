@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.1.0...v1.1.1) (2024-07-10)
+
+
+### Bug Fixes
+
+* riportata indietro versione BOM & comentato unit test ([601d390](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/601d390e1f022628d1c364f7267ec1a3582b177d))
+
 ## [1.1.0](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.0.1...v1.1.0) (2024-07-05)
 
 
