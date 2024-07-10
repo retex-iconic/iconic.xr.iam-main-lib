@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.1.1...v1.1.2) (2024-07-10)
+
+
+### Bug Fixes
+
+* pom ([3df4290](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/3df4290109ebce44902e448783de997d796c4125))
+
 ## [1.1.1](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.1.0...v1.1.1) (2024-07-10)
 
 
