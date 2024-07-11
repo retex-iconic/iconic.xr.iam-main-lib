@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.1.2...v1.2.0) (2024-07-11)
+
+
+### Features
+
+* POM maven-compiler-plugin.version ([458a952](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/458a9527ade21200c9df61eef7d7c2f9d106c8bf))
+
 ## [1.1.2](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.1.1...v1.1.2) (2024-07-10)
 
 
