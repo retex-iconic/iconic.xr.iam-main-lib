@@ -1,12 +1,12 @@
 package com.retexspa.xr.ms.iam.main.query.services;
 
+import com.retexspa.xr.ms.iam.main.core.dto.Enums;
 import com.retexspa.xr.ms.iam.main.core.entities.SostituzioniBadgeQueryDTO;
 import com.retexspa.xr.ms.iam.main.core.filterRequest.SostituzioniBadgeFilter;
 import com.retexspa.xr.ms.iam.main.core.responses.sostituzioniBadge.SostituzioniBadgeResponse;
 import com.retexspa.xr.ms.iam.main.query.entities.BadgeSocietaQueryEntity;
 import com.retexspa.xr.ms.iam.main.query.entities.SostituzioniBadgeQueryEntity;
 import com.retexspa.xr.ms.iam.main.query.mappers.SostituzioniBadgeQueryMapper;
-import com.retexspa.xr.ms.iam.main.query.repositories.SostituzioniBadgeRepository;
 import com.retexspa.xr.ms.main.core.queries.BaseSort;
 import com.retexspa.xr.ms.main.core.queries.GenericSearchRequest;
 import com.retexspa.xr.ms.main.core.responses.Pagination;
@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import com.retexspa.xr.ms.iam.main.query.entities.UtentiSocietaQueryEntity;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,9 +32,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 @Service
@@ -99,6 +102,8 @@ public class SostituzioniBadgeQueryServiceImpl implements SostituzioniBadgeQuery
 
         SostituzioniBadgeFilter filter = SostituzioniBadgeFilter.createFilterFromMap(query.getFilter());
 
+        Expression<Timestamp> currentTimestamp = cb.currentTimestamp();
+
         if (filter.getId() != null) {
             specifications.add((r, q, c) -> c.equal(r.get("id"), filter.getId()));
         }
@@ -141,12 +146,71 @@ public class SostituzioniBadgeQueryServiceImpl implements SostituzioniBadgeQuery
             specifications
                     .add((r, q, c) -> c.like(c.upper(r.get("causale")), "%" + filter.getCausale().toUpperCase() + "%"));
         }
-        if (filter.getStato() != null) {
-            specifications
-                    .add((r, q, c) -> c.like(c.upper(r.get("stato")), "%" + filter.getStato().toUpperCase() + "%"));
-        }
         if (filter.getVersion() != null) {
             specifications.add((r, q, c) -> c.equal(r.get("version"), filter.getVersion()));
+        }
+        if (filter.getStato() != null) {
+            List<Predicate> predicates = new ArrayList<>();
+            if (filter.getStato().equals(Enums.StatoBadgeSostitutivo.R.toString())) {
+                // dataRiconsegna != null && this.today > dataRiconsegna
+
+                Specification<SostituzioniBadgeQueryEntity> spec1 = (r, q, c) -> c.isNotNull(r.get("dataRiconsegna"));
+                Specification<SostituzioniBadgeQueryEntity> spec2 = (r, q, c) -> c.greaterThan(currentTimestamp,
+                        r.get("dataRiconsegna"));
+
+                Specification<SostituzioniBadgeQueryEntity> combinedSpec = spec1.and(spec2);
+
+                specifications.add(combinedSpec);
+
+            } else if (filter.getStato().equals(Enums.StatoBadgeSostitutivo.B.toString())) {
+                // (dataRiconsegna! > this.today! || dataRiconsegna == null) &&
+                // (dataBlocco != null) &&
+                // (dataBlocco < this.today)
+
+                Specification<SostituzioniBadgeQueryEntity> spec1 = (r, q, c) -> c.greaterThan(r.get("dataRiconsegna"),
+                        currentTimestamp);
+                Specification<SostituzioniBadgeQueryEntity> spec2 = (r, q, c) -> c.isNull(r.get("dataRiconsegna"));
+
+                Specification<SostituzioniBadgeQueryEntity> combinedSpec1 = spec1.or(spec2);
+
+                Specification<SostituzioniBadgeQueryEntity> spec3 = (r, q, c) -> c.isNotNull(r.get("dataBlocco"));
+                Specification<SostituzioniBadgeQueryEntity> spec4 = (r, q, c) -> c.lessThan(r.get("dataBlocco"),
+                        currentTimestamp);
+
+                Specification<SostituzioniBadgeQueryEntity> combinedSpec2 = spec3.and(spec4);
+
+                Specification<SostituzioniBadgeQueryEntity> combinedSpecFinal = combinedSpec1.and(combinedSpec2);
+
+
+            } else if (filter.getStato().equals(Enums.StatoBadgeSostitutivo.A.toString())) {
+                // (dataBlocco == null || dataBlocco > this.today) &&
+                // (dataRiconsegna == null || dataRiconsegna > this.today) &&
+                // (dataAssegnazione != null && dataAssegnazione < this.today)
+
+                Specification<SostituzioniBadgeQueryEntity> spec1 = (r, q, c) -> c.isNull(r.get("dataBlocco"));
+                Specification<SostituzioniBadgeQueryEntity> spec2 = (r, q, c) -> c.greaterThan(r.get("dataBlocco"),
+                        currentTimestamp);
+
+                Specification<SostituzioniBadgeQueryEntity> combinedSpec1 = spec1.or(spec2);
+
+                Specification<SostituzioniBadgeQueryEntity> spec3 = (r, q, c) -> c.isNull(r.get("dataRiconsegna"));
+                Specification<SostituzioniBadgeQueryEntity> spec4 = (r, q, c) -> c.greaterThan(r.get("dataRiconsegna"),
+                        currentTimestamp);
+
+                Specification<SostituzioniBadgeQueryEntity> combinedSpec2 = spec3.or(spec4);
+
+                Specification<SostituzioniBadgeQueryEntity> spec5 = (r, q, c) -> c.isNotNull(r.get("dataAssegnazione"));
+                Specification<SostituzioniBadgeQueryEntity> spec6 = (r, q, c) -> c.lessThan(r.get("dataAssegnazione"),
+                        currentTimestamp);
+
+                Specification<SostituzioniBadgeQueryEntity> combinedSpec3 = spec5.and(spec6);
+
+                Specification<SostituzioniBadgeQueryEntity> combinedSpecFinal = combinedSpec1.and(combinedSpec2)
+                        .and(combinedSpec3);
+
+                specifications.add(combinedSpecFinal);
+
+            }
         }
 
         Specification<SostituzioniBadgeQueryEntity> specification = specifications.stream().reduce(Specification::and)

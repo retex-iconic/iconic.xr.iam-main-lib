@@ -64,6 +64,14 @@ public class SostituzioniBadgeFilter {
         return utentiId;
     }
 
+    public String getStato() {
+        return stato;
+    }
+
+    public void setStato(String stato) {
+        this.stato = stato;
+    }
+
     public void setUtentiId(String utentiId) {
         this.utentiId = utentiId;
     }
@@ -122,14 +130,6 @@ public class SostituzioniBadgeFilter {
 
     public void setCausale(String causale) {
         this.causale = causale;
-    }
-
-    public String getStato() {
-        return stato;
-    }
-
-    public void setStato(String stato) {
-        this.stato = stato;
     }
 
     public Long getVersion() {
