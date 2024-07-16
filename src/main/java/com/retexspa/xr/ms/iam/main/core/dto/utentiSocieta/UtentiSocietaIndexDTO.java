@@ -13,15 +13,19 @@ public class UtentiSocietaIndexDTO {
 
     private String utentiSocietaId;
     private String societaId;
+    private String badgeId;
     private LinkedList<String> utentiApplicazioniIds;
     private LinkedList<String> sostituzioneBadgeIds;
+    private LinkedList<String> sostituzioneBadgeStoricoPersonaleIds;
+
 
     public UtentiSocietaIndexDTO() {
     }
 
-    public UtentiSocietaIndexDTO(String utentiSocietaId, String societaId) {
+    public UtentiSocietaIndexDTO(String utentiSocietaId, String societaId, String badgeId) {
         this.utentiSocietaId = utentiSocietaId;
         this.societaId = societaId;
+        this.badgeId = badgeId;
     }
 
     public static String getIdFromUtentiSocieta(String utentiSocietaId) {
@@ -40,12 +44,28 @@ public class UtentiSocietaIndexDTO {
         return utentiApplicazioniIds;
     }
 
+    public LinkedList<String> getSostituzioneBadgeStoricoPersonaleIds() {
+        return sostituzioneBadgeStoricoPersonaleIds;
+    }
+
+    public void setSostituzioneBadgeStoricoPersonaleIds(LinkedList<String> sostituzioneBadgeStoricoPersonaleIds) {
+        this.sostituzioneBadgeStoricoPersonaleIds = sostituzioneBadgeStoricoPersonaleIds;
+    }
+
     public void setUtentiApplicazioniIds(LinkedList<String> utentiApplicazioniIds) {
         this.utentiApplicazioniIds = utentiApplicazioniIds;
     }
 
     public LinkedList<String> getSostituzioneBadgeIds() {
         return sostituzioneBadgeIds;
+    }
+
+    public String getBadgeId() {
+        return badgeId;
+    }
+
+    public void setBadgeId(String badgeId) {
+        this.badgeId = badgeId;
     }
 
     public void setSostituzioneBadgeIds(LinkedList<String> sostituzioneBadgeIds) {
@@ -64,10 +84,12 @@ public class UtentiSocietaIndexDTO {
         return "utentiApplicazioniIds";
     }
 
-
     public static String getDetailNameSostituzioniBadge() {
-
         return "sostituzioneBadgeIds";
+    }
+
+    public static String getDetailNameSostituzioneBadgeStoricoPersonaleIds() {
+        return "sostituzioneBadgeStoricoPersonaleIds";
     }
 
 }

@@ -150,7 +150,6 @@ public class SostituzioniBadgeQueryServiceImpl implements SostituzioniBadgeQuery
             specifications.add((r, q, c) -> c.equal(r.get("version"), filter.getVersion()));
         }
         if (filter.getStato() != null) {
-            List<Predicate> predicates = new ArrayList<>();
             if (filter.getStato().equals(Enums.StatoBadgeSostitutivo.R.toString())) {
                 // dataRiconsegna != null && this.today > dataRiconsegna
 
