@@ -36,7 +36,6 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 @Service
@@ -151,10 +150,13 @@ public class SostituzioniBadgeQueryServiceImpl implements SostituzioniBadgeQuery
         }
         if (filter.getStato() != null) {
             if (filter.getStato().equals(Enums.StatoBadgeSostitutivo.R.toString())) {
-                // dataRiconsegna != null && this.today > dataRiconsegna
+                // dataRiconsegna != null && today >= dataRiconsegna
 
+                // dataRiconsegna != null
                 Specification<SostituzioniBadgeQueryEntity> spec1 = (r, q, c) -> c.isNotNull(r.get("dataRiconsegna"));
-                Specification<SostituzioniBadgeQueryEntity> spec2 = (r, q, c) -> c.greaterThan(currentTimestamp,
+                // this.today >= dataRiconsegna
+                Specification<SostituzioniBadgeQueryEntity> spec2 = (r, q, c) -> c.greaterThanOrEqualTo(
+                        currentTimestamp,
                         r.get("dataRiconsegna"));
 
                 Specification<SostituzioniBadgeQueryEntity> combinedSpec = spec1.and(spec2);
@@ -162,44 +164,55 @@ public class SostituzioniBadgeQueryServiceImpl implements SostituzioniBadgeQuery
                 specifications.add(combinedSpec);
 
             } else if (filter.getStato().equals(Enums.StatoBadgeSostitutivo.B.toString())) {
-                // (dataRiconsegna! > this.today! || dataRiconsegna == null) &&
+                // (dataRiconsegna! > today! || dataRiconsegna == null) &&
                 // (dataBlocco != null) &&
-                // (dataBlocco < this.today)
+                // (dataBlocco <= today)
 
+                // (dataRiconsegna! > today! || dataRiconsegna == null)
                 Specification<SostituzioniBadgeQueryEntity> spec1 = (r, q, c) -> c.greaterThan(r.get("dataRiconsegna"),
                         currentTimestamp);
                 Specification<SostituzioniBadgeQueryEntity> spec2 = (r, q, c) -> c.isNull(r.get("dataRiconsegna"));
 
                 Specification<SostituzioniBadgeQueryEntity> combinedSpec1 = spec1.or(spec2);
 
+                // (dataBlocco != null)
                 Specification<SostituzioniBadgeQueryEntity> spec3 = (r, q, c) -> c.isNotNull(r.get("dataBlocco"));
-                Specification<SostituzioniBadgeQueryEntity> spec4 = (r, q, c) -> c.lessThan(r.get("dataBlocco"),
+                // (dataBlocco <= today)
+                Specification<SostituzioniBadgeQueryEntity> spec4 = (r, q, c) -> c.lessThanOrEqualTo(
+                        r.get("dataBlocco"),
                         currentTimestamp);
 
                 Specification<SostituzioniBadgeQueryEntity> combinedSpec2 = spec3.and(spec4);
 
                 Specification<SostituzioniBadgeQueryEntity> combinedSpecFinal = combinedSpec1.and(combinedSpec2);
 
+                specifications.add(combinedSpecFinal);
 
             } else if (filter.getStato().equals(Enums.StatoBadgeSostitutivo.A.toString())) {
-                // (dataBlocco == null || dataBlocco > this.today) &&
-                // (dataRiconsegna == null || dataRiconsegna > this.today) &&
-                // (dataAssegnazione != null && dataAssegnazione < this.today)
+                // (dataBlocco == null || dataBlocco > today) &&
+                // (dataRiconsegna == null || dataRiconsegna > today) &&
+                // (dataAssegnazione != null && dataAssegnazione <= today)
 
+                //dataBlocco == null
                 Specification<SostituzioniBadgeQueryEntity> spec1 = (r, q, c) -> c.isNull(r.get("dataBlocco"));
+                //dataBlocco > this.today
                 Specification<SostituzioniBadgeQueryEntity> spec2 = (r, q, c) -> c.greaterThan(r.get("dataBlocco"),
                         currentTimestamp);
 
                 Specification<SostituzioniBadgeQueryEntity> combinedSpec1 = spec1.or(spec2);
 
+                //dataRiconsegna == null
                 Specification<SostituzioniBadgeQueryEntity> spec3 = (r, q, c) -> c.isNull(r.get("dataRiconsegna"));
+                //dataRiconsegna > this.today
                 Specification<SostituzioniBadgeQueryEntity> spec4 = (r, q, c) -> c.greaterThan(r.get("dataRiconsegna"),
                         currentTimestamp);
 
                 Specification<SostituzioniBadgeQueryEntity> combinedSpec2 = spec3.or(spec4);
 
+                //dataAssegnazione != null
                 Specification<SostituzioniBadgeQueryEntity> spec5 = (r, q, c) -> c.isNotNull(r.get("dataAssegnazione"));
-                Specification<SostituzioniBadgeQueryEntity> spec6 = (r, q, c) -> c.lessThan(r.get("dataAssegnazione"),
+                //dataAssegnazione <= this.today
+                Specification<SostituzioniBadgeQueryEntity> spec6 = (r, q, c) -> c.lessThanOrEqualTo(r.get("dataAssegnazione"),
                         currentTimestamp);
 
                 Specification<SostituzioniBadgeQueryEntity> combinedSpec3 = spec5.and(spec6);
