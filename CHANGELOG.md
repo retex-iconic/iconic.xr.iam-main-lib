@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.2.1...v1.2.2) (2024-07-18)
+
+
+### Bug Fixes
+
+* disable snapshot ([448be76](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/448be76f17cc376b0ec9397be68d7d8db30333e3))
+
 ## [1.2.1](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.2.0...v1.2.1) (2024-07-11)
 
 
