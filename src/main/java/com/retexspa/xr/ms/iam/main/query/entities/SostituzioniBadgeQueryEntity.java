@@ -46,9 +46,6 @@ public class SostituzioniBadgeQueryEntity {
     @Column(name="version")
     private Long version;
 
-    @Column(name="stato")
-    private String stato;
-
     public SostituzioniBadgeQueryEntity() {
     }
 
@@ -60,7 +57,6 @@ public class SostituzioniBadgeQueryEntity {
         this.dataSblocco = dto.getDataSblocco();
         this.dataRiconsegna = dto.getDataRiconsegna();
         this.causale = dto.getCausale();
-        this.stato = dto.getStato();
         this.version = version;
     }
 
@@ -152,16 +148,6 @@ public class SostituzioniBadgeQueryEntity {
 
     public void setVersion(Long version) {
         this.version = version;
-    }
-
-
-    public String getStato() {
-        return stato;
-    }
-
-
-    public void setStato(String stato) {
-        this.stato = stato;
     }
 
     

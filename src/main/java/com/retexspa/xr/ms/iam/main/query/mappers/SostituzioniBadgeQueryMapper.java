@@ -13,7 +13,6 @@ public interface SostituzioniBadgeQueryMapper {
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "causale", source = "causale")
-    @Mapping(target = "stato", source = "stato")
     @Mapping(target = "dataRiconsegna", source = "dataRiconsegna")
     @Mapping(target = "dataBlocco", source = "dataBlocco")
     @Mapping(target = "dataSblocco", source = "dataSblocco")

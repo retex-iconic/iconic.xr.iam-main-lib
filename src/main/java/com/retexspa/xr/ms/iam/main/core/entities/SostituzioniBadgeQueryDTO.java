@@ -25,7 +25,6 @@ public class SostituzioniBadgeQueryDTO {
 
     private String causale;
 
-    private String stato;
     private Long version;
 
     public String getId() {
@@ -90,14 +89,6 @@ public class SostituzioniBadgeQueryDTO {
 
     public void setCausale(String causale) {
         this.causale = causale;
-    }
-
-    public String getStato() {
-        return stato;
-    }
-
-    public void setStato(String stato) {
-        this.stato = stato;
     }
 
     public Long getVersion() {
