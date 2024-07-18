@@ -15,7 +15,7 @@
           <id>maven</id>
           <url>https://repo.maven.apache.org/maven2</url>
           <snapshots>
-            <enabled>true</enabled>
+            <enabled>false</enabled>
           </snapshots>          
         </repository> 
         <repository>
@@ -23,7 +23,7 @@
           <name>GitHub Apache Maven Packages - Iconic XR</name>
           <url>https://maven.pkg.github.com/retex-iconic/iconic.xr.suite</url>
         <snapshots>
-          <enabled>true</enabled>
+          <enabled>false</enabled>
         </snapshots>
       </repository>       	       
       </repositories>
