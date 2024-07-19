@@ -1,12 +1,14 @@
 package com.retexspa.xr.ms.iam.main.query.services;
 
 import com.retexspa.xr.ms.iam.main.core.entities.RoutingSectionsQueryDTO;
+import com.retexspa.xr.ms.iam.main.core.filterRequest.MenuFilter;
+import com.retexspa.xr.ms.iam.main.core.filterRequest.RoutingSectionsFilter;
 import com.retexspa.xr.ms.iam.main.core.responses.routingSections.RoutingSectionsResponse;
-import com.retexspa.xr.ms.iam.main.core.searchRequest.RoutingSectionsSearchRequest;
 import com.retexspa.xr.ms.iam.main.query.entities.RoutingSectionsQueryEntity;
 import com.retexspa.xr.ms.iam.main.query.mappers.RoutingSectionsQueryMapper;
 import com.retexspa.xr.ms.iam.main.query.repositories.RoutingSectionsRepository;
 import com.retexspa.xr.ms.main.core.queries.BaseSort;
+import com.retexspa.xr.ms.main.core.queries.GenericSearchRequest;
 import com.retexspa.xr.ms.main.core.responses.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,7 +32,7 @@ public class RoutingSectionsQueryServiceImpl implements RoutingSectionsQueryServ
     private RoutingSectionsQueryMapper routingSectionsQueryMapper;
 
     @Override
-    public Page<RoutingSectionsQueryEntity> searchQueryRoutingSections(RoutingSectionsSearchRequest query) {
+    public Page<RoutingSectionsQueryEntity> searchQueryRoutingSections(GenericSearchRequest<RoutingSectionsFilter> query) {
         List<Sort.Order> sorts = new ArrayList<>();
 
         if (query.getSort() != null && query.getSort().size() != 0) {
@@ -53,26 +55,26 @@ public class RoutingSectionsQueryServiceImpl implements RoutingSectionsQueryServ
         Pageable pageable = PageRequest.of(query.getPage(), query.getLimit(), Sort.by(sorts));
 
         List<Specification<RoutingSectionsQueryEntity>> specifications = new ArrayList<>();
-
-        if (query.getId() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("id"), query.getId()));
+        RoutingSectionsFilter filter = RoutingSectionsFilter.createFilterFromMap(query.getFilter());
+        if (filter.getId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("id"), filter.getId()));
         }
-        if (query.getRoutingId() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("routing").get("id"), query.getRoutingId()));
-        }
-
-        if (query.getCodice() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("codice"), query.getCodice()));
+        if (filter.getRoutingId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("routing").get("id"), filter.getRoutingId()));
         }
 
-        if (query.getDescription() != null) {
+        if (filter.getCodice() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("codice"), filter.getCodice()));
+        }
+
+        if (filter.getDescrizione() != null) {
             specifications.add(
                     (r, q, c) -> c.like(
-                            c.upper(r.get("descrizione")), "%" + query.getDescription().toUpperCase() + "%"));
+                            c.upper(r.get("descrizione")), "%" + filter.getDescrizione().toUpperCase() + "%"));
         }
 
-        if (query.getVersion() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("version"), query.getVersion()));
+        if (filter.getVersion() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("version"), filter.getVersion()));
         }
         Specification<RoutingSectionsQueryEntity> specification = specifications.stream().reduce(Specification::and).orElse(null);
 
@@ -81,7 +83,7 @@ public class RoutingSectionsQueryServiceImpl implements RoutingSectionsQueryServ
     }
 
     @Override
-    public RoutingSectionsResponse searchRoutingSections(RoutingSectionsSearchRequest query) {
+    public RoutingSectionsResponse searchRoutingSections(GenericSearchRequest<RoutingSectionsFilter> query) {
 
         RoutingSectionsResponse routingSectionsResponse = new RoutingSectionsResponse();
         Page<RoutingSectionsQueryEntity> page = searchQueryRoutingSections(query);
