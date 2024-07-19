@@ -1,5 +1,7 @@
 package com.retexspa.xr.ms.iam.main.query.services;
 
+import com.retexspa.xr.ms.iam.main.core.filterRequest.RoutingFilter;
+import com.retexspa.xr.ms.main.core.queries.GenericSearchRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.retexspa.xr.ms.iam.main.core.entities.RoutingQueryDTO;
 import com.retexspa.xr.ms.iam.main.core.responses.routing.RoutingResponse;
-import com.retexspa.xr.ms.iam.main.core.searchRequest.RoutingSearchRequest;
 import com.retexspa.xr.ms.iam.main.query.entities.RoutingQueryEntity;
 import com.retexspa.xr.ms.iam.main.query.mappers.RoutingQueryMapper;
 import com.retexspa.xr.ms.iam.main.query.repositories.RoutingRepository;
@@ -31,7 +32,7 @@ public class RoutingQueryServiceImpl implements RoutingQueryService {
     private RoutingQueryMapper routingQueryMapper;
 
     @Override
-    public Page<RoutingQueryEntity> searchQueryRouting(RoutingSearchRequest query) {
+    public Page<RoutingQueryEntity> searchQueryRouting(GenericSearchRequest<RoutingFilter> query) {
         List<Sort.Order> sorts = new ArrayList<>();
 
         if (query.getSort() != null && query.getSort().size() != 0) {
@@ -54,51 +55,51 @@ public class RoutingQueryServiceImpl implements RoutingQueryService {
         Pageable pageable = PageRequest.of(query.getPage(), query.getLimit(), Sort.by(sorts));
 
         List<Specification<RoutingQueryEntity>> specifications = new ArrayList<>();
-
-        if (query.getId() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("id"), query.getId()));
+        RoutingFilter filter = RoutingFilter.createFilterFromMap(query.getFilter());
+        if (filter.getId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("id"), filter.getId()));
         }
 
-        if (query.getIconicApplicazioniId() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("iconicApplicazioni").get("id"), query.getIconicApplicazioniId()));
+        if (filter.getIconicApplicazioniId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("iconicApplicazioni").get("id"), filter.getIconicApplicazioniId()));
         }
 
-        if (query.getRoutingCharId() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("routingCharId"), query.getRoutingCharId()));
+        if (filter.getRoutingCharId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("routingCharId"), filter.getRoutingCharId()));
         }
 
-        if (query.getTitolo() != null) {
+        if (filter.getTitolo() != null) {
             specifications.add(
                     (r, q, c) -> c.like(
-                            c.upper(r.get("titolo")), "%" + query.getTitolo().toUpperCase() + "%"));
+                            c.upper(r.get("titolo")), "%" + filter.getTitolo().toUpperCase() + "%"));
         }
 
-        if (query.getUrlLink() != null) {
+        if (filter.getUrlLink() != null) {
             specifications.add(
                     (r, q, c) -> c.like(
-                            c.upper(r.get("urlLink")), "%" + query.getUrlLink().toUpperCase() + "%"));
+                            c.upper(r.get("urlLink")), "%" + filter.getUrlLink().toUpperCase() + "%"));
         }
-        if (query.getVersion() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("version"), query.getVersion()));
+        if (filter.getVersion() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("version"), filter.getVersion()));
         }
-        if (query.getSubtitolo() != null) {
+        if (filter.getSubtitolo() != null) {
             specifications.add(
                     (r, q, c) -> c.like(
-                            c.upper(r.get("subtitolo")), "%" + query.getSubtitolo().toUpperCase() + "%"));
+                            c.upper(r.get("subtitolo")), "%" + filter.getSubtitolo().toUpperCase() + "%"));
         }
-        if (query.getIcone() != null) {
+        if (filter.getIcone() != null) {
             specifications.add(
                     (r, q, c) -> c.like(
-                            c.upper(r.get("icone")), "%" + query.getIcone().toUpperCase() + "%"));
+                            c.upper(r.get("icone")), "%" + filter.getIcone().toUpperCase() + "%"));
         }
-        if (query.getFlgGdpr() != null) {
+        if (filter.getFlgGdpr() != null) {
             specifications.add(
                     (r, q, c) -> c.like(
-                            c.upper(r.get("flgGdpr")), "%" + query.getFlgGdpr().toUpperCase() + "%"));
+                            c.upper(r.get("flgGdpr")), "%" + filter.getFlgGdpr().toUpperCase() + "%"));
         }
-        if (query.getNodoId() != null) {
+        if (filter.getNodoId() != null) {
             specifications.add(
-                    (r, q, c) -> c.equal(r.get("nodo").get("id"), query.getNodoId()));
+                    (r, q, c) -> c.equal(r.get("nodo").get("id"), filter.getNodoId()));
         }
         Specification<RoutingQueryEntity> specification = specifications.stream().reduce(Specification::and).orElse(null);
 
@@ -107,7 +108,7 @@ public class RoutingQueryServiceImpl implements RoutingQueryService {
     }
 
     @Override
-    public RoutingResponse searchRouting(RoutingSearchRequest query) {
+    public RoutingResponse searchRouting(GenericSearchRequest<RoutingFilter> query) {
 
         RoutingResponse routingResponse = new RoutingResponse();
         Page<RoutingQueryEntity> page = searchQueryRouting(query);
