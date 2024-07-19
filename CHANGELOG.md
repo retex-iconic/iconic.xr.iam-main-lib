@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.2.2...v1.3.0) (2024-07-19)
+
+
+### Features
+
+* IAM-231-Routing-SearchFilter ([6b3e801](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/6b3e801ebd083224b0022b1320c31925154eed82))
+* IAM-231-RoutingSections-SearchFilter ([4646407](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/46464070e862adfa84d04f5821f70fd145b35587))
+
 ## [1.2.2](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.2.1...v1.2.2) (2024-07-18)
 
 
