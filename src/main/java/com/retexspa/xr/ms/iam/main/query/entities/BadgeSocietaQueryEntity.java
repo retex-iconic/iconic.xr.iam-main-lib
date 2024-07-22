@@ -35,6 +35,16 @@ public class BadgeSocietaQueryEntity {
     private Long version;
 
     public BadgeSocietaQueryEntity() {
+    }    
+
+    public BadgeSocietaQueryEntity(@NonNull String id, String codiceBadge, String pwd, String tipoBadge,
+            SocietaQueryEntity societa, Long version) {
+        this.id = id;
+        this.codiceBadge = codiceBadge;
+        this.pwd = pwd;
+        this.tipoBadge = tipoBadge;
+        this.societa = societa;
+        this.version = version;
     }
 
     public BadgeSocietaQueryEntity(@NotNull String id, BadgeSocietaBaseDTO dto, Long version) {
