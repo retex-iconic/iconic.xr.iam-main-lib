@@ -12,15 +12,12 @@ public interface UtentiSocietaQueryMapper {
     UtentiSocietaQueryMapper INSTANCE = Mappers.getMapper(UtentiSocietaQueryMapper.class);
 
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "idAccount", source = "idAccount")
-    @Mapping(target = "nome", source = "nome")
-    @Mapping(target = "cognome", source = "cognome")
+    @Mapping(target = "utenteId", source = "utente.id")
     @Mapping(target = "dataInizioValidita", source = "dataInizioValidita")
     @Mapping(target = "dataFineValidita", source = "dataFineValidita")
     @Mapping(target = "matricola", source = "matricola")
     @Mapping(target = "badgeId", source = "badge.id")
     @Mapping(target = "statoBadge", source = "statoBadge")
-    @Mapping(target = "codiceFiscale", source = "codiceFiscale")
     @Mapping(target = "indirrizoEmail", source = "indirrizoEmail")
     @Mapping(target = "upn", source = "upn")
     @Mapping(target = "pwd", source = "pwd")

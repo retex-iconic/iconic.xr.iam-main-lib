@@ -14,11 +14,8 @@ import java.time.LocalDateTime;
 public class UtentiSocietaQueryDTO {
 
     private String id;
-    private String idAccount;
 
-    private String nome;
-
-    private String cognome;
+    private String utenteId;
 
     private LocalDateTime dataInizioValidita;
 
@@ -29,8 +26,6 @@ public class UtentiSocietaQueryDTO {
     private String badgeId;
 
     private String statoBadge;
-
-    private String codiceFiscale;
 
     private String indirrizoEmail;
 
@@ -50,28 +45,12 @@ public class UtentiSocietaQueryDTO {
         this.id = id;
     }
 
-    public String getIdAccount() {
-        return idAccount;
+    public String getUtenteId() {
+        return utenteId;
     }
 
-    public void setIdAccount(String idAccount) {
-        this.idAccount = idAccount;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCognome() {
-        return cognome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
+    public void setUtenteId(String utenteId) {
+        this.utenteId = utenteId;
     }
 
     public LocalDateTime getDataInizioValidita() {
@@ -112,14 +91,6 @@ public class UtentiSocietaQueryDTO {
 
     public void setStatoBadge(String statoBadge) {
         this.statoBadge = statoBadge;
-    }
-
-    public String getCodiceFiscale() {
-        return codiceFiscale;
-    }
-
-    public void setCodiceFiscale(String codiceFiscale) {
-        this.codiceFiscale = codiceFiscale;
     }
 
     public String getIndirrizoEmail() {

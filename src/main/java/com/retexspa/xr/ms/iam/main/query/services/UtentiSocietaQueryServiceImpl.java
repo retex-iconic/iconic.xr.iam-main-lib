@@ -42,13 +42,13 @@ public class UtentiSocietaQueryServiceImpl implements UtentiSocietaQueryService 
                                 ? (baseSort.getOrderType().equalsIgnoreCase("ASC") ? Sort.Direction.ASC
                                         : Sort.Direction.DESC)
                                 : Sort.Direction.ASC),
-                        (baseSort.getOrderBy() != null ? baseSort.getOrderBy() : "idAccount"));
+                        (baseSort.getOrderBy() != null ? baseSort.getOrderBy() : "matricola"));
 
                 sorts.add(sort);
             }
         }
         if (sorts.size() == 0) {
-            sorts.add(new Sort.Order(Sort.Direction.ASC, "idAccount"));
+            sorts.add(new Sort.Order(Sort.Direction.ASC, "matricola"));
         }
 
         Pageable pageable = PageRequest.of(
@@ -64,8 +64,31 @@ public class UtentiSocietaQueryServiceImpl implements UtentiSocietaQueryService 
             specifications.add((r, q, c) -> c.equal(r.get("id"), filter.getId()));
         }
 
+        if (filter.getUtenteId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("utente"), filter.getUtenteId()));
+        }
+
         if (filter.getIdAccount() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("idAccount"), filter.getIdAccount()));
+            specifications.add((r, q, c) -> c.equal(r.get("utente").get("idAccount"), filter.getIdAccount()));
+        }
+
+        if (filter.getNome() != null) {
+            specifications.add(
+                    (r, q, c) -> c.like(
+                            c.upper(r.get("utente").get("nome")), "%" + filter.getNome().toUpperCase() + "%"));
+        }
+
+        if (filter.getCognome() != null) {
+            specifications.add(
+                    (r, q, c) -> c.like(
+                            c.upper(r.get("utente").get("cognome")), "%" + filter.getCognome().toUpperCase() + "%"));
+        }
+
+        if (filter.getCodiceFiscale() != null) {
+            specifications.add(
+                    (r, q, c) -> c.like(
+                            c.upper(r.get("utente").get("codiceFiscale")),
+                            "%" + filter.getCodiceFiscale().toUpperCase() + "%"));
         }
 
         if (filter.getSocietaId() != null) {
@@ -80,28 +103,10 @@ public class UtentiSocietaQueryServiceImpl implements UtentiSocietaQueryService 
             specifications.add((r, q, c) -> c.equal(r.get("dataFineValidita"), filter.getDataFineValidita()));
         }
 
-        if (filter.getNome() != null) {
-            specifications.add(
-                    (r, q, c) -> c.like(
-                            c.upper(r.get("nome")), "%" + filter.getNome().toUpperCase() + "%"));
-        }
-
-        if (filter.getCognome() != null) {
-            specifications.add(
-                    (r, q, c) -> c.like(
-                            c.upper(r.get("cognome")), "%" + filter.getCognome().toUpperCase() + "%"));
-        }
-
         if (filter.getMatricola() != null) {
             specifications.add(
                     (r, q, c) -> c.like(
                             c.upper(r.get("matricola")), "%" + filter.getMatricola().toUpperCase() + "%"));
-        }
-
-        if (filter.getCodiceFiscale() != null) {
-            specifications.add(
-                    (r, q, c) -> c.like(
-                            c.upper(r.get("codiceFiscale")), "%" + filter.getCodiceFiscale().toUpperCase() + "%"));
         }
 
         if (filter.getBadgeId() != null) {
