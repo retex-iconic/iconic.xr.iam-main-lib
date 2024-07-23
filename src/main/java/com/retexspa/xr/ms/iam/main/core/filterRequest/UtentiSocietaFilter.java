@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 
 public class UtentiSocietaFilter {
     private String id;
+    private String utenteId;
     private String idAccount;
     private String nome;
     private String cognome;
@@ -28,6 +29,7 @@ public class UtentiSocietaFilter {
 
     public UtentiSocietaFilter(
             @JsonProperty("id") String id,
+            @JsonProperty("utenteId") String utenteId,
             @JsonProperty("idAccount") String idAccount,
             @JsonProperty("nome") String nome,
             @JsonProperty("cognome") String cognome,
@@ -43,6 +45,7 @@ public class UtentiSocietaFilter {
             @JsonProperty("societaId") String societaId,
             @JsonProperty("version") Long version) {
         this.id = id;
+        this.utenteId = utenteId;
         this.idAccount = idAccount;
         this.nome = nome;
         this.cognome = cognome;
@@ -65,8 +68,10 @@ public class UtentiSocietaFilter {
         UtentiSocietaFilter filter = new UtentiSocietaFilter();
         if (map != null) {
             filter.setId((String) map.get("id"));
+            filter.setUtenteId((String) map.get("utenteId"));
             filter.setIdAccount((String) map.get("idAccount"));
             filter.setNome((String) map.get("nome"));
+            filter.setCognome((String) map.get("cognome"));
             DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
             Object dataInizioValidita = map.get("dataInizioValidita");
             if (dataInizioValidita != null) {
@@ -86,7 +91,6 @@ public class UtentiSocietaFilter {
                     filter.setDataFineValidita((LocalDateTime) dataFineValidita);
                 }
             }
-            filter.setCognome((String) map.get("cognome"));
             filter.setMatricola((String) map.get("matricola"));
             filter.setBadgeId((String) map.get("badgeId"));
             filter.setStatoBadge((String) map.get("statoBadge"));
@@ -114,6 +118,14 @@ public class UtentiSocietaFilter {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUtenteId() {
+        return utenteId;
+    }
+
+    public void setUtenteId(String utenteId) {
+        this.utenteId = utenteId;
     }
 
     public String getIdAccount() {

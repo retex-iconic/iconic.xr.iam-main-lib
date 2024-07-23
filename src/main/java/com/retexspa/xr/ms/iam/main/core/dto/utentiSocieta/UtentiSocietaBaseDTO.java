@@ -15,14 +15,8 @@ import java.util.UUID;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class UtentiSocietaBaseDTO {
 
-    @NotNull(message = "idAccount is mandatory")
-    private String idAccount;
-
-    @NotNull(message = "nome is mandatory")
-    private String nome;
-
-    @NotNull(message = "cognome is mandatory")
-    private String cognome;
+    @NotNull(message = "utenteId is mandatory")
+    private String utenteId;
 
     @NotNull(message = "dataInizioValidita is mandatory")
     private LocalDateTime dataInizioValidita;
@@ -37,8 +31,6 @@ public class UtentiSocietaBaseDTO {
     @EnumValidator(enumClazz = Enums.StatoBadge.class, message = "Stato Badge not valid")
     private String statoBadge;
 
-    private String codiceFiscale;
-
     private String indirrizoEmail;
 
     private String upn;
@@ -48,28 +40,12 @@ public class UtentiSocietaBaseDTO {
     @NotNull(message = "societaId is mandatory")
     private String societaId;
 
-    public String getIdAccount() {
-        return idAccount;
+    public String getUtenteId() {
+        return utenteId;
     }
 
-    public void setIdAccount(String idAccount) {
-        this.idAccount = idAccount;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCognome() {
-        return cognome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
+    public void setUtenteId(String utenteId) {
+        this.utenteId = utenteId;
     }
 
     public LocalDateTime getDataInizioValidita() {
@@ -110,14 +86,6 @@ public class UtentiSocietaBaseDTO {
 
     public void setStatoBadge(String statoBadge) {
         this.statoBadge = statoBadge;
-    }
-
-    public String getCodiceFiscale() {
-        return codiceFiscale;
-    }
-
-    public void setCodiceFiscale(String codiceFiscale) {
-        this.codiceFiscale = codiceFiscale;
     }
 
     public String getIndirrizoEmail() {
