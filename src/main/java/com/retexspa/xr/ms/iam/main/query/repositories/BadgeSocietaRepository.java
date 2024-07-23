@@ -9,4 +9,6 @@ import java.util.List;
 public interface BadgeSocietaRepository  extends JpaRepository<BadgeSocietaQueryEntity, String>, JpaSpecificationExecutor<BadgeSocietaQueryEntity> {
     BadgeSocietaQueryEntity findByCodiceBadge(String codiceBadge);
     List<BadgeSocietaQueryEntity> findAllByCodiceBadge(String codiceBadge);
+    List<BadgeSocietaQueryEntity> findAllBySocietaId(String id);
+  
 }

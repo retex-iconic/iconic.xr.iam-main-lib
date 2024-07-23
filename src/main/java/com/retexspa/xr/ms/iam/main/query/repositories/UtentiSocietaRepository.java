@@ -19,4 +19,5 @@ public interface UtentiSocietaRepository extends
     List<UtentiSocietaQueryEntity> findAllByIdAccountAndSocietaIdAndMatricolaAndUpn(String idAccount, String societaId, String matricola, String upn);
 
     Page<UtentiSocietaQueryEntity> findBySocietaId(String societaId, Pageable pageable);
+    List<UtentiSocietaQueryEntity> findAllBySocietaId(String id);
 }

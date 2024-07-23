@@ -1,13 +1,29 @@
 package com.retexspa.xr.ms.iam.main.query.entities;
 
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.lang.NonNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.retexspa.xr.ms.iam.main.core.dto.applicazioni.ApplicazioniBaseDTO;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 @Entity
-@Table(name = "applicazioni")
+@Table(name = "applicazioni",
+ uniqueConstraints = {
+    @UniqueConstraint(name = "applicazioni_uk", columnNames = { "societa_id", "codice" })
+})
 public class ApplicazioniQueryEntity {
 
     @Id
@@ -26,13 +42,33 @@ public class ApplicazioniQueryEntity {
     @Column(name="version")
     private Long version;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "societa_id", referencedColumnName = "id")
+    //foreingkey
+    @NotNull
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "societa_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_applicazione_societa"))
     private SocietaQueryEntity societa;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "iconic_applicazioni_id", referencedColumnName = "id")
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "iconic_applicazioni_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_applicazione_iconic_applicazione"))
     private IconicApplicazioniQueryEntity iconicApplicazioni;
+
+    //master details
+     @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazione")
+     @JsonIgnore
+     private Set<TipiContestoApplicazioneQueryEntity>  tipiContestoApplicazione;
+
+     @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazioni")
+     @JsonIgnore
+     private Set<RuoliApplicazioneQueryEntity>  ruoliApplicazione;
+
+     @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazione")
+     @JsonIgnore
+     private Set<AnagAttributiRuoliQueryEntity>  anagraficaAttributiRuoli;
+
+     @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazione")
+     @JsonIgnore
+     private Set<AnagAttributiRuoliQueryEntity>  anagraficaAttributiRuoliShared;
+
 
     @Column(name="immagine")
     @Lob

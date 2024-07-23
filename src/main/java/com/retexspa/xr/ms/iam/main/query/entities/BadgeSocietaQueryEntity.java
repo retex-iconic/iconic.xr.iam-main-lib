@@ -1,41 +1,67 @@
 package com.retexspa.xr.ms.iam.main.query.entities;
 
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.lang.NonNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.retexspa.xr.ms.iam.main.core.dto.Enums;
 import com.retexspa.xr.ms.iam.main.core.dto.badgeSocieta.BadgeSocietaBaseDTO;
 import com.retexspa.xr.ms.main.core.helpers.EnumValidator;
-import com.retexspa.xr.ms.main.query.entities.GerarchiaQueryEntity;
-import org.springframework.lang.NonNull;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "badgeSocieta")
+@Table(name = "badgeSocieta", uniqueConstraints = {
+        @UniqueConstraint(name = "badgeSocieta_uk", columnNames = { "societa_id", "codiceBadge" })
+})
 public class BadgeSocietaQueryEntity {
 
     @Id
     @NonNull
     private String id;
 
-    @Column(name="codiceBadge")
+    @Column(name = "codiceBadge")
     private String codiceBadge;
 
-    @Column(name="pwd")
+    @Column(name = "pwd")
     private String pwd;
 
-    @Column(name="tipoBadge")
+    @Column(name = "tipoBadge")
     @EnumValidator(enumClazz = Enums.TipoBadge.class)
     private String tipoBadge;
 
+    //foriengKey
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "societa_id", referencedColumnName = "id")
+    @JoinColumn(name = "societa_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_badgeSocieta_societa"))
     private SocietaQueryEntity societa;
 
-    @Column(name="version")
+    //Master Detail
+     @OneToMany(fetch = FetchType.EAGER, mappedBy = "badge")
+     @JsonIgnore
+     private Set<UtentiSocietaQueryEntity>  utentiSocieta;
+
+     @OneToMany(fetch = FetchType.EAGER, mappedBy = "badge")
+     @JsonIgnore
+     private Set<SostituzioniBadgeQueryEntity>  sostituzioniBadge;
+    
+
+    @Column(name = "version")
     private Long version;
 
     public BadgeSocietaQueryEntity() {
-    }    
+    }
 
     public BadgeSocietaQueryEntity(@NonNull String id, String codiceBadge, String pwd, String tipoBadge,
             SocietaQueryEntity societa, Long version) {
@@ -50,7 +76,7 @@ public class BadgeSocietaQueryEntity {
     public BadgeSocietaQueryEntity(@NotNull String id, BadgeSocietaBaseDTO dto, Long version) {
         this.id = id;
         this.codiceBadge = dto.getCodiceBadge();
-        this.pwd= dto.getPwd();
+        this.pwd = dto.getPwd();
         this.tipoBadge = dto.getTipoBadge();
         this.version = version;
     }

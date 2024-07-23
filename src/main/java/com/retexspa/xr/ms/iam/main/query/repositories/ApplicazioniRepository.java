@@ -10,4 +10,6 @@ public interface ApplicazioniRepository
         extends JpaRepository<ApplicazioniQueryEntity, String>, JpaSpecificationExecutor<ApplicazioniQueryEntity> {
     ApplicazioniQueryEntity findByCodiceAndSocietaId(String codice, String societaId);
     List<ApplicazioniQueryEntity> findAllByCodiceAndSocietaId(String codice,String societaId);
+
+    public List<ApplicazioniQueryEntity> findAllBySocietaId(String id);
 }
