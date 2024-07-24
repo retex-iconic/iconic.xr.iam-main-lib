@@ -38,7 +38,7 @@ public class UtentiSocietaIndexUkDTO extends AggregateIndexUkBaseDTO {
     }
 
     public static String getUk(UtentiSocietaBaseDTO utentiSocieta) {
-        String uk = utentiSocieta.getIdAccount() +
+        String uk = utentiSocieta.getUtenteId() +
                 UtentiSocietaIndexUkDTO.getUkSeparator() +
                 utentiSocieta.getSocietaId();
         return uk;

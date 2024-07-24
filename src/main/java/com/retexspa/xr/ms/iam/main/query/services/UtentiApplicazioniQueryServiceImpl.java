@@ -74,7 +74,7 @@ public class UtentiApplicazioniQueryServiceImpl implements UtentiApplicazioniQue
             specifications.add((r, q, c) -> c.equal(r.get("utente").get("id"), filter.getUtenteId()));
         }
         if (filter.getIdAccount() != null) {
-            specifications.add((r, q, c) -> c.equal(r.get("utente").get("idAccount"), filter.getIdAccount()));
+            specifications.add((r, q, c) -> c.equal(r.get("utente").get("utente").get("idAccount"), filter.getIdAccount()));
         }
         if (filter.getFlgAcquisizioneAuto() != null) {
             specifications.add((r, q, c) -> c.like(c.upper(r.get("flgAcquisizioneAuto")),
