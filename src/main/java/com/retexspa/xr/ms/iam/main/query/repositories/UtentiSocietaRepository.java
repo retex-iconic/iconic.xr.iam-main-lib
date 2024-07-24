@@ -1,13 +1,13 @@
 package com.retexspa.xr.ms.iam.main.query.repositories;
 
-import com.retexspa.xr.ms.iam.main.query.entities.UtentiSocietaQueryEntity;
+import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import java.util.List;
+import com.retexspa.xr.ms.iam.main.query.entities.UtentiSocietaQueryEntity;
 
 
 
@@ -19,4 +19,5 @@ public interface UtentiSocietaRepository extends
 
     Page<UtentiSocietaQueryEntity> findBySocietaId(String societaId, Pageable pageable);
     List<UtentiSocietaQueryEntity> findAllBySocietaId(String id);
+    List<UtentiSocietaQueryEntity> findAllByUtenteId(String id);
 }

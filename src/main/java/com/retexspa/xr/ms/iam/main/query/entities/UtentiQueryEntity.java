@@ -1,17 +1,30 @@
 package com.retexspa.xr.ms.iam.main.query.entities;
 
-import com.retexspa.xr.ms.iam.main.core.dto.utenti.UtentiBaseDTO;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 import org.springframework.lang.NonNull;
-import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.retexspa.xr.ms.iam.main.core.dto.utenti.UtentiBaseDTO;
 
 @Entity
-@Table(name = "utenti", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_account" }, name = "uk_utenti") }, indexes = {
-        @Index(name = "index_utenti_id", columnList = "id"),
-        @Index(name = "index_utenti_nome", columnList = "nome"),
-        @Index(name = "index_utenti_cognome", columnList = "cognome"),
-        @Index(name = "index_utenti_id_account", columnList = "id_account"),
-        @Index(name = "index_utenti_codice_fiscale", columnList = "codice_fiscale")
-})
+@Table(name = "utenti", uniqueConstraints = {
+        @UniqueConstraint(columnNames = { "id_account" }, name = "uk_utenti") }, indexes = {
+                @Index(name = "index_utenti_id", columnList = "id"),
+                @Index(name = "index_utenti_nome", columnList = "nome"),
+                @Index(name = "index_utenti_cognome", columnList = "cognome"),
+                @Index(name = "index_utenti_id_account", columnList = "id_account"),
+                @Index(name = "index_utenti_codice_fiscale", columnList = "codice_fiscale")
+        })
 public class UtentiQueryEntity {
 
     @Id
@@ -32,6 +45,11 @@ public class UtentiQueryEntity {
 
     @Column(name = "version")
     private Long version;
+
+    // master detail
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "societa")
+    @JsonIgnore
+    private Set<UtentiSocietaQueryEntity> utentiSocieta;
 
     public UtentiQueryEntity() {
     }
