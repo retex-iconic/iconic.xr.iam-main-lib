@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -36,11 +37,11 @@ public class SostituzioniBadgeQueryEntity {
     private LocalDateTime dataAssegnazione;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "badge_id", referencedColumnName = "id")
+    @JoinColumn(name = "badge_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_sostituzioniBadge_badgeSocieta"))
     private BadgeSocietaQueryEntity badge;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "utenti_id", referencedColumnName = "id")
+    @JoinColumn(name = "utenti_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_sostituzioniBadge_utentiSocieta"))
     private UtentiSocietaQueryEntity utenti;
 
     @Column(name="version")
