@@ -1,16 +1,29 @@
 package com.retexspa.xr.ms.iam.main.query.entities;
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import org.springframework.lang.NonNull;
+
 import com.retexspa.xr.ms.iam.main.core.dto.Enums;
 import com.retexspa.xr.ms.iam.main.core.dto.utentiSocieta.UtentiSocietaBaseDTO;
 import com.retexspa.xr.ms.main.core.helpers.EnumValidator;
-import org.springframework.lang.NonNull;
-import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "utenti_societa", uniqueConstraints = { @UniqueConstraint(columnNames = { "utente_id", "societa_id" }, name = "uk_utenti_societa_utente_societa"),
-@UniqueConstraint(columnNames = { "matricola", "societa_id" }, name = "uk_utenti_societa_matricola_societa"),
-@UniqueConstraint(columnNames = { "upn", "societa_id" }, name = "uk_utenti_societa_upn_societa") }, indexes = {
+@Table(name = "utenti_societa", uniqueConstraints = { 
+    @UniqueConstraint(columnNames = { "utente_id", "societa_id" }, name = "uk_utente_societa"),
+    @UniqueConstraint(columnNames = { "matricola", "societa_id" }, name = "uk_utenti_societa_matricola"),
+    @UniqueConstraint(columnNames = { "upn", "societa_id" }, name = "uk_utenti_societa_upn") }, 
+indexes = {
     @Index(name = "index_utenti_societa_id", columnList = "id"),
     @Index(name = "index_utenti_societa_matricola", columnList = "matricola"),
     @Index(name = "index_utenti_societa_badge_id", columnList = "badge_id"),
