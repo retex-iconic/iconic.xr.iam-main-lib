@@ -19,5 +19,6 @@ public interface UtentiSocietaRepository extends
 
     Page<UtentiSocietaQueryEntity> findBySocietaId(String societaId, Pageable pageable);
     List<UtentiSocietaQueryEntity> findAllBySocietaId(String id);
+    List<UtentiSocietaQueryEntity> findAllByBadgeSocietaId(String id);
     List<UtentiSocietaQueryEntity> findAllByUtenteId(String id);
 }
