@@ -1,7 +1,5 @@
 package com.retexspa.xr.ms.iam.main.query.entities;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,14 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.lang.NonNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.retexspa.xr.ms.iam.main.core.dto.applicazioni.ApplicazioniBaseDTO;
 @Entity
 @Table(name = "applicazioni",
@@ -53,21 +49,21 @@ public class ApplicazioniQueryEntity {
     private IconicApplicazioniQueryEntity iconicApplicazioni;
 
     //master details
-     @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazione")
-     @JsonIgnore
-     private Set<TipiContestoApplicazioneQueryEntity>  tipiContestoApplicazione;
+    //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazione")
+    //  @JsonIgnore
+    //  private Set<TipiContestoApplicazioneQueryEntity>  tipiContestoApplicazione;
 
-     @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazioni")
-     @JsonIgnore
-     private Set<RuoliApplicazioneQueryEntity>  ruoliApplicazione;
+    //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazioni")
+    //  @JsonIgnore
+    //  private Set<RuoliApplicazioneQueryEntity>  ruoliApplicazione;
 
-     @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazione")
-     @JsonIgnore
-     private Set<AnagAttributiRuoliQueryEntity>  anagraficaAttributiRuoli;
+    //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazione")
+    //  @JsonIgnore
+    //  private Set<AnagAttributiRuoliQueryEntity>  anagraficaAttributiRuoli;
 
-     @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazione")
-     @JsonIgnore
-     private Set<AnagAttributiRuoliQueryEntity>  anagraficaAttributiRuoliShared;
+    //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazione")
+    //  @JsonIgnore
+    //  private Set<AnagAttributiRuoliQueryEntity>  anagraficaAttributiRuoliShared;
 
 
     @Column(name="immagine")

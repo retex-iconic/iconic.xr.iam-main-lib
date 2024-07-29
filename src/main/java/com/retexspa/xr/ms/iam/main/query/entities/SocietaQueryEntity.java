@@ -9,7 +9,6 @@ import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -48,17 +47,17 @@ public class SocietaQueryEntity {
   private GerarchiaQueryEntity gerarchia;
 
   //master detail
-  @OneToMany( fetch = FetchType.EAGER, mappedBy = "societa")
-  @JsonIgnore
-  private Set<ApplicazioniQueryEntity>  applicazioni;
+  // @OneToMany( fetch = FetchType.EAGER, mappedBy = "societa")
+  // @JsonIgnore
+  // private Set<ApplicazioniQueryEntity>  applicazioni;
 
-  @OneToMany( fetch = FetchType.EAGER, mappedBy = "societa")
-  @JsonIgnore
-  private Set<UtentiSocietaQueryEntity>  utentiSocieta;
+  // @OneToMany( fetch = FetchType.EAGER, mappedBy = "societa")
+  // @JsonIgnore
+  // private Set<UtentiSocietaQueryEntity>  utentiSocieta;
 
-  @OneToMany( fetch = FetchType.EAGER, mappedBy = "societa")
-  @JsonIgnore
-  private Set<BadgeSocietaQueryEntity>  badgeSocieta;
+  // @OneToMany( fetch = FetchType.EAGER, mappedBy = "societa")
+  // @JsonIgnore
+  // private Set<BadgeSocietaQueryEntity>  badgeSocieta;
 
 
   public SocietaQueryEntity() {
