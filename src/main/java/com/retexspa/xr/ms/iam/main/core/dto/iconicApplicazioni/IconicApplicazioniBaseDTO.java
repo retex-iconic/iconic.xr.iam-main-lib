@@ -1,13 +1,15 @@
 package com.retexspa.xr.ms.iam.main.core.dto.iconicApplicazioni;
 
+import java.util.UUID;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
@@ -20,7 +22,12 @@ public class IconicApplicazioniBaseDTO {
 
     @NotNull(message = "nome is mandatory")
     private String nome;
+
+
+    private String titolo;
+    private String subtitolo;
     private String descrizione;
+    private String url;
 
     public String getCodice() {
         return codice;
@@ -58,4 +65,32 @@ public class IconicApplicazioniBaseDTO {
     public static String getName() {
         return "IconicApplicazioni";
     }
+
+    public String getTitolo() {
+        return titolo;
+    }
+
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
+    }
+
+    public String getSubtitolo() {
+        return subtitolo;
+    }
+
+    public void setSubtitolo(String subtitolo) {
+        this.subtitolo = subtitolo;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    
+
+
 }

@@ -9,6 +9,9 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 public class IconicApplicazioniUpdateDTO {
 
     private String descrizione;
+    private String titolo;
+    private String subtitolo;
+    private String url;
 
     public String getDescrizione() {
         return descrizione;
@@ -17,5 +20,31 @@ public class IconicApplicazioniUpdateDTO {
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
     }
+
+    public String getTitolo() {
+        return titolo;
+    }
+
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
+    }
+
+    public String getSubtitolo() {
+        return subtitolo;
+    }
+
+    public void setSubtitolo(String subtitolo) {
+        this.subtitolo = subtitolo;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+
 
 }
