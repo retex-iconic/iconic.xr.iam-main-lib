@@ -9,7 +9,6 @@ import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -48,13 +47,13 @@ public class BadgeSocietaQueryEntity {
     private SocietaQueryEntity societa;
 
     //Master Detail
-     @OneToMany(fetch = FetchType.EAGER, mappedBy = "badge")
-     @JsonIgnore
-     private Set<UtentiSocietaQueryEntity>  utentiSocieta;
+    //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "badge")
+    //  @JsonIgnore
+    //  private Set<UtentiSocietaQueryEntity>  utentiSocieta;
 
-     @OneToMany(fetch = FetchType.EAGER, mappedBy = "badge")
-     @JsonIgnore
-     private Set<SostituzioniBadgeQueryEntity>  sostituzioniBadge;
+    //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "badge")
+    //  @JsonIgnore
+    //  private Set<SostituzioniBadgeQueryEntity>  sostituzioniBadge;
     
 
     @Column(name = "version")
