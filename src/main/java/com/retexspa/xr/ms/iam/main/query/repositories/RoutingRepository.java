@@ -11,4 +11,5 @@ public interface RoutingRepository
         extends JpaRepository<RoutingQueryEntity, String>, JpaSpecificationExecutor<RoutingQueryEntity> {
     RoutingQueryEntity findByRoutingCharIdAndIconicApplicazioniId(String routingCharId, String iconicApplicazioniId);
     List<RoutingQueryEntity> findAllByRoutingCharIdAndIconicApplicazioniId(String routingCharId, String applicazioneId);
+    List<RoutingQueryEntity> findAllByIconicApplicazioniId(String id);
 }

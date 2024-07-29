@@ -1,7 +1,5 @@
 package com.retexspa.xr.ms.iam.main.query.entities;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +13,6 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.lang.NonNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.retexspa.xr.ms.iam.main.core.dto.societa.SocietaBaseDTO;
 import com.retexspa.xr.ms.main.query.entities.GerarchiaQueryEntity;
 
@@ -118,15 +115,6 @@ public class SocietaQueryEntity {
   public void setGerarchia(GerarchiaQueryEntity gerarchia) {
     this.gerarchia = gerarchia;
   }
-
-  public Set<ApplicazioniQueryEntity> getApplicazioni() {
-    return applicazioni;
-  }
-
-  public void setApplicazioni(Set<ApplicazioniQueryEntity> applicazioni) {
-    this.applicazioni = applicazioni;
-  }
-
   
 
 }

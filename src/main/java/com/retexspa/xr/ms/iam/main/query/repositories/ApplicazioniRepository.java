@@ -13,4 +13,5 @@ public interface ApplicazioniRepository
     List<ApplicazioniQueryEntity> findAllByCodiceAndSocietaId(String codice,String societaId);
 
     public List<ApplicazioniQueryEntity> findAllBySocietaId(String id);
+    List<ApplicazioniQueryEntity> findAllByIconicApplicazioniId(String id);
 }
