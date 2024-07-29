@@ -10,12 +10,14 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "utenti_applicazioni", indexes = {
-    @Index(name = "utenti_applicazioni_ruolo", columnList = "ruolo_id"),
-    @Index(name = "utenti_applicazioni_contesto", columnList = "contesto_id"),
-    @Index(name = "utenti_applicazioni_utente_societa", columnList = "utenti_id"),
-    @Index(name = "utenti_applicazioni_data_inizio_validita", columnList = "data_inizio_validita"),
-    @Index(name = "utenti_applicazioni_data_fine_validita", columnList = "data_fine_validita")
+@Table(name = "utenti_applicazioni", uniqueConstraints = {
+        @UniqueConstraint(name = "utenti_applicazioni_uk", columnNames = { "utenti_id", "contesto_id", "ruolo_id" })
+}, indexes = {
+        @Index(name = "utenti_applicazioni_ruolo", columnList = "ruolo_id"),
+        @Index(name = "utenti_applicazioni_contesto", columnList = "contesto_id"),
+        @Index(name = "utenti_applicazioni_utente_societa", columnList = "utenti_id"),
+        @Index(name = "utenti_applicazioni_data_inizio_validita", columnList = "data_inizio_validita"),
+        @Index(name = "utenti_applicazioni_data_fine_validita", columnList = "data_fine_validita")
 })
 public class UtentiApplicazioniQueryEntity {
 
@@ -24,27 +26,27 @@ public class UtentiApplicazioniQueryEntity {
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "utenti_id", referencedColumnName = "id")
+    @JoinColumn(name = "utenti_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_utentiApplicazioni_utente"))
     private UtentiSocietaQueryEntity utente;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "contesto_id", referencedColumnName = "id")
+    @JoinColumn(name = "contesto_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_utentiApplicazioni_contesto"))
     private ContestiApplicazioniQueryEntity contesto;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ruolo_id", referencedColumnName = "id")
+    @JoinColumn(name = "ruolo_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_utentiApplicazioni_ruolo"))
     private RuoliApplicazioneQueryEntity ruolo;
 
-    @Column(name="data_inizio_validita")
+    @Column(name = "data_inizio_validita")
     private LocalDateTime dataInizioValidita;
 
-    @Column(name="data_fine_validita")
+    @Column(name = "data_fine_validita")
     private LocalDateTime dataFineValidita;
 
     @EnumValidator(enumClazz = Enums.CheckSN.class)
     private String flgAcquisizioneAuto;
 
-    @Column(name="version")
+    @Column(name = "version")
     private Long version;
 
     public UtentiApplicazioniQueryEntity() {
@@ -53,7 +55,7 @@ public class UtentiApplicazioniQueryEntity {
     public UtentiApplicazioniQueryEntity(@NotNull String id, UtentiApplicazioniBaseDTO dto, Long version) {
         this.id = id;
         this.dataInizioValidita = dto.getDataInizioValidita();
-        this.dataFineValidita= dto.getDataFineValidita();
+        this.dataFineValidita = dto.getDataFineValidita();
         this.flgAcquisizioneAuto = dto.getFlgAcquisizioneAuto();
         this.version = version;
     }
@@ -66,6 +68,7 @@ public class UtentiApplicazioniQueryEntity {
     public void setId(@NonNull String id) {
         this.id = id;
     }
+
     public Long getVersion() {
         return version;
     }

@@ -2,6 +2,7 @@ package com.retexspa.xr.ms.iam.main.query.repositories;
 
 import com.retexspa.xr.ms.iam.main.query.entities.SostituzioniBadgeQueryEntity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,6 @@ public interface SostituzioniBadgeRepository
                 List<SostituzioniBadgeQueryEntity> findAllByBadgeSocietaId(String id);
 
                 List<SostituzioniBadgeQueryEntity> findAllByUtentiId(String id);
+
+                SostituzioniBadgeQueryEntity findByUtentiIdAndBadgeIdAndDataSblocco(String utentiSocietaId, String badgeId, LocalDateTime dataSblocco);
 }
