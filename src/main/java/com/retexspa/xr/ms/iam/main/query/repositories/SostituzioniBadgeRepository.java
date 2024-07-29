@@ -11,4 +11,6 @@ public interface SostituzioniBadgeRepository
         extends JpaRepository<SostituzioniBadgeQueryEntity, String>, JpaSpecificationExecutor<SostituzioniBadgeQueryEntity> {
 
                 List<SostituzioniBadgeQueryEntity> findAllByBadgeSocietaId(String id);
+
+                List<SostituzioniBadgeQueryEntity> findAllByUtentiId(String id);
 }
