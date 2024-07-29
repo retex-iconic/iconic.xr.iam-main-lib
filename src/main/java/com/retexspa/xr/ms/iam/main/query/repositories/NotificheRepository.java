@@ -9,4 +9,5 @@ import java.util.List;
 public interface NotificheRepository extends JpaRepository<NotificheQueryEntity, String>, JpaSpecificationExecutor<NotificheQueryEntity> {
     NotificheQueryEntity findByRoutingIdAndIconicApplicazioniId(String routingId, String iconicApplicazioniId);
     List<NotificheQueryEntity> findAllByRoutingIdAndIconicApplicazioniId(String routingId, String iconicApplicazioniId);
+    List<NotificheQueryEntity> findAllByIconicApplicazioniId(String id);
 }
