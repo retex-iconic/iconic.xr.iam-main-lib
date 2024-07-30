@@ -12,4 +12,6 @@ public interface AttributiUtentiRepository
 
     List<AttributiUtentiQueryEntity> findAllByUtenteApplicazioneId(String id);
 
-    List<AttributiUtentiQueryEntity> findAllByContestoApplicazioneId(String id);}
+    List<AttributiUtentiQueryEntity> findAllByContestoApplicazioneId(String id);
+
+    List<AttributiUtentiQueryEntity> findAllByAttributoUtentiId(String id);}
