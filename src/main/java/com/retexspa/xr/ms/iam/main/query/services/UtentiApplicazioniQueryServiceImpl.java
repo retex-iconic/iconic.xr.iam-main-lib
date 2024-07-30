@@ -70,6 +70,9 @@ public class UtentiApplicazioniQueryServiceImpl implements UtentiApplicazioniQue
         if (filter.getApplicazioneId() != null) {
             specifications.add((r, q, c) -> c.equal(r.get("ruolo").get("applicazioni").get("id"), filter.getApplicazioneId()));
         }
+        if (filter.getSocietaId() != null) {
+            specifications.add((r, q, c) -> c.equal(r.get("utente").get("societa").get("id"), filter.getSocietaId()));
+        }
         if (filter.getUtenteId() != null) {
             specifications.add((r, q, c) -> c.equal(r.get("utente").get("id"), filter.getUtenteId()));
         }

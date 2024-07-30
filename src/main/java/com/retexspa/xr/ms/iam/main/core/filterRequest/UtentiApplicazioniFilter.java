@@ -16,6 +16,7 @@ public class UtentiApplicazioniFilter {
     private String contestoId;
     private String ruoloId;
     private String applicazioneId;
+    private String societaId;
     private LocalDateTime dataInizioValidita;
     private LocalDateTime dataFineValidita;
     @EnumValidator(enumClazz = Enums.CheckSN.class)
@@ -32,6 +33,7 @@ public class UtentiApplicazioniFilter {
             @JsonProperty("contestoId") String contestoId,
             @JsonProperty("ruoloId") String ruoloId,
             @JsonProperty("applicazioneId") String applicazioneId, 
+            @JsonProperty("societaId") String societaId, 
             @JsonProperty("dataInizioValidita") LocalDateTime dataInizioValidita,
             @JsonProperty("dataFineValidita") LocalDateTime dataFineValidita,
             @JsonProperty("flgAcquisizioneAuto") String flgAcquisizioneAuto,
@@ -42,6 +44,7 @@ public class UtentiApplicazioniFilter {
         this.contestoId = contestoId;
         this.ruoloId = ruoloId;
         this.applicazioneId = applicazioneId;
+        this.societaId = societaId;
         this.dataInizioValidita = dataInizioValidita;
         this.dataFineValidita = dataFineValidita;
         this.flgAcquisizioneAuto = flgAcquisizioneAuto;
@@ -104,6 +107,14 @@ public class UtentiApplicazioniFilter {
         this.flgAcquisizioneAuto = flgAcquisizioneAuto;
     }
 
+    public String getSocietaId() {
+        return societaId;
+    }
+
+    public void setSocietaId(String societaId) {
+        this.societaId = societaId;
+    }
+
     public static UtentiApplicazioniFilter createFilterFromMap(Object obj) {
         LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) obj;
         UtentiApplicazioniFilter filter = new UtentiApplicazioniFilter();
@@ -114,6 +125,7 @@ public class UtentiApplicazioniFilter {
             filter.setContestoId((String) map.get("contestoId"));
             filter.setRuoloId((String) map.get("ruoloId"));
             filter.setApplicazioneId((String) map.get("applicazioneId"));
+            filter.setSocietaId((String) map.get("societaId"));
             DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
             Object dataInizioValidita = map.get("dataInizioValidita");
             if (dataInizioValidita != null) {
