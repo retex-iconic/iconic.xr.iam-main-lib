@@ -7,7 +7,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "contesti_applicazioni")
+@Table(name = "contesti_applicazioni", uniqueConstraints = {
+    @UniqueConstraint(name = "contesti_applicazioni_uk", columnNames = { "codice", "tipo_contesto_applicazione_id" })
+})
 public class ContestiApplicazioniQueryEntity {
 
     @Id
@@ -28,7 +30,7 @@ public class ContestiApplicazioniQueryEntity {
 
 
      @ManyToOne(fetch = FetchType.LAZY)
-     @JoinColumn(name = "tipo_contesto_applicazione_id", referencedColumnName = "id")
+     @JoinColumn(name = "tipo_contesto_applicazione_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_contestiApplicazioni_tipi_contesto_applicazione"))
      private TipiContestoApplicazioneQueryEntity tipoContestoApplicazione;
 
     @Column(name="version")

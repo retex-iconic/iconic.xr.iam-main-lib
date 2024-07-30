@@ -10,4 +10,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 public interface AttributiUtentiRepository
         extends JpaRepository<AttributiUtentiQueryEntity, String>, JpaSpecificationExecutor<AttributiUtentiQueryEntity> {
 
-    List<AttributiUtentiQueryEntity> findAllByUtenteApplicazioneId(String id);}
+    List<AttributiUtentiQueryEntity> findAllByUtenteApplicazioneId(String id);
+
+    List<AttributiUtentiQueryEntity> findAllByContestoApplicazioneId(String id);}
