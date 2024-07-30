@@ -7,7 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "tipiContesto")
+@Table(name = "tipiContesto", uniqueConstraints = {
+        @UniqueConstraint(name = "tipi_contesto_uk", columnNames = { "codice" }) })
 public class TipiContestoQueryEntity {
 
     @Id
@@ -23,10 +24,10 @@ public class TipiContestoQueryEntity {
     @Column(name = "descrizione")
     private String descrizione;
 
-    @Column(name="version")
+    @Column(name = "version")
     private Long version;
 
-    @Column(name="flgGerarchia")
+    @Column(name = "flgGerarchia")
     private String flgGerarchia;
 
     public TipiContestoQueryEntity() {
