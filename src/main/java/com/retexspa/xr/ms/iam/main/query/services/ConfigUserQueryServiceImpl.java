@@ -140,10 +140,12 @@ public class ConfigUserQueryServiceImpl implements ConfigUserQueryService {
                 // routing
                 CriteriaQuery<MenuDTO> query = cb.createQuery(MenuDTO.class);
                 Root<MenuQueryEntity> menu = query.from(MenuQueryEntity.class);
-                Join<MenuQueryEntity, RuoliRoutingQueryEntity> menuRoutingJoin = menu.join("routing");
+                Join<RuoliRoutingQueryEntity, RuoliApplicazioneQueryEntity> ruoliJoin = menu.join("routing")
+                                .join("ruoliRouting").join("ruolo");
 
                 query.multiselect(
-                                menu.get("menuName").alias("menu_name")).distinct(true);
+                                menu.get("menuName").alias("menu_name")).distinct(true)
+                 .where(cb.equal(ruoliJoin.get("id"), roleId));
                 // query.where(
                 // cb.equal(menuRoutingJoin.get("ruolo").get("id"), roleId));
 
@@ -167,7 +169,7 @@ public class ConfigUserQueryServiceImpl implements ConfigUserQueryService {
                         idRadiceOld = null;
                         numOpenChildren = 0;
                         resultList.clear();
-                        
+
                         Query hierarchiaRoots = entityManager
                                         .createNativeQuery(select)
                                         .setParameter("roleId", roleId)
@@ -206,10 +208,11 @@ public class ConfigUserQueryServiceImpl implements ConfigUserQueryService {
                                 str = str + "] } ";
                                 numOpenChildren = numOpenChildren - 1;
                         }
-                  
-                        jsonMennu = jsonMennu + ((jsonMennu == "")? "" : "," ) + str;
 
-                };
+                        jsonMennu = jsonMennu + ((jsonMennu == "") ? "" : ",") + str;
+
+                }
+                ;
                 jsonMennu = "[" + jsonMennu + "]";
                 return jsonMennu;
 

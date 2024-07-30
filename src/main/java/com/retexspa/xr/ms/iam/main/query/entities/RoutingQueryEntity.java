@@ -2,7 +2,10 @@ package com.retexspa.xr.ms.iam.main.query.entities;
 
 import org.springframework.lang.NonNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.retexspa.xr.ms.iam.main.core.dto.routing.RoutingBaseDTO;
+
+import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -26,20 +29,31 @@ public class RoutingQueryEntity {
     @Column(name = "icone")
     private String icone;
 
-
     @Column(name="version")
     private Long version;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "iconic_applicazione_id", referencedColumnName = "id")
     private IconicApplicazioniQueryEntity iconicApplicazioni;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private RoutingQueryEntity nodo;
+
     @Column(name="subtitolo")
     private String subtitolo;
     @Column(name="flgGdpr")
     private String flgGdpr;
 
+    // master detail
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "routing")
+    @JsonIgnore
+    private Set<MenuQueryEntity> menu;
+ 
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "routing")
+    @JsonIgnore
+    private Set<RuoliRoutingQueryEntity> ruoliRouting;
+    
+    
     public RoutingQueryEntity() {
     }
 
@@ -135,4 +149,21 @@ public class RoutingQueryEntity {
     public void setFlgGdpr(String flgGdpr) {
         this.flgGdpr = flgGdpr;
     }
+
+    public Set<MenuQueryEntity> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Set<MenuQueryEntity> menu) {
+        this.menu = menu;
+    }
+
+    public Set<RuoliRoutingQueryEntity> getRuoliRouting() {
+        return ruoliRouting;
+    }
+
+    public void setRuoliRouting(Set<RuoliRoutingQueryEntity> ruoliRouting) {
+        this.ruoliRouting = ruoliRouting;
+    }
+
 }

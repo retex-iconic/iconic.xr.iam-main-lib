@@ -46,7 +46,7 @@ public class UtentiQueryEntity {
     private Long version;
 
     // master detail
-    // @OneToMany(fetch = FetchType.EAGER, mappedBy = "societa")
+    // @OneToMany(fetch = FetchType.LAZY, mappedBy = "societa")
     // @JsonIgnore
     // private Set<UtentiSocietaQueryEntity> utentiSocieta;
 

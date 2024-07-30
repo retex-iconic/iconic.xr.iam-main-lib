@@ -47,11 +47,11 @@ public class BadgeSocietaQueryEntity {
     private SocietaQueryEntity societa;
 
     //Master Detail
-    //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "badge")
+    //  @OneToMany(fetch = FetchType.LAZY, mappedBy = "badge")
     //  @JsonIgnore
     //  private Set<UtentiSocietaQueryEntity>  utentiSocieta;
 
-    //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "badge")
+    //  @OneToMany(fetch = FetchType.LAZY, mappedBy = "badge")
     //  @JsonIgnore
     //  private Set<SostituzioniBadgeQueryEntity>  sostituzioniBadge;
     

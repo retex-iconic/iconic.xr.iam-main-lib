@@ -39,20 +39,20 @@ public class SocietaQueryEntity {
   private Long version;
 
   //foreing key
-  @ManyToOne(optional = true, fetch = FetchType.EAGER)
+  @ManyToOne(optional = true, fetch = FetchType.LAZY)
   @JoinColumn(name = "gerarchia_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_societa_gerarchia"))
   private GerarchiaQueryEntity gerarchia;
 
   //master detail
-  // @OneToMany( fetch = FetchType.EAGER, mappedBy = "societa")
+  // @OneToMany( fetch = FetchType.LAZY, mappedBy = "societa")
   // @JsonIgnore
   // private Set<ApplicazioniQueryEntity>  applicazioni;
 
-  // @OneToMany( fetch = FetchType.EAGER, mappedBy = "societa")
+  // @OneToMany( fetch = FetchType.LAZY, mappedBy = "societa")
   // @JsonIgnore
   // private Set<UtentiSocietaQueryEntity>  utentiSocieta;
 
-  // @OneToMany( fetch = FetchType.EAGER, mappedBy = "societa")
+  // @OneToMany( fetch = FetchType.LAZY, mappedBy = "societa")
   // @JsonIgnore
   // private Set<BadgeSocietaQueryEntity>  badgeSocieta;
 

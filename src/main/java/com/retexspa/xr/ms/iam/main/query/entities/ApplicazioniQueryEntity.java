@@ -40,28 +40,28 @@ public class ApplicazioniQueryEntity {
 
     //foreingkey
     @NotNull
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "societa_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_applicazione_societa"))
     private SocietaQueryEntity societa;
 
-    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "iconic_applicazioni_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_applicazione_iconic_applicazione"))
     private IconicApplicazioniQueryEntity iconicApplicazioni;
 
     //master details
-    //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazione")
+    //  @OneToMany(fetch = FetchType.LAZY, mappedBy = "applicazione")
     //  @JsonIgnore
     //  private Set<TipiContestoApplicazioneQueryEntity>  tipiContestoApplicazione;
 
-    //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazioni")
+    //  @OneToMany(fetch = FetchType.LAZY, mappedBy = "applicazioni")
     //  @JsonIgnore
     //  private Set<RuoliApplicazioneQueryEntity>  ruoliApplicazione;
 
-    //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazione")
+    //  @OneToMany(fetch = FetchType.LAZY, mappedBy = "applicazione")
     //  @JsonIgnore
     //  private Set<AnagAttributiRuoliQueryEntity>  anagraficaAttributiRuoli;
 
-    //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "applicazione")
+    //  @OneToMany(fetch = FetchType.LAZY, mappedBy = "applicazione")
     //  @JsonIgnore
     //  private Set<AnagAttributiRuoliQueryEntity>  anagraficaAttributiRuoliShared;
 

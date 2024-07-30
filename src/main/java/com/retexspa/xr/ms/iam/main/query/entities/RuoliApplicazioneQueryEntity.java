@@ -1,9 +1,12 @@
 package com.retexspa.xr.ms.iam.main.query.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.retexspa.xr.ms.iam.main.core.dto.Enums;
 import com.retexspa.xr.ms.iam.main.core.dto.ruoliApplicazione.RuoliApplicazioneBaseDTO;
 import com.retexspa.xr.ms.main.core.helpers.EnumValidator;
 import org.springframework.lang.NonNull;
+
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -40,6 +43,12 @@ public class RuoliApplicazioneQueryEntity {
 
     @Column(name="version")
     private Long version;
+
+    //details
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "ruolo")
+    @JsonIgnore
+    private Set<RuoliRoutingQueryEntity> ruoliRouting;
+
 
     public RuoliApplicazioneQueryEntity() {
     }
@@ -121,4 +130,14 @@ public class RuoliApplicazioneQueryEntity {
     public void setVersion(Long version) {
         this.version = version;
     }
+
+    public Set<RuoliRoutingQueryEntity> getRuoliRouting() {
+        return ruoliRouting;
+    }
+
+    public void setRuoliRouting(Set<RuoliRoutingQueryEntity> ruoliRouting) {
+        this.ruoliRouting = ruoliRouting;
+    }
+
+    
 }
