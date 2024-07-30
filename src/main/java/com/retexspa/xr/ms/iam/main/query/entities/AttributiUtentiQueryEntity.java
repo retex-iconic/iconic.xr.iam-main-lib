@@ -6,7 +6,13 @@ import org.springframework.lang.NonNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "attributi_utenti")
+@Table(name = "attributi_utenti", uniqueConstraints = {
+        @UniqueConstraint(name = "attributi_utenti_uk", columnNames = {
+                "utente_applicazione_id",
+                "attributi_utenti_id",
+                "contesto_applicazione_id"
+        })
+})
 public class AttributiUtentiQueryEntity {
 
     @Id
@@ -14,21 +20,21 @@ public class AttributiUtentiQueryEntity {
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "utente_applicazione_id", referencedColumnName = "id")
+    @JoinColumn(name = "utente_applicazione_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_attributiUtenti_utenti_applicazioni"))
     private UtentiApplicazioniQueryEntity utenteApplicazione;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "attributi_utenti_id", referencedColumnName = "id")
+    @JoinColumn(name = "attributi_utenti_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_attributiUtenti_anag_attributi_utenti"))
     private AnagAttributiUtentiQueryEntity attributoUtenti;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "contesto_applicazione_id", referencedColumnName = "id")
+    @JoinColumn(name = "contesto_applicazione_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_attributiUtenti_contesto_applicazione"))
     private ContestiApplicazioniQueryEntity contestoApplicazione;
 
-    @Column(name="version")
+    @Column(name = "version")
     private Long version;
 
-    @Column(name="valore")
+    @Column(name = "valore")
     private String valore;
 
     public AttributiUtentiQueryEntity() {
@@ -37,8 +43,7 @@ public class AttributiUtentiQueryEntity {
     public AttributiUtentiQueryEntity(
             @NonNull String id,
             AttributiUtentiBaseDTO dto,
-            Long version
-    ) {
+            Long version) {
         this.id = id;
         this.valore = dto.getValore();
         this.version = version;
