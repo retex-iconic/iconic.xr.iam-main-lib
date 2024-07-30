@@ -10,4 +10,5 @@ public interface ContestiApplicazioniRepository
         extends JpaRepository<ContestiApplicazioniQueryEntity, String>, JpaSpecificationExecutor<ContestiApplicazioniQueryEntity> {
     ContestiApplicazioniQueryEntity findByCodiceAndTipoContestoApplicazioneId(String codice, String tipoContestoApplicazioneId);
     List<ContestiApplicazioniQueryEntity> findAllByCodiceAndTipoContestoApplicazioneId(String codice, String tipoContestoApplicazioneId);
+    List<ContestiApplicazioniQueryEntity> findAllByTipoContestoApplicazioneId(String id);
 }

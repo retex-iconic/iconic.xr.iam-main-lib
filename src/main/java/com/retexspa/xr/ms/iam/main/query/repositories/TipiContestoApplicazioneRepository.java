@@ -13,4 +13,5 @@ public interface TipiContestoApplicazioneRepository
     List<TipiContestoApplicazioneQueryEntity> findAllByTipiContestoIdAndApplicazioneId(String tipiContestoId, String applicazioneId);
 
     List<TipiContestoApplicazioneQueryEntity> findAllByApplicazioneId(String applicazioneId);
+    List<TipiContestoApplicazioneQueryEntity> findAllByTipiContestoId(String id);
 }

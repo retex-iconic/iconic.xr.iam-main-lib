@@ -11,4 +11,6 @@ public interface UtentiApplicazioniRepository extends JpaRepository<UtentiApplic
 
     List<UtentiApplicazioniQueryEntity> findAllByUtenteId(String id);
 
+    List<UtentiApplicazioniQueryEntity> findAllByContestoId(String id);
+
 }
