@@ -7,27 +7,28 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "tipiContestoApplicazione")
+@Table(name = "tipiContestoApplicazione", uniqueConstraints = {
+        @UniqueConstraint(name = "tipi_contesto_applicazione_uk", columnNames = { "applicazione_id", "tipi_contesto_id",
+                "tassonomia_id" }) })
 public class TipiContestoApplicazioneQueryEntity {
 
     @Id
     @NonNull
     private String id;
 
-    @Column(name="version")
+    @Column(name = "version")
     private Long version;
 
-    @Column(name="tassonomia_id")
+    @Column(name = "tassonomia_id")
     private String tassonomiaId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "applicazione_id", referencedColumnName = "id")
+    @JoinColumn(name = "applicazione_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_tipiContestoApplicazione_applicazione"))
     private ApplicazioniQueryEntity applicazione;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tipi_contesto_id", referencedColumnName = "id")
+    @JoinColumn(name = "tipi_contesto_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_tipiContestoApplicazione_tipi_contesto"))
     private TipiContestoQueryEntity tipiContesto;
-
 
     public TipiContestoApplicazioneQueryEntity() {
     }
@@ -78,5 +79,4 @@ public class TipiContestoApplicazioneQueryEntity {
         this.tassonomiaId = tassonomiaId;
     }
 
-    
 }
