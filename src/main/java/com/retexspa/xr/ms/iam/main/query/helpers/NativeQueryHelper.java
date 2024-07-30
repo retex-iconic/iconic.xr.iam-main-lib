@@ -58,7 +58,9 @@ public class NativeQueryHelper extends com.retexspa.xr.ms.main.core.helpers.Nati
         "    ro.url_link, " +
         "    TM.icone, " +
         "    TM.QUERY_PARAMS, " +
-        "    TM.home_pagina " +
+        "    TM.home_pagina, " +
+        "    TM.menu_name, " +
+        "    TM.menu_default " +
         "  FROM " +
         "    public.menu TM " +
         "    INNER JOIN public.ruoli_routing r ON r.routing_id = tm.routing_id " +
@@ -68,6 +70,7 @@ public class NativeQueryHelper extends com.retexspa.xr.ms.main.core.helpers.Nati
         "    PID_MENU = '0' " +
         "    AND COALESCE(r.flg_attiva, 'S') <> 'N' " +
         "    AND ra.id = :roleId " +
+        "    AND TM.menu_name = :menuName " +
         "  UNION SELECT " +
         "    r.routing_id, " +
         "    TREE.RADICE, " +
@@ -82,7 +85,9 @@ public class NativeQueryHelper extends com.retexspa.xr.ms.main.core.helpers.Nati
         "    ro.URL_LINK, " +
         "    TMTREE.icone, " +
         "    TMTREE.QUERY_PARAMS, " +
-        "    TMTREE.home_pagina " +
+        "    TMTREE.home_pagina, " +
+        "    TMTREE.menu_name, " +
+        "    TMTREE.menu_default " +
         "  FROM " +
         "    public.menu TMTREE " +
         "    INNER JOIN public.ruoli_routing r ON r.routing_id = TMTREE.routing_id " +
@@ -92,6 +97,7 @@ public class NativeQueryHelper extends com.retexspa.xr.ms.main.core.helpers.Nati
         "  WHERE " +
         "    COALESCE(r.flg_attiva, 'S') <> 'N' " +
         "    AND ra.id = :roleId " +
+        "    AND TMTREE.menu_name = :menuName " +
         ") " +
         "SELECT distinct" +
         "  CHR(123) || '\"title\":\"' || TREE.titolo || '\"' || CASE " +
@@ -102,6 +108,16 @@ public class NativeQueryHelper extends com.retexspa.xr.ms.main.core.helpers.Nati
         "  END || CASE " +
         "    WHEN (TREE.icone IS NOT NULL) THEN " +
         "      ', \"icon\": \"' || TREE.icone || '\" ' " +
+        "    ELSE " +
+        "      '' " +
+        "  END || CASE " +
+        "    WHEN (TREE.menu_name IS NOT NULL) THEN " +
+        "      ', \"menu_name\": \"' || TREE.menu_name || '\" ' " +
+        "    ELSE " +
+        "      '' " +
+        "  END || CASE " +
+        "    WHEN (TREE.menu_default IS NOT NULL) THEN " +
+        "      ', \"menu_default\": \"' || TREE.menu_default || '\" ' " +
         "    ELSE " +
         "      '' " +
         "  END || CASE " +
@@ -132,7 +148,9 @@ public class NativeQueryHelper extends com.retexspa.xr.ms.main.core.helpers.Nati
         "  tree.icone, " +
         "  QUERY_PARAMS, " +
         "  home_pagina, " +
-        "  CASE WHEN (PID_MENU = 0) THEN 0 ELSE 1 end pid_order " +
+        "  CASE WHEN (PID_MENU = 0) THEN 0 ELSE 1 end pid_order, " +
+        "  menu_name, " +
+        "  menu_default " +
         "FROM " +
         "  TREE " +
         "  INNER JOIN public.ruoli_routing r ON r.routing_id = TREE.routing_id " +

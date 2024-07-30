@@ -1,11 +1,18 @@
 package com.retexspa.xr.ms.iam.main.query.entities;
 
 
-import com.retexspa.xr.ms.iam.main.core.dto.menu.MenuBaseDTO;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.lang.NonNull;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import com.retexspa.xr.ms.iam.main.core.dto.menu.MenuBaseDTO;
 
 @Entity
 @Table(name = "menu")
@@ -39,6 +46,13 @@ public class MenuQueryEntity {
     private MenuQueryEntity nodo;
     @Column(name="version")
     private Long version;
+
+    @Column(name="menuName")
+    private String menuName;
+
+    @Column(name="menuDefault")
+    private String menuDefault;
+    
     public MenuQueryEntity() {
     }
     public MenuQueryEntity(@NotNull String id, MenuBaseDTO dto, Long version) {
@@ -52,6 +66,8 @@ public class MenuQueryEntity {
         this.homePagina = dto.getHomePagina();
         this.tipoMenu = dto.getTipoMenu();
         this.idMenu = dto.getIdMenu();
+        this.menuDefault = dto.getMenuName();
+        this.menuName = dto.getMenuDefault();
         this.version = version;
     }
 
@@ -163,6 +179,18 @@ public class MenuQueryEntity {
     }
     public void setPidMenu(Integer pidMenu) {
         this.pidMenu = pidMenu;
+    }
+    public String getMenuName() {
+        return menuName;
+    }
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+    public String getMenuDefault() {
+        return menuDefault;
+    }
+    public void setMenuDefault(String menuDefault) {
+        this.menuDefault = menuDefault;
     }
 
     

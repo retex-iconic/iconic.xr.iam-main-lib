@@ -18,6 +18,10 @@ public class MenuUpdateDTO {
     @EnumValidator(enumClazz = com.retexspa.xr.ms.iam.main.core.dto.Enums.CheckSN.class , message = "home_pagina not valid")
     private String homePagina;
 
+    private String menuName;
+    @EnumValidator(enumClazz = Enums.CheckSN.class , message = "Menu Default not valid")
+    private String menuDefault;
+    
     public Integer getOrdinamento() {
         return ordinamento;
     }
@@ -64,5 +68,21 @@ public class MenuUpdateDTO {
 
     public void setHomePagina(String homePagina) {
         this.homePagina = homePagina;
+    }
+
+    public String getMenuName() {
+        return menuName;
+    }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+
+    public String getMenuDefault() {
+        return menuDefault;
+    }
+
+    public void setMenuDefault(String menuDefault) {
+        this.menuDefault = menuDefault;
     }
 }

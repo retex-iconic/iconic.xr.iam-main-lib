@@ -17,10 +17,12 @@ public class MenuDTO {
     private String icone;
     private String queryParams;
     private String homePagina;
+    private String menuName;
+    private String menuDefault;
 
     public MenuDTO(Integer pidOrder, String strjson, boolean isLeaf, String radice, Integer idRadice, Integer idMenu,
             Integer pidMenu, Integer rootSort, Integer ordinamento, String titolo, String menuCharId, String urlLink,
-            String icone, String queryParams, String homePagina) {
+            String icone, String queryParams, String homePagina, String menuName, String menuDefault) {
         this.pidOrder = pidOrder;
         this.strjson = strjson;
         this.isLeaf = isLeaf;
@@ -36,6 +38,12 @@ public class MenuDTO {
         this.icone = icone;
         this.queryParams = queryParams;
         this.homePagina = homePagina;
+        this.menuName = menuName;
+        this.menuDefault = menuDefault;
+    }
+
+    public MenuDTO(String menuName){
+        this.menuName = menuName;
     }
 
     public String getStrjson() {
@@ -166,12 +174,31 @@ public class MenuDTO {
         this.homePagina = homePagina;
     }
 
+    
+    public String getMenuName() {
+        return menuName;
+    }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+
+    public String getMenuDefault() {
+        return menuDefault;
+    }
+
+    public void setMenuDefault(String menuDefault) {
+        this.menuDefault = menuDefault;
+    }
+
     @Override
     public String toString() {
         return "ConfigUserDTO [strjson=" + strjson + ", isLeaf=" + isLeaf + ", menuCharId=" + menuCharId + ", idRadice="
                 + idRadice + ", ordinamento=" + ordinamento + ", radice=" + radice + ", idMenu=" + idMenu + ", pidMenu="
                 + pidMenu + ", rootSort=" + rootSort + ", titolo=" + titolo + ", urlLink=" + urlLink + ", icone="
-                + icone + ", queryParams=" + queryParams + ", homePagina=" + homePagina + "]";
+                + icone + ", queryParams=" + queryParams + ", homePagina=" + homePagina 
+                 + ", menuName=" + menuName + ", menuDefault=" + menuDefault + 
+                "]";
     }
 
 }
