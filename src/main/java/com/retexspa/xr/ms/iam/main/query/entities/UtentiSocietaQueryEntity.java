@@ -3,6 +3,7 @@ package com.retexspa.xr.ms.iam.main.query.entities;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.ForeignKey;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -19,17 +20,17 @@ import com.retexspa.xr.ms.iam.main.core.dto.utentiSocieta.UtentiSocietaBaseDTO;
 import com.retexspa.xr.ms.main.core.helpers.EnumValidator;
 
 @Entity
-@Table(name = "utenti_societa", uniqueConstraints = { 
-    @UniqueConstraint(columnNames = { "utente_id", "societa_id" }, name = "uk_utente_societa"),
-    @UniqueConstraint(columnNames = { "matricola", "societa_id" }, name = "uk_utenti_societa_matricola"),
-    @UniqueConstraint(columnNames = { "upn", "societa_id" }, name = "uk_utenti_societa_upn") }, 
-indexes = {
-    @Index(name = "index_utenti_societa_id", columnList = "id"),
-    @Index(name = "index_utenti_societa_matricola", columnList = "matricola"),
-    @Index(name = "index_utenti_societa_badge_id", columnList = "badge_id"),
-    @Index(name = "index_utenti_societa_utente_id", columnList = "utente_id"),
-    @Index(name = "index_utenti_societa_societa", columnList = "societa_id")
-})
+@Table(name = "utenti_societa", uniqueConstraints = {
+        @UniqueConstraint(columnNames = { "utente_id", "societa_id" }, name = "uk_utente_societa"),
+        @UniqueConstraint(columnNames = { "matricola", "societa_id" }, name = "uk_utenti_societa_matricola"),
+        @UniqueConstraint(columnNames = { "badge_id", "societa_id" }, name = "uk_utenti_societa_badge"),
+        @UniqueConstraint(columnNames = { "upn", "societa_id" }, name = "uk_utenti_societa_upn") }, indexes = {
+                @Index(name = "index_utenti_societa_id", columnList = "id"),
+                @Index(name = "index_utenti_societa_matricola", columnList = "matricola"),
+                @Index(name = "index_utenti_societa_badge_id", columnList = "badge_id"),
+                @Index(name = "index_utenti_societa_utente_id", columnList = "utente_id"),
+                @Index(name = "index_utenti_societa_societa", columnList = "societa_id")
+        })
 public class UtentiSocietaQueryEntity {
 
     @Id
@@ -37,7 +38,7 @@ public class UtentiSocietaQueryEntity {
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "utente_id", referencedColumnName = "id")
+    @JoinColumn(name = "utente_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_utentiSocieta_utente"))
     private UtentiQueryEntity utente;
 
     @Column(name = "data_inizio_validita")
@@ -50,7 +51,7 @@ public class UtentiSocietaQueryEntity {
     private String matricola;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "badge_id", referencedColumnName = "id")
+    @JoinColumn(name = "badge_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_utentiSocieta_badge"))
     private BadgeSocietaQueryEntity badge;
 
     @EnumValidator(enumClazz = Enums.StatoBadge.class)
@@ -67,10 +68,10 @@ public class UtentiSocietaQueryEntity {
     private String pwd;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "societa_id", referencedColumnName = "id")
+    @JoinColumn(name = "societa_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_utentiSocieta, societa"))
     private SocietaQueryEntity societa;
 
-    @Column(name="version")
+    @Column(name = "version")
     private Long version;
 
     public UtentiSocietaQueryEntity() {
