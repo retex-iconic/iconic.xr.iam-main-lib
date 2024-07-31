@@ -7,28 +7,30 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "ruoli_routing")
+@Table(name = "ruoli_routing", uniqueConstraints = {
+    @UniqueConstraint(name = "ruoli_routing_uk", columnNames = { "routing_id", "ruolo_id" })
+})
 public class RuoliRoutingQueryEntity {
     @Id @NonNull private String id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "routing_id", referencedColumnName = "id")
+    @JoinColumn(name = "routing_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_ruoliRouting_routing"))
     private RoutingQueryEntity routing;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ruolo_id", referencedColumnName = "id")
+    @JoinColumn(name = "ruolo_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_ruoliRouting_ruolo"))
     private RuoliApplicazioneQueryEntity ruolo;
-    @Column(name = "flgAttiva")
+    @Column(name = "flg_attiva")
     private String flgAttiva;
 
-    @Column(name = "flgReadonly")
+    @Column(name = "flg_readonly")
     private String flgReadonly;
 
-    @Column(name = "flgInsert")
+    @Column(name = "flg_insert")
     private String flgInsert;
 
-    @Column(name = "flgUpdate")
+    @Column(name = "flg_update")
     private String flgUpdate;
 
-    @Column(name = "flgDelete")
+    @Column(name = "flg_delete")
     private String flgDelete;
     @Column(name="version")
     private Long version;
