@@ -11,20 +11,22 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "routing")
+@Table(name = "routing", uniqueConstraints = {
+    @UniqueConstraint(name = "routing_uk", columnNames = { "routing_char_id", "iconic_applicazione_id" })
+})
 public class RoutingQueryEntity {
 
     @Id
     @NonNull
     private String id;
 
-    @Column(name = "routingCharId")
+    @Column(name = "routing_char_id")
     private String routingCharId;
 
     @Column(name = "titolo")
     private String titolo;
 
-    @Column(name = "urlLink")
+    @Column(name = "url_link")
     private String urlLink;
     @Column(name = "icone")
     private String icone;
@@ -33,15 +35,16 @@ public class RoutingQueryEntity {
     private Long version;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "iconic_applicazione_id", referencedColumnName = "id")
+    @JoinColumn(name = "iconic_applicazione_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_routing_iconic_applicazioni"))
     private IconicApplicazioniQueryEntity iconicApplicazioni;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "nodo_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_routing_nodo"))
     private RoutingQueryEntity nodo;
 
     @Column(name="subtitolo")
     private String subtitolo;
-    @Column(name="flgGdpr")
+    @Column(name="flg_gdpr")
     private String flgGdpr;
 
     // master detail

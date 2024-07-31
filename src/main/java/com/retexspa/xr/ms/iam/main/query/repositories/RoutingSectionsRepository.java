@@ -10,5 +10,6 @@ public interface RoutingSectionsRepository
         extends JpaRepository<RoutingSectionsQueryEntity, String>, JpaSpecificationExecutor<RoutingSectionsQueryEntity> {
     RoutingSectionsQueryEntity findByRoutingIdAndCodice(String routingId, String codice);
     List<RoutingSectionsQueryEntity> findAllByRoutingIdAndCodice(String routingId, String codice);
+    List<RoutingSectionsQueryEntity> findAllByRoutingId(String id);
 }
 
