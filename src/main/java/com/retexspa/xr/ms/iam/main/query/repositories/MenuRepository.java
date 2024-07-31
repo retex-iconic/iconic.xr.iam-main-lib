@@ -10,4 +10,5 @@ public interface MenuRepository extends JpaRepository<MenuQueryEntity, String>, 
     MenuQueryEntity findByMenuCharIdAndRoutingId(String menuCharId, String routingId);
     List<MenuQueryEntity> findAllByMenuCharIdAndRoutingId(String menuCharId, String routingId);
     List<MenuQueryEntity> findAllByRoutingId(String id);
+    List<MenuQueryEntity> findAllByNodoId(String id);
 }

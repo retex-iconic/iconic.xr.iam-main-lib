@@ -47,6 +47,7 @@ public class MenuQueryEntity {
     @Column(name = "pid_menu")
     private Integer pidMenu;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "nodo_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_menu_nodo"))
     private MenuQueryEntity nodo;
     @Column(name="version")
     private Long version;
