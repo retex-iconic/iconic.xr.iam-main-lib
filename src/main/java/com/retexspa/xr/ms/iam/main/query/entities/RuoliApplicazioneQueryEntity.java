@@ -12,8 +12,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ruoli_applicazione", indexes = {
-    @Index(name = "ruoli_applicazione_applicazione", columnList = "applicazioni_id")
-})
+        @Index(name = "ruoli_applicazione_applicazione", columnList = "applicazioni_id") }, uniqueConstraints = {
+                @UniqueConstraint(name = "ruoli_applicazione_uk", columnNames = { "codice", "applicazioni_id" })
+        })
 public class RuoliApplicazioneQueryEntity {
 
     @Id
@@ -30,25 +31,23 @@ public class RuoliApplicazioneQueryEntity {
     private String descrizione;
 
     @EnumValidator(enumClazz = Enums.CheckSN.class)
-    @Column(name="flg_attivo")
+    @Column(name = "flg_attivo")
     private String flgAttivo;
 
-    @Column(name="livello_iam")
+    @Column(name = "livello_iam")
     private Integer livelloIam;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "applicazioni_id", referencedColumnName = "id")
+    @JoinColumn(name = "applicazioni_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_ruoliApplicazione_applicazioni"))
     private ApplicazioniQueryEntity applicazioni;
 
-    @Column(name="version")
+    @Column(name = "version")
     private Long version;
 
-    //details
-    @OneToMany( fetch = FetchType.LAZY, mappedBy = "ruolo")
+    // details
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "ruolo")
     @JsonIgnore
     private Set<RuoliRoutingQueryEntity> ruoliRouting;
-
 
     public RuoliApplicazioneQueryEntity() {
     }
@@ -139,5 +138,4 @@ public class RuoliApplicazioneQueryEntity {
         this.ruoliRouting = ruoliRouting;
     }
 
-    
 }
