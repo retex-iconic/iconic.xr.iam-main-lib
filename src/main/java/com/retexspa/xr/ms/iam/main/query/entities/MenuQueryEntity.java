@@ -8,49 +8,51 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+import javax.persistence.ForeignKey;
 
 import org.springframework.lang.NonNull;
 
 import com.retexspa.xr.ms.iam.main.core.dto.menu.MenuBaseDTO;
 
 @Entity
-@Table(name = "menu")
+@Table(name = "menu", uniqueConstraints = {
+    @UniqueConstraint(name = "menu_uk", columnNames = { "menu_char_id", "menu_name" })
+})
 public class MenuQueryEntity {
     @Id @NonNull
     private String id;
-    @Column(name = "menuCharId")
+    @Column(name = "menu_char_id")
     private String menuCharId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "routing_id", referencedColumnName = "id")
+    @JoinColumn(name = "routing_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_menu_routing"))
     private RoutingQueryEntity routing;
     @Column(name = "ordinamento")
     private Integer ordinamento;
     @Column(name = "icone")
     private String icone;
-    @Column(name = "queryParams")
+    @Column(name = "query_params")
     private String queryParams;
     @Column(name = "titolo")
     private String titolo;
-    @Column(name = "flgAttiva")
+    @Column(name = "flg_attiva")
     private String flgAttiva;
-    @Column(name = "homePagina")
+    @Column(name = "home_pagina")
     private String homePagina;
-    @Column(name = "tipoMenu")
+    @Column(name = "tipo_menu")
     private String tipoMenu;
-    @Column(name = "idMenu")
+    @Column(name = "id_menu")
     private Integer idMenu;
-    @Column(name = "pidMenu")
+    @Column(name = "pid_menu")
     private Integer pidMenu;
     @ManyToOne(fetch = FetchType.LAZY)
     private MenuQueryEntity nodo;
     @Column(name="version")
     private Long version;
-
-    @Column(name="menuName")
+    @Column(name="menu_name")
     private String menuName;
-
-    @Column(name="menuDefault")
+    @Column(name="menu_default")
     private String menuDefault;
     
     public MenuQueryEntity() {

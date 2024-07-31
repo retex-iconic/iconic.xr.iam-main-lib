@@ -33,14 +33,14 @@ public class MenuBaseDTO {
     @EnumValidator(enumClazz = com.retexspa.xr.ms.iam.main.core.dto.Enums.CheckSN.class , message = "home_pagina not valid")
     private String homePagina;
     @EnumValidator(enumClazz = com.retexspa.xr.ms.iam.main.core.dto.Enums.tipoMenu.class , message = "tipo_menu not valid")
-    @NotNull(message = "tipo_menu is mandatory")
+    @NotNull(message = "tipoMenu is mandatory")
     private String tipoMenu;
-    @NotNull(message = "id menu is mandatory")
+    @NotNull(message = "id Menu is mandatory")
     private Integer idMenu;
     @JsonIgnore
     private Integer pidMenu;
     private String nodoId;
-
+    @NotNull(message = "menuName is mandatory")
     private String menuName;
     @EnumValidator(enumClazz = Enums.CheckSN.class , message = "Menu Default not valid")
     private String menuDefault;
