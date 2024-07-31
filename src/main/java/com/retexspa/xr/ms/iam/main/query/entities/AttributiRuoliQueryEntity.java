@@ -6,7 +6,9 @@ import org.springframework.lang.NonNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "attributi_ruoli")
+@Table(name = "attributi_ruoli", uniqueConstraints = {
+    @UniqueConstraint(name = "attributi_ruoli_uk", columnNames = { "ruolo_id", "attributoRuolo_id" })
+})
 public class AttributiRuoliQueryEntity {
 
     @Id
@@ -16,11 +18,11 @@ public class AttributiRuoliQueryEntity {
     private String valore;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ruolo_id", referencedColumnName = "id")
+    @JoinColumn(name = "ruolo_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_attributiRuoli_ruolo"))
     private RuoliApplicazioneQueryEntity ruolo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "attributoRuolo_id", referencedColumnName = "id")
+    @JoinColumn(name = "attributoRuolo_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_attributiRuoli_anag_attributo_ruolo"))
     private AnagAttributiRuoliQueryEntity attributoRuolo;
 
     private Long version;
