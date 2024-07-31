@@ -7,30 +7,32 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "ruoliRoutingSections")
+@Table(name = "ruoli_routing_sections", uniqueConstraints = {
+    @UniqueConstraint(name = "ruoli_routing_sections_uk", columnNames = { "ruoli_routing_id", "routing_section_id" })
+})
 public class RuoliRoutingSectionsQueryEntity {
     @Id
     @NonNull
     private String id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ruoli_routing_id", referencedColumnName = "id")
+    @JoinColumn(name = "ruoli_routing_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_ruoliRoutingSections_ruoli_routing"))
     private RuoliRoutingQueryEntity ruoliRouting;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "routing_section_id", referencedColumnName = "id")
+    @JoinColumn(name = "routing_section_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_ruoliRoutingSections_routing_section"))
     private RoutingSectionsQueryEntity routingSection;
-    @Column(name = "flgAttiva")
+    @Column(name = "flg_attiva")
     private String flgAttiva;
 
-    @Column(name = "flgReadonly")
+    @Column(name = "flg_readonly")
     private String flgReadonly;
 
-    @Column(name = "flgInsert")
+    @Column(name = "flg_insert")
     private String flgInsert;
 
-    @Column(name = "flgUpdate")
+    @Column(name = "flg_update")
     private String flgUpdate;
 
-    @Column(name = "flgDelete")
+    @Column(name = "flg_delete")
     private String flgDelete;
     @Column(name="version")
     private Long version;
