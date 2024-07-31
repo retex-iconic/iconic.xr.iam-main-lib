@@ -11,4 +11,5 @@ import java.util.List;
 public interface RuoliRoutingSectionsRepository extends JpaRepository<RuoliRoutingSectionsQueryEntity, String>, JpaSpecificationExecutor<RuoliRoutingSectionsQueryEntity> {
     RuoliRoutingSectionsQueryEntity findByRuoliRoutingIdAndRoutingSectionId(String ruoliRoutingId, String routingSectionId);
     List<RuoliRoutingSectionsQueryEntity> findAllByRuoliRoutingIdAndRoutingSectionId(String ruoliRoutingId, String routingSectionId);
+    List<RuoliRoutingSectionsQueryEntity> findAllByRoutingSectionId(String id);
 }

@@ -16,7 +16,7 @@ public class RuoliRoutingSectionsQueryEntity {
     @JoinColumn(name = "ruoli_routing_id", referencedColumnName = "id")
     private RuoliRoutingQueryEntity ruoliRouting;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rourintg_section_id", referencedColumnName = "id")
+    @JoinColumn(name = "routing_section_id", referencedColumnName = "id")
     private RoutingSectionsQueryEntity routingSection;
     @Column(name = "flgAttiva")
     private String flgAttiva;

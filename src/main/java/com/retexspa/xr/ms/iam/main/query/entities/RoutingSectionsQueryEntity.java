@@ -7,7 +7,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "routingSections")
+@Table(name = "routing_sections", uniqueConstraints = {
+    @UniqueConstraint(name = "routing_sections_uk", columnNames = { "codice", "routing_id" })
+})
 public class RoutingSectionsQueryEntity {
 
     @Id
@@ -24,7 +26,7 @@ public class RoutingSectionsQueryEntity {
     private Long version;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "routing_id", referencedColumnName = "id")
+    @JoinColumn(name = "routing_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_routingSections_routing"))
     private RoutingQueryEntity routing;
 
     public RoutingSectionsQueryEntity() {
