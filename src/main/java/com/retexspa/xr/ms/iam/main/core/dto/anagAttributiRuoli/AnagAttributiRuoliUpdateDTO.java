@@ -6,10 +6,6 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.retexspa.xr.ms.iam.main.core.dto.Enums;
 import com.retexspa.xr.ms.main.core.helpers.EnumValidator;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)

@@ -10,4 +10,5 @@ import java.util.List;
 public interface RuoliRoutingRepository extends JpaRepository<RuoliRoutingQueryEntity, String>, JpaSpecificationExecutor<RuoliRoutingQueryEntity> {
     RuoliRoutingQueryEntity findByRoutingIdAndRuoloId(String menuCharId, String routingId);
     List<RuoliRoutingQueryEntity> findAllByRoutingIdAndRuoloId(String menuCharId, String routingId);
+    List<RuoliRoutingQueryEntity> findAllByRuoloId(String id);
 }

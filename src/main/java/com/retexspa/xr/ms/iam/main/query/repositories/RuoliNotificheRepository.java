@@ -9,5 +9,6 @@ import java.util.List;
 public interface RuoliNotificheRepository extends JpaRepository<RuoliNotificheQueryEntity, String>, JpaSpecificationExecutor<RuoliNotificheQueryEntity> {
     RuoliNotificheQueryEntity findByNotificaIdAndRuoloId(String notificaId, String ruoloId);
     List<RuoliNotificheQueryEntity> findAllByNotificaIdAndRuoloId(String notificaId, String ruoloId);
+    List<RuoliNotificheQueryEntity> findAllByRuoloId(String id);
 }
 
