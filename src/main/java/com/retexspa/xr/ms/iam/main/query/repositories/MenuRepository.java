@@ -9,4 +9,5 @@ import java.util.List;
 public interface MenuRepository extends JpaRepository<MenuQueryEntity, String>, JpaSpecificationExecutor<MenuQueryEntity> {
     MenuQueryEntity findByMenuCharIdAndRoutingId(String menuCharId, String routingId);
     List<MenuQueryEntity> findAllByMenuCharIdAndRoutingId(String menuCharId, String routingId);
+    List<MenuQueryEntity> findAllByRoutingId(String id);
 }

@@ -12,4 +12,5 @@ public interface RoutingRepository
     RoutingQueryEntity findByRoutingCharIdAndIconicApplicazioniId(String routingCharId, String iconicApplicazioniId);
     List<RoutingQueryEntity> findAllByRoutingCharIdAndIconicApplicazioniId(String routingCharId, String applicazioneId);
     List<RoutingQueryEntity> findAllByIconicApplicazioniId(String id);
+    List<RoutingQueryEntity> findAllByNodoId(String id);
 }

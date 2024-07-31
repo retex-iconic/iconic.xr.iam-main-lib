@@ -11,4 +11,5 @@ public interface RuoliRoutingRepository extends JpaRepository<RuoliRoutingQueryE
     RuoliRoutingQueryEntity findByRoutingIdAndRuoloId(String menuCharId, String routingId);
     List<RuoliRoutingQueryEntity> findAllByRoutingIdAndRuoloId(String menuCharId, String routingId);
     List<RuoliRoutingQueryEntity> findAllByRuoloId(String id);
+    List<RuoliRoutingQueryEntity> findAllByRoutingId(String id);
 }

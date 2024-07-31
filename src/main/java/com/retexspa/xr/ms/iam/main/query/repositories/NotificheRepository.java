@@ -10,4 +10,5 @@ public interface NotificheRepository extends JpaRepository<NotificheQueryEntity,
     NotificheQueryEntity findByRoutingIdAndIconicApplicazioniId(String routingId, String iconicApplicazioniId);
     List<NotificheQueryEntity> findAllByRoutingIdAndIconicApplicazioniId(String routingId, String iconicApplicazioniId);
     List<NotificheQueryEntity> findAllByIconicApplicazioniId(String id);
+    List<NotificheQueryEntity> findAllByRoutingId(String id);
 }
