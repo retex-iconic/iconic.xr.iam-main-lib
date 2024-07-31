@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.4.0](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.3.0...v1.4.0) (2024-07-31)
+
+
+### Features
+
+* #IAM-220 added constructor to badgesocieta ([7372c41](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/7372c415ab5dba328eb72c342d0d7fdbc9ca4774))
+* #IAM-235 added utenti ([a5dcaec](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/a5dcaec3cebab2df8586d6f40a2b337944a5691f))
+* #IAM-237 ([b8aaf89](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/b8aaf891c604dff453a48e5ff948c6f77b8f5d3c))
+* filter societa in utentiApplicazioni ([5899195](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/58991950f586bbe6ab3e40e12e0e61618f622ab1))
+* iconic applicazioni ([a4b2d8e](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/a4b2d8ee6412448bcfadf06f6b1705543c9896b0))
+* multi menu ([c3dc98f](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/c3dc98f96934f1397e655459e5b2a5097da0ab26))
+* multi menu ([7857525](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/7857525a055d12ba3509e059dc310b426a15787f))
+* societa applicazioni badge societa ([0495b2f](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/0495b2f254592c6790b24e7ed406d4e261e6e344))
+
+
+### Bug Fixes
+
+* #IAM-235 fixed utenti app search ([42d09f3](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/42d09f38518e1dfd2d5890da32576bf2f7338efb))
+* **deps:** update dependency com.retexspa:xr-shared-main-lib to v1.5.0 ([e1eed4a](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/e1eed4a67801e32920815dfe25b3fa4f791b26cb))
+
 ## [1.3.0](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.2.2...v1.3.0) (2024-07-19)
 
 
