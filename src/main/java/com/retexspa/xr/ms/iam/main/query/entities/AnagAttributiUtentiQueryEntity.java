@@ -6,7 +6,9 @@ import org.springframework.lang.NonNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "anag_attributi_utenti")
+@Table(name = "anag_attributi_utenti", uniqueConstraints = {
+    @UniqueConstraint(name = "anag_attributi_utenti_uk", columnNames = { "nome_attributo", "tipo_contesto_applicazione_id" })
+})
 public class AnagAttributiUtentiQueryEntity {
 
     @Id
@@ -41,11 +43,11 @@ public class AnagAttributiUtentiQueryEntity {
     private String checkFunction;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tipo_contesto_applicazione_id", referencedColumnName = "id")
+    @JoinColumn(name = "tipo_contesto_applicazione_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_anagAttributiUtenti_tipo_contesto_applicazione"))
     private TipiContestoApplicazioneQueryEntity tipoContestoApplicazione;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "share_tipo_contesto_applicazione_id", referencedColumnName = "id")
+    @JoinColumn(name = "share_tipo_contesto_applicazione_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_anagAttributiUtenti_share_tipo_contesto_applicazione"))
     private TipiContestoApplicazioneQueryEntity shareTipoContestoApplicazione;
 
     @Column(name="version")
