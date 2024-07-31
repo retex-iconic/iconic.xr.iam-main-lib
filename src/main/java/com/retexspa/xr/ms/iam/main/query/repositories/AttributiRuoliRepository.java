@@ -11,4 +11,6 @@ public interface AttributiRuoliRepository extends JpaRepository<AttributiRuoliQu
 
     List<AttributiRuoliQueryEntity> findAllByRuoloId(String id);
 
+    List<AttributiRuoliQueryEntity> findAllByAttributoRuoloId(String id);
+
 }
