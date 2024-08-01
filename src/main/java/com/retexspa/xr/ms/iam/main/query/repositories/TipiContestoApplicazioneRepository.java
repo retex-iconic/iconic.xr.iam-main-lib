@@ -14,4 +14,6 @@ public interface TipiContestoApplicazioneRepository
 
     List<TipiContestoApplicazioneQueryEntity> findAllByApplicazioneId(String applicazioneId);
     List<TipiContestoApplicazioneQueryEntity> findAllByTipiContestoId(String id);
+    List<TipiContestoApplicazioneQueryEntity> findAllByApplicazioneIdAndTipiContestoIdAndTassonomiaId(String applicazioneId, String tipiContestoId,
+            String tassonomiaId);
 }

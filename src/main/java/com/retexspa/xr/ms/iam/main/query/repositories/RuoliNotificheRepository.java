@@ -10,5 +10,6 @@ public interface RuoliNotificheRepository extends JpaRepository<RuoliNotificheQu
     RuoliNotificheQueryEntity findByNotificaIdAndRuoloId(String notificaId, String ruoloId);
     List<RuoliNotificheQueryEntity> findAllByNotificaIdAndRuoloId(String notificaId, String ruoloId);
     List<RuoliNotificheQueryEntity> findAllByRuoloId(String id);
+    List<RuoliNotificheQueryEntity> findAllByNotificaId(String id);
 }
 

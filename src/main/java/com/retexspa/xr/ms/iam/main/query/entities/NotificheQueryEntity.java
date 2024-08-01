@@ -7,7 +7,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "notifiche")
+@Table(name = "notifiche", uniqueConstraints = {
+    @UniqueConstraint(name = "notifiche_uk", columnNames = { "codice", "iconic_applicazioni_id" })
+})
 public class NotificheQueryEntity {
 
     @Id @NonNull private String id;
@@ -22,10 +24,10 @@ public class NotificheQueryEntity {
     @Column(name = "flgAttiva")
     private String flgAttiva;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "routing_id", referencedColumnName = "id")
+    @JoinColumn(name = "routing_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_notifiche_routing"))
     private RoutingQueryEntity routing;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "iconic_applicazioni_id", referencedColumnName = "id")
+    @JoinColumn(name = "iconic_applicazioni_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_notifiche_iconic_applicazioni"))
     private IconicApplicazioniQueryEntity iconicApplicazioni;
     @Column(name="version")
     private Long version;
