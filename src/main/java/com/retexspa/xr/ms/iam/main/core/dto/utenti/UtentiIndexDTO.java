@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-import java.util.LinkedList;
 import java.util.UUID;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
@@ -12,7 +11,6 @@ import java.util.UUID;
 public class UtentiIndexDTO {
 
     private String utentiId;
-    private LinkedList<String> utentiSocietaIds;
 
 
     public UtentiIndexDTO() {
@@ -34,16 +32,5 @@ public class UtentiIndexDTO {
         this.utentiId = utentiId;
     }
 
-    public LinkedList<String> getUtentiSocietaIds() {
-        return utentiSocietaIds;
-    }
-
-    public void setUtentiSocietaIds(LinkedList<String> utentiSocietaIds) {
-        this.utentiSocietaIds = utentiSocietaIds;
-    }
-
-    public static String getDetailNameUtentiSocieta() {
-        return "utentiSocietaIds";
-    }
 
 }
