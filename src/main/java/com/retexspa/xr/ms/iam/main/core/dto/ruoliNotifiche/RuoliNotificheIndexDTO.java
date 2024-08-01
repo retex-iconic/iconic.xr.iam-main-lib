@@ -30,12 +30,4 @@ public class RuoliNotificheIndexDTO {
         this.ruoliNotifiche = ruoliNotifiche;
     }
 
-    public static String getIndexName() {
-        return "RuoliNotificheIndexUk";
-    }
-
-    public static String getIndexAggregateName() {
-        return "RuoliNotificheIndexUkAggregate";
-    }
-
 }

@@ -11,15 +11,8 @@ import java.util.UUID;
 public class AttributiUtentiIndexDTO {
 
     private String attributiUtentiId;
-    private String applicazioneId;
-    private String societaId;
 
     public AttributiUtentiIndexDTO() {
-    }
-    public AttributiUtentiIndexDTO(String attributiUtentiId, String applicazioniId, String societaId) {
-        this.attributiUtentiId = attributiUtentiId;
-        this.applicazioneId = applicazioniId;
-        this.societaId = societaId;
     }
 
     public AttributiUtentiIndexDTO(String attributiUtentiId) {
