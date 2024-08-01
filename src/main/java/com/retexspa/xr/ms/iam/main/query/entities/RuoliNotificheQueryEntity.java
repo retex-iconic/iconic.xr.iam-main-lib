@@ -6,16 +6,18 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "RuoliNotifiche")
+@Table(name = "ruoli_notifiche", uniqueConstraints = {
+    @UniqueConstraint(name = "ruoli_notifiche_uk", columnNames = { "notifica_id", "ruolo_id" })
+})
 public class RuoliNotificheQueryEntity {
     @Id
     @NonNull
     private String id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "notifica_id", referencedColumnName = "id")
+    @JoinColumn(name = "notifica_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_ruoliNotifiche_notifiche"))
     private NotificheQueryEntity notifica;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ruolo_id", referencedColumnName = "id")
+    @JoinColumn(name = "ruolo_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_ruoliNotifiche_ruolo"))
     private RuoliApplicazioneQueryEntity ruolo;
     @Column(name="version")
     private Long version;
