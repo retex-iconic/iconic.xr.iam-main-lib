@@ -58,6 +58,7 @@ public class MenuQueryEntity {
     
     public MenuQueryEntity() {
     }
+
     public MenuQueryEntity(@NotNull String id, MenuBaseDTO dto, Long version) {
         this.id = id;
         this.menuCharId = dto.getMenuCharId();
@@ -69,8 +70,8 @@ public class MenuQueryEntity {
         this.homePagina = dto.getHomePagina();
         this.tipoMenu = dto.getTipoMenu();
         this.idMenu = dto.getIdMenu();
-        this.menuDefault = dto.getMenuName();
-        this.menuName = dto.getMenuDefault();
+        this.menuDefault = dto.getMenuDefault();
+        this.menuName = dto.getMenuName();
         this.version = version;
     }
 
