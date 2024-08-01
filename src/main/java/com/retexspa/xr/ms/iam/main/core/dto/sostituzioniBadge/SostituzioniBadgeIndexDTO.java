@@ -14,6 +14,9 @@ public class SostituzioniBadgeIndexDTO {
     public SostituzioniBadgeIndexDTO() {
     }
 
+    public SostituzioniBadgeIndexDTO(String id) {
+    }
+
     public void setSostituzioniBadgeId(String sostituzioniBadgeId) {
         this.sostituzioniBadgeId = sostituzioniBadgeId;
     }
