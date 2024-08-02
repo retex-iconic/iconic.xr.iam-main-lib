@@ -74,6 +74,17 @@ public class ApplicazioniQueryEntity {
 
     public ApplicazioniQueryEntity() {
     }
+    
+
+    public ApplicazioniQueryEntity(String id, String nome, String codice, String descrizione, byte[] immagine,
+            String flgRuoloUnico) {
+        this.id = id;
+        this.nome = nome;
+        this.codice = codice;
+        this.descrizione = descrizione;
+        this.immagine = immagine;
+        this.flgRuoloUnico = flgRuoloUnico;
+    }
 
     public ApplicazioniQueryEntity(@NotNull String id, ApplicazioniBaseDTO dto, Long version) {
         this.id = id;
