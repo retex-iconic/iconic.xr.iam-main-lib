@@ -51,6 +51,9 @@ public class IconicApplicazioniQueryEntity {
         this.descrizione = dto.getDescrizione();
         this.nome = dto.getNome();
         this.codice = dto.getCodice();
+        this.titolo = dto.getTitolo();
+        this.subtitolo = dto.getSubtitolo();
+        this.url = dto.getUrl();
         this.version = version;
     }
 
