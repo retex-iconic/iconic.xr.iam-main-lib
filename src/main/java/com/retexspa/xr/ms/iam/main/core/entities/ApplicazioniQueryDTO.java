@@ -15,7 +15,7 @@ public class ApplicazioniQueryDTO {
     private String descrizione;
     private String societaId;
     private String iconicApplicazioniId;
-    private byte[] immagine;
+    private String immagine;
     private String flgRuoloUnico;
     private Long version;
 
@@ -53,11 +53,11 @@ public class ApplicazioniQueryDTO {
         this.societaId = societaId;
     }
 
-    public byte[] getImmagine() {
+    public String getImmagine() {
         return immagine;
     }
 
-    public void setImmagine(byte[] immagine) {
+    public void setImmagine(String immagine) {
         this.immagine = immagine;
     }
 

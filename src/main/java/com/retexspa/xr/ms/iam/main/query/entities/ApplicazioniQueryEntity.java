@@ -67,8 +67,7 @@ public class ApplicazioniQueryEntity {
 
 
     @Column(name="immagine")
-    @Lob
-    private byte[] immagine;
+    private String immagine;
     @Column(name="flgRuoloUnico")
     private String flgRuoloUnico;
 
@@ -76,7 +75,7 @@ public class ApplicazioniQueryEntity {
     }
     
 
-    public ApplicazioniQueryEntity(String id, String nome, String codice, String descrizione, byte[] immagine,
+    public ApplicazioniQueryEntity(String id, String nome, String codice, String descrizione, String immagine,
             String flgRuoloUnico) {
         this.id = id;
         this.nome = nome;
@@ -144,11 +143,11 @@ public class ApplicazioniQueryEntity {
         this.societa = societa;
     }
 
-    public byte[] getImmagine() {
+    public String getImmagine() {
         return immagine;
     }
 
-    public void setImmagine(byte[] immagine) {
+    public void setImmagine(String immagine) {
         this.immagine = immagine;
     }
 

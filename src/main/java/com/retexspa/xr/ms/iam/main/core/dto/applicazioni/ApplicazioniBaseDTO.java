@@ -28,7 +28,7 @@ public class ApplicazioniBaseDTO {
     @NotEmpty(message = "societaId is mandatory")
     @NotBlank(message = "societaId is mandatory")
     private String societaId;
-    private byte[] immagine;
+    private String immagine;
     @EnumValidator(enumClazz = Enums.CheckSN.class , message = "FlgRuoloUnico not valid")
     @NotNull(message = "flgRuoloUnico is mandatory")
     private String flgRuoloUnico;
@@ -66,11 +66,11 @@ public class ApplicazioniBaseDTO {
         this.societaId = societaId;
     }
 
-    public byte[] getImmagine() {
+    public String getImmagine() {
         return immagine;
     }
 
-    public void setImmagine(byte[] immagine) {
+    public void setImmagine(String immagine) {
         this.immagine = immagine;
     }
 

@@ -12,6 +12,7 @@ public class IconicApplicazioniUpdateDTO {
     private String titolo;
     private String subtitolo;
     private String url;
+    private String immagine;
 
     public String getDescrizione() {
         return descrizione;
@@ -27,6 +28,14 @@ public class IconicApplicazioniUpdateDTO {
 
     public void setTitolo(String titolo) {
         this.titolo = titolo;
+    }
+
+    public String getImmagine() {
+        return immagine;
+    }
+
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
     }
 
     public String getSubtitolo() {

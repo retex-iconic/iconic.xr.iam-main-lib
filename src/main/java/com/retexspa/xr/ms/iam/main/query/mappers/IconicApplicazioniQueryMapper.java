@@ -17,6 +17,7 @@ public interface IconicApplicazioniQueryMapper {
     @Mapping(target = "nome", source = "nome")
     @Mapping(target = "codice", source = "codice")
     @Mapping(target = "descrizione", source = "descrizione")
+    @Mapping(target = "immagine", source = "immagine")
     @Mapping(target = "version", source = "version")
     IconicApplicazioniQueryDTO toDTO(IconicApplicazioniQueryEntity iconicApplicazioniQueryEntity);
 
