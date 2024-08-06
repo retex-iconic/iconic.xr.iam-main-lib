@@ -4,6 +4,7 @@ package com.retexspa.xr.ms.iam.main.query.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -40,17 +41,36 @@ public class IconicApplicazioniQueryEntity {
     @Column(name = "url")
     private String url;
 
+    @Column(name="immagine")
+    private String immagine;
+
     @Column(name="version")
     private Long version;
 
     public IconicApplicazioniQueryEntity() {
-    }
+    }    
 
+
+    public IconicApplicazioniQueryEntity(String id, String nome, String codice, String descrizione, String titolo,
+            String subtitolo, String url, String immagine) {
+        this.id = id;
+        this.nome = nome;
+        this.codice = codice;
+        this.descrizione = descrizione;
+        this.titolo = titolo;
+        this.subtitolo = subtitolo;
+        this.url = url;
+        this.immagine = immagine;
+    }
     public IconicApplicazioniQueryEntity(@NotNull String id, IconicApplicazioniBaseDTO dto, Long version) {
         this.id = id;
         this.descrizione = dto.getDescrizione();
         this.nome = dto.getNome();
         this.codice = dto.getCodice();
+        this.titolo = dto.getTitolo();
+        this.subtitolo = dto.getSubtitolo();
+        this.url = dto.getUrl();
+        this.immagine = dto.getImmagine();
         this.version = version;
     }
 
@@ -85,6 +105,16 @@ public class IconicApplicazioniQueryEntity {
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
     }
+
+    public String getImmagine() {
+        return immagine;
+    }
+
+
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
+    }
+
 
     public Long getVersion() {
         return version;

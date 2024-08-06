@@ -12,7 +12,7 @@ public class ApplicazioniUpdateDTO {
 
     private String descrizione;
     private String nome;
-    private byte[] immagine;
+    private String immagine;
     @EnumValidator(enumClazz = Enums.CheckSN.class , message = "FlgRuoloUnico not valid")
     private String flgRuoloUnico;
 
@@ -33,11 +33,11 @@ public class ApplicazioniUpdateDTO {
         this.nome = nome;
     }
 
-    public byte[] getImmagine() {
+    public String getImmagine() {
         return immagine;
     }
 
-    public void setImmagine(byte[] immagine) {
+    public void setImmagine(String immagine) {
         this.immagine = immagine;
     }
 

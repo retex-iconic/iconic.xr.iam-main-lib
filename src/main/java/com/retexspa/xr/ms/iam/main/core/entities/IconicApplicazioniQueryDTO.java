@@ -14,6 +14,7 @@ public class IconicApplicazioniQueryDTO {
     private String codice;
     private String descrizione;
     private Long version;
+    private String immagine;
 
 
     public String getId() {
@@ -33,6 +34,12 @@ public class IconicApplicazioniQueryDTO {
     }
     public void setCodice(String codice) {
         this.codice = codice;
+    }
+    public String getImmagine() {
+        return immagine;
+    }
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
     }
     public String getDescrizione() {
         return descrizione;

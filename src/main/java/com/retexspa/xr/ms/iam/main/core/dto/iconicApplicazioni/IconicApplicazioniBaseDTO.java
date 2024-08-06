@@ -23,8 +23,17 @@ public class IconicApplicazioniBaseDTO {
     @NotNull(message = "nome is mandatory")
     private String nome;
 
+    private String immagine;
 
     private String titolo;
+    public String getImmagine() {
+        return immagine;
+    }
+
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
+    }
+
     private String subtitolo;
     private String descrizione;
     private String url;
