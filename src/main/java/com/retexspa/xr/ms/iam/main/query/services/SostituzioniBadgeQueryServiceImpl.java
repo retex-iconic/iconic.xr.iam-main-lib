@@ -76,23 +76,26 @@ public class SostituzioniBadgeQueryServiceImpl implements SostituzioniBadgeQuery
 
         List<javax.persistence.criteria.Order> orders = new ArrayList<>();
         for (Sort.Order sortOrder : sorts) {
-            Path<?> path;
+            List<Path<?>> paths = new ArrayList<Path<?>>();
             if ("utentiId".equals(sortOrder.getProperty())) {
-                path = utentiJoin.get("id");
-            } else if ("badgeId".equals(sortOrder.getProperty())) {
-                path = badgeJoin.get("id");
-            } else if ("tipoBadge".equals(sortOrder.getProperty())) {
-                path = badgeJoin.get("tipoBadge");
-            } else if ("codiceBadge".equals(sortOrder.getProperty())) {
-                path = badgeJoin.get("codiceBadge");
-            } else {
-                path = root.get(sortOrder.getProperty());
+                paths.add(utentiJoin.get("id"));
+            }
+            if ("badgeId".equals(sortOrder.getProperty())) {
+                paths.add(badgeJoin.get("id"));
+            }
+            if ("tipoBadge".equals(sortOrder.getProperty())) {
+                paths.add(badgeJoin.get("tipoBadge"));
+            }
+            if ("codiceBadge".equals(sortOrder.getProperty())) {
+                paths.add(badgeJoin.get("codiceBadge"));
             }
 
-            if (sortOrder.isAscending()) {
-                orders.add(cb.asc(path));
-            } else {
-                orders.add(cb.desc(path));
+            for (Path<?> path : paths) {
+                if (sortOrder.isAscending()) {
+                    orders.add(cb.asc(path));
+                } else {
+                    orders.add(cb.desc(path));
+                }
             }
         }
         cq.orderBy(orders);
@@ -193,26 +196,27 @@ public class SostituzioniBadgeQueryServiceImpl implements SostituzioniBadgeQuery
                 // (dataRiconsegna == null || dataRiconsegna > today) &&
                 // (dataAssegnazione != null && dataAssegnazione <= today)
 
-                //dataBlocco == null
+                // dataBlocco == null
                 Specification<SostituzioniBadgeQueryEntity> spec1 = (r, q, c) -> c.isNull(r.get("dataBlocco"));
-                //dataBlocco > this.today
+                // dataBlocco > this.today
                 Specification<SostituzioniBadgeQueryEntity> spec2 = (r, q, c) -> c.greaterThan(r.get("dataBlocco"),
                         currentTimestamp);
 
                 Specification<SostituzioniBadgeQueryEntity> combinedSpec1 = spec1.or(spec2);
 
-                //dataRiconsegna == null
+                // dataRiconsegna == null
                 Specification<SostituzioniBadgeQueryEntity> spec3 = (r, q, c) -> c.isNull(r.get("dataRiconsegna"));
-                //dataRiconsegna > this.today
+                // dataRiconsegna > this.today
                 Specification<SostituzioniBadgeQueryEntity> spec4 = (r, q, c) -> c.greaterThan(r.get("dataRiconsegna"),
                         currentTimestamp);
 
                 Specification<SostituzioniBadgeQueryEntity> combinedSpec2 = spec3.or(spec4);
 
-                //dataAssegnazione != null
+                // dataAssegnazione != null
                 Specification<SostituzioniBadgeQueryEntity> spec5 = (r, q, c) -> c.isNotNull(r.get("dataAssegnazione"));
-                //dataAssegnazione <= this.today
-                Specification<SostituzioniBadgeQueryEntity> spec6 = (r, q, c) -> c.lessThanOrEqualTo(r.get("dataAssegnazione"),
+                // dataAssegnazione <= this.today
+                Specification<SostituzioniBadgeQueryEntity> spec6 = (r, q, c) -> c.lessThanOrEqualTo(
+                        r.get("dataAssegnazione"),
                         currentTimestamp);
 
                 Specification<SostituzioniBadgeQueryEntity> combinedSpec3 = spec5.and(spec6);
