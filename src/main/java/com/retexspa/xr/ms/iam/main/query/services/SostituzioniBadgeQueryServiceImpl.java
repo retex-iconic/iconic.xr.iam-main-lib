@@ -77,6 +77,18 @@ public class SostituzioniBadgeQueryServiceImpl implements SostituzioniBadgeQuery
         List<javax.persistence.criteria.Order> orders = new ArrayList<>();
         for (Sort.Order sortOrder : sorts) {
             List<Path<?>> paths = new ArrayList<Path<?>>();
+            if ("dataAssegnazione".equals(sortOrder.getProperty())) {
+                paths.add(root.get("dataAssegnazione"));
+            }
+            if ("dataBlocco".equals(sortOrder.getProperty())) {
+                paths.add(root.get("dataBlocco"));
+            }
+            if ("dataSblocco".equals(sortOrder.getProperty())) {
+                paths.add(root.get("dataSblocco"));
+            }
+            if ("dataRiconsegna".equals(sortOrder.getProperty())) {
+                paths.add(root.get("dataRiconsegna"));
+            }
             if ("utentiId".equals(sortOrder.getProperty())) {
                 paths.add(utentiJoin.get("id"));
             }
