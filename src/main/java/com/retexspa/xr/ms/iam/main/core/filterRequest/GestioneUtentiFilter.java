@@ -4,6 +4,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.retexspa.xr.ms.iam.main.core.dto.Enums;
+import com.retexspa.xr.ms.main.core.helpers.EnumValidator;
 
 public class GestioneUtentiFilter {
 
@@ -17,6 +19,8 @@ public class GestioneUtentiFilter {
     private List<String> ruoliId;
     private String contestoId;
     private String ruoloId;
+    @EnumValidator(enumClazz = Enums.StatoBadge.class, message = "Stato Badge not valid")
+    private String statoBadge;
 
     private String utentiSocietaId;
 
@@ -34,7 +38,8 @@ public class GestioneUtentiFilter {
             @JsonProperty("ruoloId") String ruoloId,
             @JsonProperty("contestoId") String contestoId,
             @JsonProperty("ruoliId") List<String> ruoliId,
-            @JsonProperty("utentiSocietaId") String utentiSocietaId) {
+            @JsonProperty("utentiSocietaId") String utentiSocietaId,
+            @JsonProperty("statoBadge") String statoBadge) {
         this.idAccount = idAccount;
         this.applicazioneId = applicazioneId;
         this.societaId = societaId;
@@ -46,6 +51,7 @@ public class GestioneUtentiFilter {
         this.ruoloId = ruoloId;
         this.contestoId = contestoId;
         this.utentiSocietaId = utentiSocietaId;
+        this.statoBadge = statoBadge;
     }
 
     public static GestioneUtentiFilter createFilterFromMap(Object obj) {
@@ -64,6 +70,7 @@ public class GestioneUtentiFilter {
             filter.setContestoId((String) map.get("contestoId"));
             filter.setRuoloId((String) map.get("ruoloId"));
             filter.setUtentiSocietaId((String) map.get("utentiSocietaId"));
+            filter.setStatoBadge((String) map.get("statoBadge"));
         }
         return filter;
     }
@@ -154,6 +161,14 @@ public class GestioneUtentiFilter {
 
     public void setUtentiSocietaId(String utentiSocietaId) {
         this.utentiSocietaId = utentiSocietaId;
+    }
+
+    public String getStatoBadge() {
+        return statoBadge;
+    }
+
+    public void setStatoBadge(String statoBadge) {
+        this.statoBadge = statoBadge;
     }
 
 }

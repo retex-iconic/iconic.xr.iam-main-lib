@@ -13,20 +13,21 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 public class AssegnaSostituzioniBadgeDTO {
 
     @NotNull(message = "Sostituzioni Badge is mandatory")
-    SostituzioniBadgeBaseDTO sostituzioniBadge;
-    @NotNull(message = "Utenti Societa Id is mandatory")
-    @NotEmpty(message = "Utenti Societa Id is mandatory")
-    @NotBlank(message = "Utenti Societa Id is mandatory")
-    String utenteSocietaId;
-    @NotNull(message = "Stato Badge Personale is mandatory")
-    @NotEmpty(message = "Stato Badge Personale is mandatory")
-    @NotBlank(message = "Stato Badge Personale is mandatory")
+    SostituzioniBadgeBaseDTO newSostituzioniBadge;
+
+    //non mandatory
+    String updateSostituzioniBadgeId;
+    SostituzioniBadgeUpdateDTO updateSostituzioniBadge;
+    
+    //non mandatory ma devono essere presenti entrambi
+    String utenteSocietaId; 
     String statoBadgePersonale;
-    public SostituzioniBadgeBaseDTO getSostituzioniBadge() {
-        return sostituzioniBadge;
+
+    public SostituzioniBadgeBaseDTO getNewSostituzioniBadge() {
+        return newSostituzioniBadge;
     }
-    public void setSostituzioniBadge(SostituzioniBadgeBaseDTO sostituzioniBadge) {
-        this.sostituzioniBadge = sostituzioniBadge;
+    public void setNewSostituzioniBadge(SostituzioniBadgeBaseDTO sostituzioniBadge) {
+        this.newSostituzioniBadge = sostituzioniBadge;
     }
     public String getUtenteSocietaId() {
         return utenteSocietaId;
@@ -39,6 +40,18 @@ public class AssegnaSostituzioniBadgeDTO {
     }
     public void setStatoBadgePersonale(String statoBadgePersonale) {
         this.statoBadgePersonale = statoBadgePersonale;
+    }
+    public String getUpdateSostituzioniBadgeId() {
+        return updateSostituzioniBadgeId;
+    }
+    public void setUpdateSostituzioniBadgeId(String updateSostituzioniBadgeId) {
+        this.updateSostituzioniBadgeId = updateSostituzioniBadgeId;
+    }
+    public SostituzioniBadgeUpdateDTO getUpdateSostituzioniBadge() {
+        return updateSostituzioniBadge;
+    }
+    public void setUpdateSostituzioniBadge(SostituzioniBadgeUpdateDTO updateSostituzioniBadge) {
+        this.updateSostituzioniBadge = updateSostituzioniBadge;
     }
 
     

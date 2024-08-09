@@ -51,6 +51,20 @@ public class SostituzioniBadgeQueryEntity {
     }
 
     
+    public SostituzioniBadgeQueryEntity(String id, String causale, LocalDateTime dataRiconsegna,
+            LocalDateTime dataBlocco, LocalDateTime dataSblocco, LocalDateTime dataAssegnazione,
+            BadgeSocietaQueryEntity badge, UtentiSocietaQueryEntity utenti) {
+        this.id = id;
+        this.causale = causale;
+        this.dataRiconsegna = dataRiconsegna;
+        this.dataBlocco = dataBlocco;
+        this.dataSblocco = dataSblocco;
+        this.dataAssegnazione = dataAssegnazione;
+        this.badge = badge;
+        this.utenti = utenti;
+    }
+
+
     public SostituzioniBadgeQueryEntity(@NotNull String id, SostituzioniBadgeBaseDTO dto, Long version) {
         this.id = id;
         this.dataAssegnazione = dto.getDataAssegnazione();
