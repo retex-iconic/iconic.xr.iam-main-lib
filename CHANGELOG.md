@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.4.0...v1.4.1) (2024-08-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.retexspa:xr-shared-main-lib to v1.6.0 ([09f269a](https://github.com/retex-iconic/iconic.xr.iam-main-lib/commit/09f269af003dd19bb73b33060ca5b6e6657ef3a8))
+
 ## [1.4.0](https://github.com/retex-iconic/iconic.xr.iam-main-lib/compare/v1.3.0...v1.4.0) (2024-07-31)
 
 
